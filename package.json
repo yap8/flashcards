@@ -5,7 +5,9 @@
   "main": "app.js",
   "scripts": {
     "start": "npm app",
-    "server": "nodemon app"
+    "server": "nodemon app",
+    "client": "npm run start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "keywords": [],
   "author": "",
@@ -19,6 +21,7 @@
     "mongoose": "^6.2.7"
   },
   "devDependencies": {
+    "concurrently": "^7.0.0",
     "nodemon": "^2.0.15"
   }
 }
