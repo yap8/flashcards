@@ -1,8 +1,10 @@
+import Title from "../components/Title"
+
 const Collections = () => {
   return (
     <section className="collections">
       <div className="collections__inner container">
-        <h1>Collections</h1>
+        <Title>Collections</Title>
       </div>
     </section>
   )

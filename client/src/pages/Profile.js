@@ -1,8 +1,11 @@
+import Title from "../components/Title"
+
 const Profile = () => {
   return (
     <section className="profile">
       <div className="profile__inner container">
-        <h1>Profile</h1>
+        <Title>Profile</Title>
+
       </div>
     </section>
   )

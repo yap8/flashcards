@@ -1,10 +1,10 @@
-import React from 'react'
+import Title from '../components/Title'
 
 const Register = () => {
   return (
     <section className='register'>
       <div className="register__inner container">
-        <h1>Register</h1>
+        <Title>Register</Title>
       </div>
     </section>
   )

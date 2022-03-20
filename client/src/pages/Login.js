@@ -1,8 +1,10 @@
+import Title from '../components/Title'
+
 const Login = () => {
   return (
     <section className="login">
       <div className="login__inner container">
-        <h1>Login</h1>
+        <Title>Login</Title>
       </div>
     </section>
   )
