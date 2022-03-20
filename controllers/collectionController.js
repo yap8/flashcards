@@ -44,6 +44,26 @@ const collectionController = {
     } catch (error) {
       res.json({ error: error.message })
     }
+  },
+  // @route  DELETE /api/collections/:id
+  // @desc   Delete a collection
+  // @access Private
+  async deleteCollection(req, res) {
+    try {
+      const { id } = req.params
+
+      const collection = await Collection.findById(id)
+
+      if (collection.author != req.user.id) {
+        throw new Error(`You can't perform this action`)
+      }
+
+      await Collection.findByIdAndDelete(id)
+
+      res.json({ message: 'collection deleted' })
+    } catch (error) {
+      res.json({ error: error.message })
+    }
   }
 }
 
