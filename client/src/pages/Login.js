@@ -1,8 +1,10 @@
-import React from 'react'
-
 const Login = () => {
   return (
-    <div>Login</div>
+    <section className="login">
+      <div className="login__inner container">
+        <h1>Login</h1>
+      </div>
+    </section>
   )
 }
 
