@@ -64,6 +64,25 @@ const userController = {
     } catch (error) {
       res.json({ error: error.message })
     }
+  },
+  // @route  PATCH /api/users/add-collection/:id
+  // @desc   Add a collection to user's list
+  // @access Private
+  async addCollection(req, res) {
+    try {
+      const user = await User.findByIdAndUpdate(req.user._id, {
+        collections: [
+          req.params.id,
+          ...req.user.collections
+        ]
+      }, {
+        new: true
+      })
+
+      res.json(user)
+    } catch (error) {
+      res.json({ error: error.message })
+    }
   }
 }
 
