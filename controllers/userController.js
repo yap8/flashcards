@@ -85,6 +85,18 @@ const userController = {
       res.json({ error: error.message })
     }
   },
+  // @route  POST /api/users/logout
+  // @desc   Log user out by destroying the token cookie
+  // @access Private
+  async logout(req, res) {
+    try {
+      res.clearCookie('token')
+
+      res.json({ message: 'cookie destroyed' })
+    } catch (error) {
+      res.json({ error: error.message })
+    }
+  },
   // @route  PATCH /api/users/add-collection/:id
   // @desc   Add a collection to user's list
   // @access Private
