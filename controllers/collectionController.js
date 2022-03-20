@@ -1,6 +1,3 @@
-const jwt = require('jsonwebtoken')
-
-const User = require('../models/userModel')
 const Collection = require('../models/collectionModel')
 
 const collectionController = {
@@ -9,7 +6,7 @@ const collectionController = {
   // @access Private
   async getCollections(req, res) {
     try {
-      const { collections } = await User.findById(req.user.id)
+      const collections = await Collection.find()
 
       res.json(collections)
     } catch (error) {
