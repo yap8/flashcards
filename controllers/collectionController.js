@@ -13,6 +13,18 @@ const collectionController = {
       res.json({ error: error.message })
     }
   },
+  // @route  GET /api/collections/:id
+  // @desc   Get a single collection
+  // @access Private
+  async getCollection(req, res) {
+    try {
+      const collection = await Collection.findById(req.params.id)
+
+      res.json(collection)
+    } catch (error) {
+      res.json({ error: error.message })
+    }
+  },
   // @route  POST /api/collections
   // @desc   Create a collection
   // @access Private
