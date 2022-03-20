@@ -1,4 +1,4 @@
-const userReducer = (state = initialState, action) => {
+const userReducer = (state = {}, action) => {
   switch (action.type) {
     default:
       return state
