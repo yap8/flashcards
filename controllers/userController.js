@@ -24,13 +24,11 @@ const userController = {
 
       await user.save()
 
-      const token = jwt.sign({
+      const token = getToken({
         user: {
           email: user.email,
           id: user._id
         }
-      }, JWT_SECRET, {
-        expiresIn: '10d'
       })
 
       res.cookie('token', token, {
@@ -70,13 +68,11 @@ const userController = {
         return res.json({ error: 'No user with such credentials' })
       }
 
-      const token = jwt.sign({
+      const token = getToken({
         user: {
           email: user.email,
           id: user._id
         }
-      }, JWT_SECRET, {
-        expiresIn: '10d'
       })
 
       res.cookie('token', token, {
@@ -108,6 +104,14 @@ const userController = {
       res.json({ error: error.message })
     }
   }
+}
+
+const getToken = (payload) => {
+  const token = jwt.sign(payload, JWT_SECRET, {
+    expiresIn: '10d'
+  })
+
+  return token
 }
 
 module.exports = userController
