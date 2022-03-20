@@ -1,0 +1,30 @@
+.header {
+  box-shadow: 0px 2px 15px rgba(0,0,0,0.2);
+  &__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 72px;
+  }
+  &__logo {
+    font-size: 32px;
+    color: #04111d;
+    font-weight: 600;
+  }
+  &__nav {
+    display: flex;
+  }
+  &__nav-link {
+    display: block;
+    line-height: 72px;
+    padding: 0 16px;
+    font-size: 22px;
+    font-weight: 600;
+    color: rgba(#04111dbf, .75);
+    transition: .2s color ease;
+    &:hover,
+    &:focus {
+      color: #04111d;
+    }
+  }
+}
