@@ -2,11 +2,11 @@ const Collection = require('../models/collectionModel')
 
 const collectionController = {
   // @route  GET /api/collections
-  // @desc   Get a list of collections
+  // @desc   Get a list of user's collections
   // @access Private
   async getCollections(req, res) {
     try {
-      const collections = await Collection.find()
+      const collections = await Collection.find({ author: req.user._id })
 
       res.json(collections)
     } catch (error) {
