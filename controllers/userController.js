@@ -34,7 +34,8 @@ const userController = {
       })
 
       res.cookie('token', token, {
-        httpOnly: true
+        httpOnly: true,
+        maxAge: 864000000
       })
 
       res.json({ token })
@@ -79,7 +80,8 @@ const userController = {
       })
 
       res.cookie('token', token, {
-        httpOnly: true
+        httpOnly: true,
+        maxAge: 864000000
       })
 
       res.json({ token })
