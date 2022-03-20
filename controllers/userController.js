@@ -38,6 +38,20 @@ const userController = {
       res.json({ error: error.message })
     }
   },
+  // @route  GET /api/users/:id
+  // @desc   Get user info
+  // @access Public
+  async getUser(req, res) {
+    try {
+      const { id } = req.params
+
+      const user = await User.findById(id).select('-password -email')
+
+      res.json(user)
+    } catch (error) {
+      res.json({ error: error.message })
+    }
+  },
   // @route  POST /api/users/login
   // @desc   Authenticate a user
   // @access Public
