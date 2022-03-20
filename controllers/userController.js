@@ -33,6 +33,10 @@ const userController = {
         expiresIn: '10d'
       })
 
+      res.cookie('token', token, {
+        httpOnly: true
+      })
+
       res.json({ token })
     } catch (error) {
       res.json({ error: error.message })
@@ -72,6 +76,10 @@ const userController = {
         }
       }, JWT_SECRET, {
         expiresIn: '10d'
+      })
+
+      res.cookie('token', token, {
+        httpOnly: true
       })
 
       res.json({ token })

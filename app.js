@@ -2,6 +2,7 @@ require('dotenv').config()
 
 const express = require('express')
 const mongoose = require('mongoose')
+const cookieParser = require('cookie-parser')
 
 const PORT = process.env.PORT || 5000
 const DB_URI = process.env.DB_URI || 'mongodb://localhost:27017/mern-flashcards'
@@ -10,6 +11,7 @@ const app = express()
 
 // middleware
 app.use(express.json())
+app.use(cookieParser())
 
 // routes
 app.use('/api/users', require('./routes/userRoutes'))

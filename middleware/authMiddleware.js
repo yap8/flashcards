@@ -6,7 +6,7 @@ const JWT_SECRET = process.env.JWT_SECRET || 'secret'
 const authMiddleware = {
   async protect(req, res, next) {
     try {
-      const token = req.headers.authorization
+      const { token } = req.cookies
   
       if (!token) throw new Error('no token')
       if (!jwt.verify(token, JWT_SECRET)) throw new Error('invalid token')
