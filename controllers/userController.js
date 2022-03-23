@@ -61,7 +61,7 @@ const userController = {
 
       const user = await User.findOne({ email })
 
-      if (!user || !await bcrypt.compare(password, user.password)) {
+      if (!user || !await user.matchPassword(password)) {
         return res.json({ error: 'No user with such credentials' })
       }
 
