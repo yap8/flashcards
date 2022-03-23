@@ -6,14 +6,19 @@ const JWT_SECRET = process.env.JWT_SECRET || 'secret'
 const authMiddleware = {
   async protect(req, res, next) {
     try {
-      const { token } = req.cookies
-  
-      if (!token) throw new Error('no token')
-      if (!jwt.verify(token, JWT_SECRET)) throw new Error('invalid token')
+      let token
 
-      const { user } = jwt.verify(token, JWT_SECRET)
+      if (req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {
+        token = req.headers.authorization.split(' ')[1]
+      }
 
-      req.user = await User.findById(user.id).select('-password')
+      if (!token) throw new Error('Not authorized to access this route')
+
+      const decoded = jwt.verify(token, JWT_SECRET)
+
+      const user = await User.findById(decoded.id)
+
+      if (!user) throw new Error('No user found with such id')
 
       next()
     } catch (error) {
