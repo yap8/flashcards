@@ -1,9 +1,4 @@
-const bcrypt = require('bcrypt')
-const jwt = require('jsonwebtoken')
-
 const User = require('../models/userModel')
-
-const JWT_SECRET = process.env.JWT_SECRET || 'secret'
 
 const userController = {
   // @route  POST /api/users/register
@@ -21,17 +16,7 @@ const userController = {
 
       await user.save()
 
-      const token = getToken({
-        user: {
-          email: user.email,
-          id: user._id
-        }
-      })
-
-      res.cookie('token', token, {
-        httpOnly: true,
-        maxAge: 864000000
-      })
+      const token = user.getAuthToken()
 
       res.json({ token })
     } catch (error) {
@@ -65,17 +50,7 @@ const userController = {
         return res.json({ error: 'No user with such credentials' })
       }
 
-      const token = getToken({
-        user: {
-          email: user.email,
-          id: user._id
-        }
-      })
-
-      res.cookie('token', token, {
-        httpOnly: true,
-        maxAge: 864000000
-      })
+      const token = user.getAuthToken()
 
       res.json({ token })
     } catch (error) {
@@ -101,14 +76,6 @@ const userController = {
       res.json({ error: error.message })
     }
   }
-}
-
-const getToken = (payload) => {
-  const token = jwt.sign(payload, JWT_SECRET, {
-    expiresIn: '10d'
-  })
-
-  return token
 }
 
 module.exports = userController

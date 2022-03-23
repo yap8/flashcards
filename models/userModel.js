@@ -1,5 +1,9 @@
 const { Schema, model } = require('mongoose')
 const bcrypt = require('bcrypt')
+const jwt = require('jsonwebtoken')
+
+const JWT_SECRET = process.env.JWT_SECRET || 'secret'
+const JWT_EXPIRE = process.env.JWT_EXPIRE || '10d'
 
 const userSchema = new Schema({
   name: {
@@ -41,5 +45,11 @@ userSchema.pre('save', async function (next) {
 userSchema.methods.matchPassword = async function (password) {
   return await bcrypt.compare(password, this.password)
 }
+
+userSchema.methods.getAuthToken = function () {
+  return jwt.sign({ id: this._id }, JWT_SECRET, {
+    expiresIn: JWT_EXPIRE,
+  });
+};
 
 module.exports = model('Users', userSchema)
