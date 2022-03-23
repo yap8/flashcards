@@ -4,7 +4,6 @@ const userController = require('../controllers/userController')
 
 router.post('/register', userController.register)
 router.post('/login', userController.login)
-router.post('/logout', protect, userController.logout)
 router.get('/:id', userController.getUser)
 router.patch('/add-collection/:id', protect, userController.addCollection)
 
