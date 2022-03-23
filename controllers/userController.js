@@ -13,13 +13,10 @@ const userController = {
     try {
       const { name, email, password } = req.body
 
-      const salt = await bcrypt.genSalt(10)
-      const hash = await bcrypt.hash(password, salt)
-
       const user = new User({
         name,
         email,
-        password: hash
+        password
       })
 
       await user.save()
