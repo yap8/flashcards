@@ -2,9 +2,12 @@ import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import Title from '../components/Title'
+import { useDispatch } from 'react-redux'
+import { storeToken } from '../redux/actions/userActions'
 
 const Register = () => {
   const navigate = useNavigate()
+  const dispatch = useDispatch()
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -34,7 +37,7 @@ const Register = () => {
 
       setLoading(false)
 
-      localStorage.setItem('authToken', data.token)
+      dispatch(storeToken(data.token))
 
       navigate('/')
     } catch (error) {
