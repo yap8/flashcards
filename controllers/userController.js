@@ -46,15 +46,13 @@ const userController = {
 
       const user = await User.findOne({ email })
 
-      if (!user || !await user.matchPassword(password)) {
-        return res.json({ error: 'No user with such credentials' })
-      }
+      if (!user || !await user.matchPassword(password)) throw new Error('No user with such credentials')
 
       const token = user.getAuthToken()
 
       res.json({ token })
     } catch (error) {
-      res.json({ error: error.message })
+      res.status(500).json({ error: error.message })
     }
   },
   // @route  PATCH /api/users/add-collection/:id
