@@ -91,7 +91,7 @@ const Register = () => {
           </div>
           <div className="form__group">
             <button
-              className={'form__button' + (loading ? ' form__button--disabled' : '')}
+              className={'form__button button' + (loading ? ' button--disabled' : '')}
               disabled={loading}
             >Register</button>
           </div>

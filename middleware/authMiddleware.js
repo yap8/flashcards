@@ -20,6 +20,8 @@ const authMiddleware = {
 
       if (!user) throw new Error('No user found with such id')
 
+      req.user = user
+
       next()
     } catch (error) {
       res.json({ error: error.message })
