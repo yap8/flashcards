@@ -8,16 +8,20 @@ const JWT_EXPIRE = process.env.JWT_EXPIRE || '10d'
 const userSchema = new Schema({
   name: {
     type: String,
-    required: true
+    required: [true, 'Please enter a name']
   },
   email: {
     type: String,
     required: true,
-    unique: true
+    unique: true,
+    match: [
+      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+      'Please provide a valid email'
+    ]
   },
   password: {
     type: String,
-    required: true
+    required: [true, 'Please enter a password']
   },
   profilePic: {
     type: String,

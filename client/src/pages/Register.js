@@ -27,7 +27,11 @@ const Register = () => {
 
       setLoading(false)
     } catch (error) {
-      alert(error.message)
+      alert(error.response.data.error)
+
+      setTimeout(() => {
+        setLoading(false)
+      }, 600);
     }
   }
 
@@ -50,7 +54,7 @@ const Register = () => {
           <div className="form__group">
             <input
               className={"form__field" + (loading ? ' form__field--disabled' : '')}
-              type="email"
+              type="text"
               placeholder="Email"
               name="email"
               value={formData.email}

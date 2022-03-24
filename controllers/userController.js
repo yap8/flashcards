@@ -20,7 +20,7 @@ const userController = {
 
       res.json({ token })
     } catch (error) {
-      res.json({ error: error.message })
+      res.status(500).json({ error: error.message })
     }
   },
   // @route  GET /api/users/:id
