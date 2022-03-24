@@ -1,17 +1,21 @@
 import axios from 'axios'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Title from '../components/Title'
 
 const Login = () => {
   const navigate = useNavigate()
-
   const [formData, setFormData] = useState({
     email: '',
     password: ''
   })
-
   const [loading, setLoading] = useState(false)
+
+  useEffect(() => {
+    if (localStorage.getItem('authToken')) {
+      navigate('/')
+    }
+  }, [])
 
   const handleSubmit = async e => {
     try {
