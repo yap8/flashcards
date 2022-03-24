@@ -1,8 +1,11 @@
 import { useState } from 'react'
-import Title from '../components/Title'
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
+import Title from '../components/Title'
 
 const Register = () => {
+  const navigate = useNavigate()
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -26,6 +29,8 @@ const Register = () => {
       })
 
       setLoading(false)
+
+      navigate('/')
     } catch (error) {
       alert(error.response.data.error)
 
