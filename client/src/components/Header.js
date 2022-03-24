@@ -1,6 +1,5 @@
-import { useEffect } from "react"
 import { useSelector } from "react-redux"
-import { Link } from "react-router-dom"
+import { NavLink, Link } from "react-router-dom"
 
 const Header = () => {
   const { authToken } = useSelector(state => state.user)
@@ -12,20 +11,20 @@ const Header = () => {
         <ul className="header__nav">
           {authToken ? <>
             <li className="header__nav-item">
-            <Link className="header__nav-link" to="/collections">Collections</Link>
+              <NavLink className="header__nav-link" to="/collections">Collections</NavLink>
             </li>
             <li className="header__nav-item">
-              <Link className="header__nav-link" to="/profile">Profile</Link>
+              <NavLink className="header__nav-link" to="/profile">Profile</NavLink>
             </li>
             <li className="header__nav-item">
-              <Link className="header__nav-link" to="/logout">Logout</Link>
+              <NavLink className="header__nav-link" to="/logout">Logout</NavLink>
             </li>
           </> : <>
             <li className="header__nav-item">
-              <Link className="header__nav-link" to="/login">Login</Link>
+              <NavLink className="header__nav-link" to="/login">Login</NavLink>
             </li>
             <li className="header__nav-item">
-              <Link className="header__nav-link" to="/register">Register</Link>
+              <NavLink className="header__nav-link" to="/register">Register</NavLink>
             </li>
           </>}
         </ul>

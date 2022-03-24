@@ -23,7 +23,8 @@
     color: rgba(#04111dbf, .75);
     transition: .2s color ease;
     &:hover,
-    &:focus {
+    &:focus,
+    &.active {
       color: #04111d;
     }
   }
