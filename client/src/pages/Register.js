@@ -11,7 +11,6 @@ const Register = () => {
     email: '',
     password: ''
   })
-
   const [loading, setLoading] = useState(false)
 
   const handleSubmit = async e => {
@@ -42,6 +41,8 @@ const Register = () => {
     }
   }
 
+  const handleChange = e => setFormData({ ...formData, [e.target.name]: e.target.value })
+
   return (
     <section className='register'>
       <div className="register__inner container">
@@ -55,7 +56,7 @@ const Register = () => {
               name="name"
               value={formData.name}
               disabled={loading}
-              onChange={e => setFormData({ ...formData, [e.target.name]: e.target.value })}
+              onChange={handleChange}
             />
           </div>
           <div className="form__group">
@@ -66,7 +67,7 @@ const Register = () => {
               name="email"
               value={formData.email}
               disabled={loading}
-              onChange={e => setFormData({ ...formData, [e.target.name]: e.target.value })}
+              onChange={handleChange}
             />
           </div>
           <div className="form__group">
@@ -77,7 +78,7 @@ const Register = () => {
               name="password"
               value={formData.password}
               disabled={loading}
-              onChange={e => setFormData({ ...formData, [e.target.name]: e.target.value })}
+              onChange={handleChange}
             />
           </div>
           <div className="form__group">
