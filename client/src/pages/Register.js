@@ -22,13 +22,15 @@ const Register = () => {
   
       setLoading(true)
 
-      await axios.post('/api/users/register', {
+      const { data } = await axios.post('/api/users/register', {
         name,
         email,
         password
       })
 
       setLoading(false)
+
+      localStorage.setItem('authToken', data.token)
 
       navigate('/')
     } catch (error) {
