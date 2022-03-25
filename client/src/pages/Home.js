@@ -9,7 +9,7 @@ const Home = () => {
 
   useEffect(() => {
     if (!authToken) navigate('/login')
-  }, [authToken])
+  }, [authToken, navigate])
 
 
   return (

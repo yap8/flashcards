@@ -12,7 +12,7 @@ const Collections = () => {
 
   useEffect(() => {
     if (!authToken) navigate('/login')
-  }, [authToken])
+  }, [authToken, navigate])
 
   useEffect(() => {
     const fetchCollections = async () => {
@@ -30,7 +30,7 @@ const Collections = () => {
     }
     
     fetchCollections()
-  }, [])
+  }, [authToken])
 
   return (
     <section className="collections">

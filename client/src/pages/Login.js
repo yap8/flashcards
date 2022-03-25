@@ -19,7 +19,7 @@ const Login = () => {
     if (localStorage.getItem('authToken')) {
       navigate('/')
     }
-  }, [])
+  }, [navigate])
 
   const handleSubmit = async e => {
     try {

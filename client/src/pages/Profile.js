@@ -9,7 +9,7 @@ const Profile = () => {
 
   useEffect(() => {
     if (!authToken) navigate('/login')
-  }, [authToken])
+  }, [authToken, navigate])
 
   return (
     <section className="profile">

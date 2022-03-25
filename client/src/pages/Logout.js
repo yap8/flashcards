@@ -11,7 +11,7 @@ const Logout = () => {
     dispatch(removeToken())
 
     navigate('/login')
-  }, [])
+  }, [dispatch, navigate])
 
   return (
     <div>...</div>
