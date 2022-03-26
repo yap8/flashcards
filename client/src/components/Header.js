@@ -7,7 +7,7 @@ const Header = () => {
   return (
     <header className="header">
       <div className="header__inner container">
-        <Link className="header__logo" to="/">FlashCards</Link>
+        <Link className="header__logo" to={authToken ? '/collections' : '/'}>FlashCards</Link>
         <ul className="header__nav">
           {authToken ? <>
             <li className="header__nav-item">
