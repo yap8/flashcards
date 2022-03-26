@@ -1,18 +1,15 @@
 import api from "../http/index"
 import { useEffect, useState } from "react"
 import { useSelector } from "react-redux"
-import { useNavigate } from "react-router-dom"
 import Title from "../components/Title"
+import usePrivate from "../hooks/usePrivate"
 
 const Collections = () => {
+  usePrivate()
+
   const { authToken } = useSelector(state => state.user)
-  const navigate = useNavigate()
 
   const [collections, setCollections] = useState([])
-
-  useEffect(() => {
-    if (!authToken) navigate('/login')
-  }, [authToken, navigate])
 
   useEffect(() => {
     const fetchCollections = async () => {

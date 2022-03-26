@@ -2,14 +2,13 @@ import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import Title from '../components/Title'
+import usePrivate from '../hooks/usePrivate'
 
 const Home = () => {
-  const { authToken } = useSelector(state => state.user)
-  const navigate = useNavigate()
-
-  useEffect(() => {
-    if (!authToken) navigate('/login')
-  }, [authToken, navigate])
+  usePrivate()
+  // useEffect(() => {
+  //   if (!authToken) navigate('/login')
+  // }, [authToken, navigate])
 
 
   return (
