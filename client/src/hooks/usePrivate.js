@@ -8,7 +8,7 @@ const usePrivate = (redirect = '/login') => {
 
   useEffect(() => {
     if (!authToken) navigate(redirect)
-  }, [])
+  }, [navigate, authToken, redirect])
 }
 
 export default usePrivate
