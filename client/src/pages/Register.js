@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import axios from 'axios'
+import api from '../http/index'
 import { useNavigate } from 'react-router-dom'
 import Title from '../components/Title'
 import { useDispatch } from 'react-redux'
@@ -29,7 +29,7 @@ const Register = () => {
   
       setLoading(true)
 
-      const { data } = await axios.post('/api/users/register', {
+      const { data } = await api.post('/api/users/register', {
         name,
         email,
         password

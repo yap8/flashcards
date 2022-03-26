@@ -1,4 +1,4 @@
-import axios from 'axios'
+import api from '../http/index'
 import { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
@@ -29,7 +29,7 @@ const Login = () => {
   
       setLoading(true)
 
-      const { data } = await axios.post('/api/users/login', {
+      const { data } = await api.post('/api/users/login', {
         email,
         password
       })

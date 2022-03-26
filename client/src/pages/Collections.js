@@ -1,4 +1,4 @@
-import axios from "axios"
+import api from "../http/index"
 import { useEffect, useState } from "react"
 import { useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
@@ -17,7 +17,7 @@ const Collections = () => {
   useEffect(() => {
     const fetchCollections = async () => {
       try {
-        const { data } = await axios.get('/api/collections', {
+        const { data } = await api.get('/api/collections', {
           headers: {
             Authorization: `Bearer ${authToken}`
           }
