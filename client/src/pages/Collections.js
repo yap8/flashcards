@@ -14,11 +14,7 @@ const Collections = () => {
   useEffect(() => {
     const fetchCollections = async () => {
       try {
-        const { data } = await api.get('/api/collections', {
-          headers: {
-            Authorization: `Bearer ${authToken}`
-          }
-        })
+        const { data } = await api.get('/api/collections')
 
         setCollections(data)
       } catch (error) {
