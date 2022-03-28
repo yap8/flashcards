@@ -53,9 +53,9 @@ const userController = {
 
       if (!user || !await user.matchPassword(password)) throw new Error('No user with such credentials')
 
-      const token = user.getAuthToken()
+      const authToken = user.getAuthToken()
 
-      res.json({ token })
+      res.json({ authToken })
     } catch (error) {
       res.status(500).json({ error: error.message })
     }
