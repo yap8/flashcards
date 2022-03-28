@@ -1,10 +1,24 @@
 import api from '../../http/index'
-import { REMOVE_USER, SET_USER } from './types'
+import { REMOVE_USER, SET_USER, SET_ERROR, SET_LOADING } from './types'
 
 export const setUser = (user) => {
   return {
     type: SET_USER,
     payload: user
+  }
+}
+
+export const setLoading = (value) => {
+  return {
+    type: SET_LOADING,
+    payload: value
+  }
+}
+
+export const setError = (value) => {
+  return {
+    type: SET_ERROR,
+    payload: value
   }
 }
 
@@ -18,6 +32,9 @@ export const logout = () => dispatch => {
 
 export const register = (name, email, password) => async dispatch => {
   try {
+    dispatch(setLoading(true))
+    dispatch(setError(false))
+
     const { data } = await api.post('/api/users/register', {
       name,
       email,
@@ -27,13 +44,20 @@ export const register = (name, email, password) => async dispatch => {
     localStorage.setItem('authToken', data.authToken)
 
     dispatch(setUser(data))
+    dispatch(setLoading(false))
   } catch (error) {
-    console.log(error)
+    dispatch(setError(true))
+    dispatch(setLoading(false))
+
+    alert(error.response.data.error)
   }
 }
 
 export const login = (email, password) => async dispatch => {
   try {
+    dispatch(setLoading(true))
+    dispatch(setError(false))
+
     const { data } = await api.post('/api/users/login', {
       email,
       password
@@ -42,8 +66,12 @@ export const login = (email, password) => async dispatch => {
     localStorage.setItem('authToken', data.authToken)
 
     dispatch(setUser(data))
+    dispatch(setLoading(false))
   } catch (error) {
-    console.log(error)
+    dispatch(setError(true))
+    dispatch(setLoading(false))
+
+    alert(error.response.data.error)
   }
 }
 
@@ -53,6 +81,6 @@ export const getUser = () => async dispatch => {
 
     dispatch(setUser(data))
   } catch (error) {
-    console.log(error)
+    alert(error.response.data.error)
   }
 }

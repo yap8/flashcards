@@ -2,13 +2,13 @@ import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Title from '../components/Title'
 import { useDispatch, useSelector } from 'react-redux'
-import { register } from '../redux/actions/userActions'
+import { register, setError } from '../redux/actions/userActions'
 
 const Register = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
-  const loading = useSelector(state => state.form.loading)
+  const { loading, error } = useSelector(state => state.user)
 
   const [formData, setFormData] = useState({
     name: '',
@@ -29,7 +29,7 @@ const Register = () => {
 
     await dispatch(register(name, email, password))
 
-    navigate('/collections')
+    if (!error) navigate('/collections')
   }
 
   const handleChange = e => setFormData({ ...formData, [e.target.name]: e.target.value })

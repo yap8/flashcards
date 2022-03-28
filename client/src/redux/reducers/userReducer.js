@@ -1,10 +1,12 @@
-import { SET_USER, REMOVE_USER } from '../actions/types'
+import { SET_USER, REMOVE_USER, SET_LOADING, SET_ERROR } from '../actions/types'
 
 const initialState = {
   id: null,
   name: null,
   email: null,
-  authToken: localStorage.getItem('authToken') || null
+  authToken: localStorage.getItem('authToken') || null,
+  error: false,
+  loading: false
 }
 
 const userReducer = (state = initialState, action) => {
@@ -14,8 +16,21 @@ const userReducer = (state = initialState, action) => {
         ...state,
         ...action.payload
       }
+    case SET_ERROR:
+      return {
+        ...state,
+        error: action.payload
+      }
+    case SET_LOADING:
+      return {
+        ...state,
+        loading: action.payload
+      }
     case REMOVE_USER:
-      return initialState
+      return {
+        ...initialState,
+        authToken: null
+      }
     default:
       return state
   }

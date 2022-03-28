@@ -1,6 +1,5 @@
-import api from '../http/index'
 import { useEffect, useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import Title from '../components/Title'
 import { login } from '../redux/actions/userActions'
@@ -9,11 +8,12 @@ const Login = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
+  const { error, loading } = useSelector(state => state.user)
+
   const [formData, setFormData] = useState({
     email: '',
     password: ''
   })
-  const [loading, setLoading] = useState(false)
 
   useEffect(() => {
     if (localStorage.getItem('authToken')) {
@@ -22,13 +22,13 @@ const Login = () => {
   }, [navigate])
 
   const handleSubmit = async e => {
-    e.preventDefault()
+      e.preventDefault()
 
-    const { email, password } = formData
+      const { email, password } = formData
 
-    await dispatch(login(email, password))
+      await dispatch(login(email, password))
 
-    navigate('/collections')
+      if (!error) navigate('/collections')
   }
 
   const handleChange = e => setFormData({ ...formData, [e.target.name]: e.target.value })

@@ -20,8 +20,8 @@ const userController = {
 
       res.json({
         id: user._id,
-        name,
-        email,
+        name: user.name,
+        email: user.email,
         authToken
       })
     } catch (error) {
@@ -55,7 +55,12 @@ const userController = {
 
       const authToken = user.getAuthToken()
 
-      res.json({ authToken })
+      res.json({
+        id: user._id,
+        name: user.name,
+        email: user.email,
+        authToken
+       })
     } catch (error) {
       res.status(500).json({ error: error.message })
     }
