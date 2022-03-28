@@ -28,14 +28,14 @@ const userController = {
       res.status(500).json({ error: error.message })
     }
   },
-  // @route  GET /api/users/:id
+  // @route  GET /api/users/info
   // @desc   Get user info
-  // @access Public
+  // @access Private
   async getUser(req, res) {
     try {
-      const { id } = req.params
+      const { id } = req.user
 
-      const user = await User.findById(id).select('-password -email')
+      const user = await User.findById(id).select('-password')
 
       res.json(user)
     } catch (error) {

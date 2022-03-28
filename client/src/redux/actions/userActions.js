@@ -2,23 +2,19 @@ import api from '../../http/index'
 import { REMOVE_USER, SET_USER } from './types'
 
 export const setUser = (user) => {
-  localStorage.setItem('authToken', user.authToken)
-
   return {
     type: SET_USER,
     payload: user
   }
 }
 
-export const removeUser = () => {
+export const logout = () => dispatch => {
   localStorage.removeItem('authToken')
 
-  return {
+  dispatch({
     type: REMOVE_USER
-  }
+  })
 }
-
-export const logout = () => dispatch => dispatch(removeUser())
 
 export const register = (name, email, password) => async dispatch => {
   try {
@@ -27,6 +23,8 @@ export const register = (name, email, password) => async dispatch => {
       email,
       password
     })
+
+    localStorage.setItem('authToken', data.authToken)
 
     dispatch(setUser(data))
   } catch (error) {
@@ -40,6 +38,18 @@ export const login = (email, password) => async dispatch => {
       email,
       password
     })
+
+    localStorage.setItem('authToken', data.authToken)
+
+    dispatch(setUser(data))
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+export const getUser = () => async dispatch => {
+  try {
+    const { data } = await api.get('/api/users/info')
 
     dispatch(setUser(data))
   } catch (error) {
