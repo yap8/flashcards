@@ -1,19 +1,20 @@
 import { useEffect, useState } from 'react'
-import api from '../http/index'
 import { useNavigate } from 'react-router-dom'
 import Title from '../components/Title'
-import { useDispatch } from 'react-redux'
-import { storeToken } from '../redux/actions/userActions'
+import { useDispatch, useSelector } from 'react-redux'
+import { register } from '../redux/actions/userActions'
 
 const Register = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
+
+  const loading = useSelector(state => state.form.loading)
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     password: ''
   })
-  const [loading, setLoading] = useState(false)
 
   useEffect(() => {
     if (localStorage.getItem('authToken')) {
@@ -22,31 +23,13 @@ const Register = () => {
   }, [navigate])
 
   const handleSubmit = async e => {
-    try {
-      e.preventDefault()
-  
-      const { name, email, password } = formData
-  
-      setLoading(true)
+    e.preventDefault()
 
-      const { data } = await api.post('/api/users/register', {
-        name,
-        email,
-        password
-      })
+    const { name, email, password } = formData
 
-      setLoading(false)
+    await dispatch(register(name, email, password))
 
-      dispatch(storeToken(data.token))
-
-      navigate('/')
-    } catch (error) {
-      alert(error.response.data.error)
-
-      setTimeout(() => {
-        setLoading(false)
-      }, 600);
-    }
+    navigate('/collections')
   }
 
   const handleChange = e => setFormData({ ...formData, [e.target.name]: e.target.value })

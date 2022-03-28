@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import Title from '../components/Title'
-import { storeToken } from '../redux/actions/userActions'
+import { login } from '../redux/actions/userActions'
 
 const Login = () => {
   const navigate = useNavigate()
@@ -22,30 +22,13 @@ const Login = () => {
   }, [navigate])
 
   const handleSubmit = async e => {
-    try {
-      e.preventDefault()
-  
-      const { email, password } = formData
-  
-      setLoading(true)
+    e.preventDefault()
 
-      const { data } = await api.post('/api/users/login', {
-        email,
-        password
-      })
+    const { email, password } = formData
 
-      setLoading(false)
+    await dispatch(login(email, password))
 
-      dispatch(storeToken(data.token))
-
-      navigate('/')
-    } catch (error) {
-      alert(error.response.data.error)
-
-      setTimeout(() => {
-        setLoading(false)
-      }, 600);
-    }
+    navigate('/collections')
   }
 
   const handleChange = e => setFormData({ ...formData, [e.target.name]: e.target.value })

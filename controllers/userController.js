@@ -16,9 +16,14 @@ const userController = {
 
       await user.save()
 
-      const token = user.getAuthToken()
+      const authToken = user.getAuthToken()
 
-      res.json({ token })
+      res.json({
+        id: user._id,
+        name,
+        email,
+        authToken
+      })
     } catch (error) {
       res.status(500).json({ error: error.message })
     }

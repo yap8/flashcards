@@ -1,22 +1,21 @@
-import { STORE_TOKEN, REMOVE_TOKEN } from '../actions/types'
+import { SET_USER, REMOVE_USER } from '../actions/types'
 
 const initialState = {
+  id: null,
+  name: null,
+  email: null,
   authToken: localStorage.getItem('authToken')
 }
 
 const userReducer = (state = initialState, action) => {
   switch (action.type) {
-    case STORE_TOKEN:
+    case SET_USER:
       return {
         ...state,
-        authToken: action.payload
+        ...action.payload
       }
-    case REMOVE_TOKEN: {
-      return {
-        ...state,
-        authToken: null
-      }
-    }
+    case REMOVE_USER:
+      return initialState
     default:
       return state
   }

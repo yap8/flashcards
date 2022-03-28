@@ -1,17 +1,17 @@
 import React, { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import { removeToken } from '../redux/actions/userActions'
+import { logout } from '../redux/actions/userActions'
 
 const Logout = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
   useEffect(() => {
-    dispatch(removeToken())
+    dispatch(logout())
 
     navigate('/login')
-  }, [dispatch, navigate])
+  }, [dispatch, logout])
 
   return (
     <div>...</div>
