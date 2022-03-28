@@ -9,7 +9,7 @@ const Profile = () => {
 
   const dispatch = useDispatch()
 
-  const { name, email } = useSelector(state => state.user)
+  const { name, email, error, loading } = useSelector(state => state.user)
 
   const [formData, setFormData] = useState({
     name: '',
@@ -65,10 +65,11 @@ const Profile = () => {
               htmlFor="name"
             >Name:</label>
             <input
-              className="form__field"
+              className={"form__field" + (loading ? ' form__field--disabled' : '')}
               type="text"
               name="name"
               id="name"
+              disabled={loading}
               value={formData.name}
               onChange={handleChange}
             />
@@ -79,10 +80,11 @@ const Profile = () => {
               htmlFor="email"
             >Email:</label>
             <input
-              className="form__field"
+              className={"form__field" + (loading ? ' form__field--disabled' : '')}
               type="email"
               name="email"
               id="email"
+              disabled={loading}
               value={formData.email}
               onChange={handleChange}
             />
@@ -93,10 +95,11 @@ const Profile = () => {
               htmlFor="password"
             >Password:</label>
             <input
-              className="form__field"
+              className={"form__field" + (loading ? ' form__field--disabled' : '')}
               type="password"
               name="password"
               id="password"
+              disabled={loading}
               value={formData.password}
               onChange={handleChange}
             />
@@ -107,17 +110,19 @@ const Profile = () => {
               htmlFor="password-repeat"
             >Repeat password:</label>
             <input
-              className="form__field"
+              className={"form__field" + (loading ? ' form__field--disabled' : '')}
               type="password"
               name="passwordRepeat"
               id="passwordRepeat"
+              disabled={loading}
               value={formData.passwordRepeat}
               onChange={handleChange}
             />
           </div>
           <div className="form__group">
             <button
-              className="form__button button"
+              className={'form__button button' + (loading ? ' button--disabled' : '')}
+              disabled={loading}
               type="submit"
             >
               Edit

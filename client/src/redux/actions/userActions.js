@@ -91,6 +91,9 @@ export const getUser = () => async dispatch => {
 
 export const editUser = (name, email, password) => async dispatch => {
   try {
+    dispatch(setLoading(true))
+    dispatch(setError(false))
+
     const { data } = await api.patch('/api/users/edit', {
       name,
       email,
@@ -102,7 +105,12 @@ export const editUser = (name, email, password) => async dispatch => {
       name: data.name,
       email: data.email
     }))
+
+    dispatch(setLoading(false))
   } catch (error) {
+    dispatch(setError(true))
+    dispatch(setLoading(false))
+
     alert(error.response.data.error)
   }
 }
