@@ -4,7 +4,7 @@ const initialState = {
   id: null,
   name: null,
   email: null,
-  authToken: localStorage.getItem('authToken')
+  authToken: localStorage.getItem('authToken') || null
 }
 
 const userReducer = (state = initialState, action) => {
