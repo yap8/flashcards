@@ -83,6 +83,29 @@ const userController = {
     } catch (error) {
       res.json({ error: error.message })
     }
+  },
+  // @route  PATCH /api/users/edit
+  // @desc   Change users info
+  // @access Private
+  async edit(req, res) {
+    try {
+      const { name, email, password } = req.body
+
+      const user = await User.findById(req.user._id)
+
+      if (!user.matchPassword(password)) throw new Error('Incorrect password')
+
+      const updatedUser = await User.findByIdAndUpdate(req.user._id, {
+        name,
+        email
+      }, {
+        new: true
+      })
+
+      res.json(updatedUser)
+    } catch (error) {
+      res.json({ error: error.message })
+    }
   }
 }
 

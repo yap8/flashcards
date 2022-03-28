@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import Title from "../components/Title"
 import usePrivate from "../hooks/usePrivate"
-import { getUser, setUser } from "../redux/actions/userActions"
+import { editUser, getUser, setUser } from "../redux/actions/userActions"
 
 const Profile = () => {
   usePrivate()
@@ -12,20 +12,43 @@ const Profile = () => {
   const { name, email } = useSelector(state => state.user)
 
   const [formData, setFormData] = useState({
-    name,
-    email,
+    name: '',
+    email: '',
     password: '',
     passwordRepeat: ''
   })
 
   useEffect(() => {
     dispatch(getUser())
-  }, [])
+
+    setFormData({
+      ...formData,
+      name,
+      email
+    })
+  }, [dispatch, name, email])
 
   const handleSubmit = e => {
     e.preventDefault()
 
-    console.log('asdf')
+    if (formData.password !== formData.passwordRepeat) {
+      alert('Passwords don\'t match')
+
+      setFormData({
+        ...formData,
+        password: '',
+        passwordRepeat: ''
+      })
+    }
+
+    const { name, email, password } = formData
+
+    dispatch(editUser(name, email, password))
+
+    setFormData({
+      password: '',
+      passwordRepeat: ''
+    })
   }
 
   const handleChange = e => setFormData({ ...formData, [e.target.name]: e.target.value })

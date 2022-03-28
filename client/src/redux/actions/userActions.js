@@ -79,7 +79,29 @@ export const getUser = () => async dispatch => {
   try {
     const { data } = await api.get('/api/users/info')
 
-    dispatch(setUser(data))
+    dispatch(setUser({
+      id: data._id,
+      name: data.name,
+      email: data.email
+    }))
+  } catch (error) {
+    alert(error.response.data.error)
+  }
+}
+
+export const editUser = (name, email, password) => async dispatch => {
+  try {
+    const { data } = await api.patch('/api/users/edit', {
+      name,
+      email,
+      password
+    })
+
+    dispatch(setUser({
+      id: data._id,
+      name: data.name,
+      email: data.email
+    }))
   } catch (error) {
     alert(error.response.data.error)
   }
