@@ -26,6 +26,8 @@ const Register = () => {
 
     await dispatch(register(name, email, password))
 
+    setFormData({ ...formData, password: '' })
+
     if (!error) navigate('/collections')
   }
 

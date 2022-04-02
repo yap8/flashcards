@@ -25,6 +25,8 @@ const Login = () => {
 
     await dispatch(login(email, password))
 
+    setFormData({ ...formData, password: '' })
+
     if (!error) navigate('/collections')
   }
 
