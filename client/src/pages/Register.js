@@ -1,10 +1,13 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Title from '../components/Title'
 import { useDispatch, useSelector } from 'react-redux'
-import { register, setError } from '../redux/actions/userActions'
+import { register } from '../redux/actions/userActions'
+import useAuthRedirect from '../hooks/useAuthRedirect'
 
 const Register = () => {
+  useAuthRedirect()
+
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
@@ -15,12 +18,6 @@ const Register = () => {
     email: '',
     password: ''
   })
-
-  useEffect(() => {
-    if (localStorage.getItem('authToken')) {
-      navigate('/')
-    }
-  }, [navigate])
 
   const handleSubmit = async e => {
     e.preventDefault()

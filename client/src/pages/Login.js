@@ -1,10 +1,13 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import Title from '../components/Title'
+import useAuthRedirect from '../hooks/useAuthRedirect'
 import { login } from '../redux/actions/userActions'
 
 const Login = () => {
+  useAuthRedirect()
+
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
@@ -15,20 +18,14 @@ const Login = () => {
     password: ''
   })
 
-  useEffect(() => {
-    if (localStorage.getItem('authToken')) {
-      navigate('/')
-    }
-  }, [navigate])
-
   const handleSubmit = async e => {
-      e.preventDefault()
+    e.preventDefault()
 
-      const { email, password } = formData
+    const { email, password } = formData
 
-      await dispatch(login(email, password))
+    await dispatch(login(email, password))
 
-      if (!error) navigate('/collections')
+    if (!error) navigate('/collections')
   }
 
   const handleChange = e => setFormData({ ...formData, [e.target.name]: e.target.value })
