@@ -9,6 +9,7 @@ import Profile from './pages/Profile';
 import Register from './pages/Register'
 import Logout from './pages/Logout'
 import Home from './pages/Home';
+import CollectionsForm from './pages/CollectionsForm';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/collections" element={<Collections />} />
+        <Route path="/collections/create" element={<CollectionsForm />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />

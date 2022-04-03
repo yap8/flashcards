@@ -9,6 +9,17 @@
     &:not(:last-child) {
       margin-bottom: 8px;
     }
+    &--fields {
+      display: flex;
+
+    }
+  }
+  &--large &__group {
+    max-width: 720px;
+    gap: 10px;
+  }
+  &__title {
+    font-size: 28px;
   }
   &__field {
     width: 100%;
