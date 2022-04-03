@@ -1,13 +1,19 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { toast } from 'react-toastify'
 import Title from '../components/Title'
+import { createCollection } from '../redux/actions/collectionsActions'
 
 const CollectionsForm = () => {
+  const { loading, error, success, message } = useSelector(state => state.collections)
+  const dispatch = useDispatch()
+
   const [formData, setFormData] = useState({
     title: '',
     cards: [
-      { front: '1', back: '11' },
-      { front: '2', back: '22' },
-      { front: '3', back: '33' }
+      { front: '', back: '' },
+      { front: '', back: '' },
+      { front: '', back: '' }
     ]
   })
 
@@ -20,6 +26,12 @@ const CollectionsForm = () => {
       ]
     })
   }
+
+  useEffect(() => {
+    if (success && message) toast.success(message)
+
+    if (error && message) toast.error(message)
+  }, [success, error, message])
 
   const handleChange = e => setFormData({ ...formData, [e.target.name]: e.target.value })
 
@@ -42,7 +54,11 @@ const CollectionsForm = () => {
   const handleSubmit = e => {
     e.preventDefault()
 
+    const { title, cards } = formData
 
+    console.log(title, cards)
+
+    dispatch(createCollection(title, cards))
   }
 
   return (
@@ -64,7 +80,7 @@ const CollectionsForm = () => {
             <h2 className="form__title">Cards</h2>
           </div>
           {formData.cards.map((card, index) => (
-            <div className="form__group form__group--fields">
+            <div className="form__group form__group--fields" key={index}>
               <input
                 type="text"
                 className="form__field"
@@ -84,7 +100,14 @@ const CollectionsForm = () => {
             </div>
           ))}
           <div className="form__group">
-            <button className="button" onClick={addCard}>Add card</button>
+            <button
+              className="button"
+              onClick={e => {
+                e.preventDefault()
+
+                addCard()
+              }}
+            >Add card</button>
           </div>
           <div className="form__group">
             <button className="button" type="submit">Create</button>
