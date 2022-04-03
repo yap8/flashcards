@@ -1,50 +1,52 @@
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import Title from "../components/Title"
+import { toast } from "react-toastify"
 import usePrivate from "../hooks/usePrivate"
+import { editProfileData, getProfileData } from "../redux/actions/profileActions"
+
+import Title from "../components/Title"
 
 const Profile = () => {
   usePrivate()
 
   const dispatch = useDispatch()
 
-  const { name, email, error, loading } = useSelector(state => state.auth)
+  const { name, email, error, success, loading, message } = useSelector(state => state.profile)
 
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
+    name,
+    email,
     password: '',
     passwordRepeat: ''
   })
 
   useEffect(() => {
-    // dispatch(getUser())
+    dispatch(getProfileData())
+  }, [])
 
+  useEffect(() => {
     setFormData({
       ...formData,
       name,
       email
     })
-  }, [dispatch, name, email])
+  }, [name, email])
+
+  useEffect(() => {
+    if (success && message) toast.success(message)
+
+    if (error && message) toast.error(message)
+  }, [success, error, message])
 
   const handleSubmit = e => {
     e.preventDefault()
 
-    if (formData.password !== formData.passwordRepeat) {
-      alert('Passwords don\'t match')
+    const { name, email, password, passwordRepeat } = formData
 
-      setFormData({
-        ...formData,
-        password: '',
-        passwordRepeat: ''
-      })
-    }
-
-    const { name, email, password } = formData
-
-    // dispatch(editUser(name, email, password))
+    dispatch(editProfileData(name, email, password, passwordRepeat))
 
     setFormData({
+      ...formData,
       password: '',
       passwordRepeat: ''
     })

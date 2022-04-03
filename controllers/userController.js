@@ -18,12 +18,7 @@ const userController = {
 
       const authToken = user.getAuthToken()
 
-      res.json({
-        id: user._id,
-        name: user.name,
-        email: user.email,
-        authToken
-      })
+      res.json(authToken)
     } catch (error) {
       res.status(500).json({ error: error.message })
     }
@@ -55,12 +50,7 @@ const userController = {
 
       const authToken = user.getAuthToken()
 
-      res.json({
-        id: user._id,
-        name: user.name,
-        email: user.email,
-        authToken
-       })
+      res.json(authToken)
     } catch (error) {
       res.status(500).json({ error: error.message })
     }
@@ -81,7 +71,7 @@ const userController = {
 
       res.json(user)
     } catch (error) {
-      res.json({ error: error.message })
+      res.status(500).json({ error: error.message })
     }
   },
   // @route  PATCH /api/users/edit
@@ -93,7 +83,7 @@ const userController = {
 
       const user = await User.findById(req.user._id)
 
-      if (!user.matchPassword(password)) throw new Error('Incorrect password')
+      if (!await user.matchPassword(password)) throw new Error('Incorrect password')
 
       const updatedUser = await User.findByIdAndUpdate(req.user._id, {
         name,
@@ -104,7 +94,7 @@ const userController = {
 
       res.json(updatedUser)
     } catch (error) {
-      res.json({ error: error.message })
+      res.status(500).json({ error: error.message })
     }
   }
 }

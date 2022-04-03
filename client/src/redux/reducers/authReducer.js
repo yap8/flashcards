@@ -1,4 +1,4 @@
-import { SET_USER, SET_LOADING, SET_ERROR, SET_SUCCESS, RESET, SET_MESSAGE } from '../actions/types'
+import { AUTH_SET_USER, AUTH_SET_LOADING, AUTH_SET_ERROR, AUTH_SET_SUCCESS, AUTH_RESET, AUTH_SET_MESSAGE } from '../actions/types'
 
 const initialState = {
   user: localStorage.getItem('user'),
@@ -10,32 +10,32 @@ const initialState = {
 
 const authReducer = (state = initialState, action) => {
   switch (action.type) {
-    case SET_USER:
+    case AUTH_SET_USER:
       return {
         ...state,
         user: action.payload
       }
-    case SET_LOADING:
+    case AUTH_SET_LOADING:
       return {
         ...state,
         loading: action.payload
       }
-    case SET_ERROR:
+    case AUTH_SET_ERROR:
       return {
         ...state,
         error: action.payload
       }
-    case SET_SUCCESS:
+    case AUTH_SET_SUCCESS:
       return {
         ...state,
         success: action.payload
       }
-    case SET_MESSAGE:
+    case AUTH_SET_MESSAGE:
       return {
         ...state,
         message: action.payload
       }
-    case RESET:
+    case AUTH_RESET:
       return {
         ...initialState,
         user: null

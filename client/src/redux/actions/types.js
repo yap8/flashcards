@@ -1,6 +1,16 @@
-export const SET_USER = 'SET_USER'
-export const SET_LOADING = 'SET_LOADING'
-export const SET_ERROR = 'SET_ERROR'
-export const SET_SUCCESS = 'SET_SUCCESS'
-export const SET_MESSAGE = 'SET_MESSAGE'
-export const RESET = 'RESET'
+// auth
+export const AUTH_SET_USER = 'AUTH_SET_USER'
+export const AUTH_SET_LOADING = 'AUTH_SET_LOADING'
+export const AUTH_SET_ERROR = 'AUTH_SET_ERROR'
+export const AUTH_SET_SUCCESS = 'AUTH_SET_SUCCESS'
+export const AUTH_SET_MESSAGE = 'AUTH_SET_MESSAGE'
+export const AUTH_RESET = 'AUTH_RESET'
+
+// profile
+export const PROFILE_SET_DATA = 'PROFILE_SET_DATA'
+export const PROFILE_SET_ERROR = 'PROFILE_SET_ERROR'
+export const PROFILE_SET_LOADING = 'PROFILE_SET_LOADING'
+export const PROFILE_SET_SUCCESS = 'PROFILE_SET_SUCCESS'
+export const PROFILE_SET_MESSAGE = 'PROFILE_SET_MESSAGE'
+export const PROFILE_RESET = 'PROFILE_RESET'
+
