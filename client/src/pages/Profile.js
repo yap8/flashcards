@@ -2,14 +2,13 @@ import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import Title from "../components/Title"
 import usePrivate from "../hooks/usePrivate"
-import { editUser, getUser, setUser } from "../redux/actions/userActions"
 
 const Profile = () => {
   usePrivate()
 
   const dispatch = useDispatch()
 
-  const { name, email, error, loading } = useSelector(state => state.user)
+  const { name, email, error, loading } = useSelector(state => state.auth)
 
   const [formData, setFormData] = useState({
     name: '',
@@ -19,7 +18,7 @@ const Profile = () => {
   })
 
   useEffect(() => {
-    dispatch(getUser())
+    // dispatch(getUser())
 
     setFormData({
       ...formData,
@@ -43,7 +42,7 @@ const Profile = () => {
 
     const { name, email, password } = formData
 
-    dispatch(editUser(name, email, password))
+    // dispatch(editUser(name, email, password))
 
     setFormData({
       password: '',

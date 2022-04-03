@@ -1,9 +1,10 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Title from '../components/Title'
 import { useDispatch, useSelector } from 'react-redux'
-import { register } from '../redux/actions/userActions'
+import { register } from '../redux/actions/authActions'
 import useAuthRedirect from '../hooks/useAuthRedirect'
+import { toast } from 'react-toastify'
 
 const Register = () => {
   useAuthRedirect()
@@ -11,7 +12,7 @@ const Register = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
-  const { loading, error } = useSelector(state => state.user)
+  const { loading, error, success, message } = useSelector(state => state.auth)
 
   const [formData, setFormData] = useState({
     name: '',
@@ -24,12 +25,16 @@ const Register = () => {
 
     const { name, email, password } = formData
 
-    await dispatch(register(name, email, password))
+    dispatch(register(name, email, password))
 
     setFormData({ ...formData, password: '' })
-
-    if (!error) navigate('/collections')
   }
+  
+  useEffect(() => {
+    if (success) navigate('/collections')
+
+    if (error && message) toast.error(message)
+  }, [success, error, message])
 
   const handleChange = e => setFormData({ ...formData, [e.target.name]: e.target.value })
 

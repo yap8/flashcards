@@ -2,14 +2,14 @@ import { useSelector } from "react-redux"
 import { NavLink, Link } from "react-router-dom"
 
 const Header = () => {
-  const { authToken } = useSelector(state => state.user)
+  const { user } = useSelector(state => state.auth)
 
   return (
     <header className="header">
       <div className="header__inner container">
-        <Link className="header__logo" to={authToken ? '/collections' : '/'}>FlashCards</Link>
+        <Link className="header__logo" to={user ? '/collections' : '/'}>FlashCards</Link>
         <ul className="header__nav">
-          {authToken ? <>
+          {user ? <>
             <li className="header__nav-item">
               <NavLink className="header__nav-link" to="/collections">Collections</NavLink>
             </li>

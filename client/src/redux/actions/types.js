@@ -1,5 +1,6 @@
-// user
 export const SET_USER = 'SET_USER'
-export const REMOVE_USER = 'REMOVE_USER'
-export const SET_ERROR = 'SET_ERROR'
 export const SET_LOADING = 'SET_LOADING'
+export const SET_ERROR = 'SET_ERROR'
+export const SET_SUCCESS = 'SET_SUCCESS'
+export const SET_MESSAGE = 'SET_MESSAGE'
+export const RESET = 'RESET'

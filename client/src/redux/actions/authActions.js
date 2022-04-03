@@ -1,5 +1,5 @@
 import api from '../../http/index'
-import { REMOVE_USER, SET_USER, SET_ERROR, SET_LOADING } from './types'
+import { SET_USER, SET_ERROR, SET_LOADING, SET_SUCCESS, RESET, SET_MESSAGE } from './types'
 
 export const setUser = (user) => {
   return {
@@ -22,18 +22,32 @@ export const setError = (value) => {
   }
 }
 
+export const setSuccess = (value) => {
+  return {
+    type: SET_SUCCESS,
+    payload: value
+  }
+}
+
+export const setMessage = (value) => {
+  return {
+    type: SET_MESSAGE,
+    payload: value
+  }
+}
+
 export const logout = () => dispatch => {
-  localStorage.removeItem('authToken')
+  localStorage.removeItem('user')
 
   dispatch({
-    type: REMOVE_USER
+    type: RESET
   })
 }
 
 export const register = (name, email, password) => async dispatch => {
   try {
+    dispatch({ type: RESET })
     dispatch(setLoading(true))
-    dispatch(setError(false))
 
     const { data } = await api.post('/api/users/register', {
       name,
@@ -41,37 +55,39 @@ export const register = (name, email, password) => async dispatch => {
       password
     })
 
-    localStorage.setItem('authToken', data.authToken)
+    localStorage.setItem('user', data.authToken)
 
-    dispatch(setUser(data))
+    dispatch(setUser(data.authToken))
+    dispatch(setSuccess(true))
     dispatch(setLoading(false))
   } catch (error) {
     dispatch(setError(true))
     dispatch(setLoading(false))
 
-    alert(error.response.data.error)
+    dispatch(setMessage(error.response.data.error))
   }
 }
 
 export const login = (email, password) => async dispatch => {
   try {
+    dispatch({ type: RESET })
     dispatch(setLoading(true))
-    dispatch(setError(false))
 
     const { data } = await api.post('/api/users/login', {
       email,
       password
     })
 
-    localStorage.setItem('authToken', data.authToken)
+    localStorage.setItem('user', data.authToken)
 
-    dispatch(setUser(data))
+    dispatch(setUser(data.authToken))
+    dispatch(setSuccess(true))
     dispatch(setLoading(false))
   } catch (error) {
     dispatch(setError(true))
     dispatch(setLoading(false))
 
-    alert(error.response.data.error)
+    dispatch(setMessage(error.response.data.error))
   }
 }
 

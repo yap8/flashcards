@@ -7,7 +7,7 @@ import usePrivate from "../hooks/usePrivate"
 const Collections = () => {
   usePrivate()
 
-  const { authToken } = useSelector(state => state.user)
+  const { user } = useSelector(state => state.auth)
 
   const [collections, setCollections] = useState([])
 
@@ -23,7 +23,7 @@ const Collections = () => {
     }
     
     fetchCollections()
-  }, [authToken])
+  }, [user])
 
   return (
     <section className="collections">
