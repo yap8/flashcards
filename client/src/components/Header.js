@@ -1,8 +1,11 @@
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { NavLink, Link } from "react-router-dom"
+import { logout } from "../redux/actions/authActions"
 
 const Header = () => {
   const { user } = useSelector(state => state.auth)
+
+  const dispatch = useDispatch()
 
   return (
     <header className="header">
@@ -17,7 +20,10 @@ const Header = () => {
               <NavLink className="header__nav-link" to="/profile">Profile</NavLink>
             </li>
             <li className="header__nav-item">
-              <NavLink className="header__nav-link" to="/logout">Logout</NavLink>
+              <button
+                className="header__nav-link"
+                onClick={() => dispatch(logout())}
+              >Logout</button>
             </li>
           </> : <>
             <li className="header__nav-item">

@@ -7,7 +7,6 @@ import Collections from './pages/Collections';
 import Login from './pages/Login'
 import Profile from './pages/Profile';
 import Register from './pages/Register'
-import Logout from './pages/Logout'
 import Home from './pages/Home';
 import CollectionsForm from './pages/CollectionsForm';
 
@@ -25,7 +24,6 @@ function App() {
         <Route path="/profile" element={<Profile />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/logout" element={<Logout />} />
       </Routes>
     </Router>
   );

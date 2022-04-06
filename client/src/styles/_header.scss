@@ -22,6 +22,9 @@
     font-weight: 600;
     color: rgba(#04111dbf, .75);
     transition: .2s color ease;
+    border: 0;
+    background: none;
+    cursor: pointer;
     &:hover,
     &:focus,
     &.active {
