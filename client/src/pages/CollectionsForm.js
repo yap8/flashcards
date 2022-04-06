@@ -56,8 +56,6 @@ const CollectionsForm = () => {
 
     const { title, cards } = formData
 
-    console.log(title, cards)
-
     dispatch(createCollection(title, cards))
   }
 
