@@ -12,7 +12,7 @@ const Register = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
-  const { loading, error, success, message } = useSelector(state => state.auth)
+  const { loading, error, success, message } = useSelector(state => state.app)
 
   const [formData, setFormData] = useState({
     name: '',

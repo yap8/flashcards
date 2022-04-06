@@ -1,38 +1,11 @@
 import api from '../../http/index'
-import { AUTH_SET_USER, AUTH_SET_ERROR, AUTH_SET_LOADING, AUTH_SET_SUCCESS, AUTH_RESET, AUTH_SET_MESSAGE } from './types'
+import { setError, setLoading, setMessage, setSuccess } from './appActions'
+import { AUTH_SET_USER, AUTH_RESET } from './types'
 
 export const setUser = (user) => {
   return {
     type: AUTH_SET_USER,
     payload: user
-  }
-}
-
-export const setLoading = (value) => {
-  return {
-    type: AUTH_SET_LOADING,
-    payload: value
-  }
-}
-
-export const setError = (value) => {
-  return {
-    type: AUTH_SET_ERROR,
-    payload: value
-  }
-}
-
-export const setSuccess = (value) => {
-  return {
-    type: AUTH_SET_SUCCESS,
-    payload: value
-  }
-}
-
-export const setMessage = (value) => {
-  return {
-    type: AUTH_SET_MESSAGE,
-    payload: value
   }
 }
 
@@ -60,6 +33,7 @@ export const register = (name, email, password) => async dispatch => {
     dispatch(setUser(data))
     dispatch(setSuccess(true))
     dispatch(setLoading(false))
+    dispatch(setSuccess(false))
   } catch (error) {
     dispatch(setError(true))
     dispatch(setLoading(false))
@@ -83,6 +57,7 @@ export const login = (email, password) => async dispatch => {
     dispatch(setUser(data))
     dispatch(setSuccess(true))
     dispatch(setLoading(false))
+    dispatch(setSuccess(false))
   } catch (error) {
     dispatch(setError(true))
     dispatch(setLoading(false))

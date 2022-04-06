@@ -1,12 +1,8 @@
-import { PROFILE_SET_DATA, PROFILE_SET_ERROR, PROFILE_SET_LOADING, PROFILE_SET_MESSAGE, PROFILE_SET_SUCCESS } from '../actions/types'
+import { PROFILE_SET_DATA } from '../actions/types'
 
 const initialState = {
   name: '',
-  email: '',
-  loading: false,
-  error: false,
-  success: false,
-  message: ''
+  email: ''
 }
 
 const profileReducer = (state = initialState, action) => {
@@ -16,26 +12,6 @@ const profileReducer = (state = initialState, action) => {
         ...state,
         name: action.payload.name,
         email: action.payload.email
-      }
-    case PROFILE_SET_LOADING:
-      return {
-        ...state,
-        loading: action.payload
-      }
-    case PROFILE_SET_ERROR:
-      return {
-        ...state,
-        error: action.payload
-      }
-    case PROFILE_SET_MESSAGE:
-      return {
-        ...state,
-        message: action.payload
-      }
-    case PROFILE_SET_SUCCESS:
-      return {
-        ...state,
-        success: action.payload
       }
     default:
       return state

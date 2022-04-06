@@ -1,33 +1,6 @@
 import api from '../../http/index'
-import { PROFILE_SET_ERROR, PROFILE_SET_LOADING, PROFILE_SET_MESSAGE, PROFILE_SET_DATA, PROFILE_SET_SUCCESS, PROFILE_RESET } from './types'
-
-export const setLoading = (value) => {
-  return {
-    type: PROFILE_SET_LOADING,
-    payload: value
-  }
-}
-
-export const setError = (value) => {
-  return {
-    type: PROFILE_SET_ERROR,
-    payload: value
-  }
-}
-
-export const setSuccess = (value) => {
-  return {
-    type: PROFILE_SET_SUCCESS,
-    payload: value
-  }
-}
-
-export const setMessage = (value) => {
-  return {
-    type: PROFILE_SET_MESSAGE,
-    payload: value
-  }
-}
+import { setError, setLoading, setMessage, setSuccess } from './appActions'
+import { PROFILE_SET_DATA, PROFILE_RESET } from './types'
 
 export const getProfileData = () => async dispatch => {
   try {
@@ -46,6 +19,7 @@ export const getProfileData = () => async dispatch => {
 
     dispatch(setSuccess(true))
     dispatch(setLoading(false))
+    dispatch(setSuccess(false))
   } catch (error) {
     dispatch(setError(true))
     dispatch(setLoading(false))
@@ -81,6 +55,7 @@ export const editProfileData = (name, email, password, passwordRepeat) => async 
     dispatch(setLoading(false))
 
     dispatch(setMessage(''))
+    dispatch(setSuccess(false))
     dispatch(setSuccess(false))
   } catch (error) {
     dispatch(setError(true))

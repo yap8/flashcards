@@ -1,33 +1,6 @@
 import api from '../../http/index'
-import { COLLECTIONS_SET_ERROR, COLLECTIONS_SET_LOADING, COLLECTIONS_SET_SUCCESS, COLLECTIONS_RESET, COLLECTIONS_SET_MESSAGE, COLLECTIONS_ADD_COLLECTION } from './types'
-
-export const setLoading = (value) => {
-  return {
-    type: COLLECTIONS_SET_LOADING,
-    payload: value
-  }
-}
-
-export const setError = (value) => {
-  return {
-    type: COLLECTIONS_SET_ERROR,
-    payload: value
-  }
-}
-
-export const setSuccess = (value) => {
-  return {
-    type: COLLECTIONS_SET_SUCCESS,
-    payload: value
-  }
-}
-
-export const setMessage = (value) => {
-  return {
-    type: COLLECTIONS_SET_MESSAGE,
-    payload: value
-  }
-}
+import { setError, setLoading, setMessage, setSuccess } from './appActions'
+import { COLLECTIONS_ADD_COLLECTION } from './types'
 
 export const createCollection = (title, cards) => async dispatch => {
   try {
@@ -47,6 +20,7 @@ export const createCollection = (title, cards) => async dispatch => {
 
     dispatch(setSuccess(true))
     dispatch(setLoading(false))
+    dispatch(setSuccess(false))
   } catch (error) {
     dispatch(setError(true))
     dispatch(setLoading(false))

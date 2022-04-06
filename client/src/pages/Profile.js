@@ -11,7 +11,8 @@ const Profile = () => {
 
   const dispatch = useDispatch()
 
-  const { name, email, error, success, loading, message } = useSelector(state => state.profile)
+  const { error, success, loading, message } = useSelector(state => state.app)
+  const { name, email } = useSelector(state => state.profile)
 
   const [formData, setFormData] = useState({
     name,
