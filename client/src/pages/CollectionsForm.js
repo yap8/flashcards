@@ -2,10 +2,15 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { toast } from 'react-toastify'
 import Title from '../components/Title'
+import useAlert from '../hooks/useAlert'
+import usePrivate from '../hooks/usePrivate'
 import { createCollection } from '../redux/actions/collectionsActions'
 
 const CollectionsForm = () => {
-  const { loading, error, success, message } = useSelector(state => state.collections)
+  usePrivate()
+  useAlert()
+
+  const { loading } = useSelector(state => state.collections)
   const dispatch = useDispatch()
 
   const [formData, setFormData] = useState({
@@ -26,12 +31,6 @@ const CollectionsForm = () => {
       ]
     })
   }
-
-  useEffect(() => {
-    if (success && message) toast.success(message)
-
-    if (error && message) toast.error(message)
-  }, [success, error, message])
 
   const handleChange = e => setFormData({ ...formData, [e.target.name]: e.target.value })
 
