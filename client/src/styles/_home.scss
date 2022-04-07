@@ -1,0 +1,11 @@
+.home {
+  &__buttons {
+    display: flex;
+    justify-content: center;
+  }
+  &__buttons-item {
+    &:not(:last-child) {
+      margin-right: 8px;
+    }
+  }
+}
