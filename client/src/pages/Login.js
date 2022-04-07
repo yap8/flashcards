@@ -61,7 +61,9 @@ const Login = () => {
             />
           </FormGroup>
           <FormGroup>
-            <Button>
+            <Button
+              color="blue"
+            >
               Login
             </Button>
           </FormGroup>

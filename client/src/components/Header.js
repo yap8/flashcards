@@ -34,16 +34,17 @@ const Header = () => {
             </li>
           </> : <>
             <li className="mr-4">
-              <NavLink
-                className="text-xl px-4 py-2 inline-flex items-center justify-center text-gray-500 transition hover:text-gray-900"
-                to="/register"
-              >Register</NavLink>
+              <Button
+                tag="NavLink"
+                to="/login"
+              >Login</Button>
             </li>
             <li>
               <Button
-                tag={'NavLink'}
-                to="/login"
-              >Login</Button>
+                color="blue"
+                tag="NavLink"
+                to="/register"
+              >Register</Button>
             </li>
           </>}
         </ul>
