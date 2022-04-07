@@ -15,7 +15,7 @@ const FormInput = ({ label, name, ...rest }) => {
       type={ name === 'password' ? 'password' : 'text' }
       name={ name }
       id={ name }
-      placeholder={ capitalize(name) }
+      placeholder={ name === 'password' ? '********' : capitalize(name) }
       { ...rest }
     />
   </>

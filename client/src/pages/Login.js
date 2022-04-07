@@ -55,7 +55,7 @@ const Login = () => {
             <FormInput
               label
               name="password"
-              value={formData.email}
+              value={formData.password}
               onChange={handleChange}
             />
           </FormGroup>
