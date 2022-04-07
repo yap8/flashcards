@@ -1,6 +1,6 @@
 import api from '../../http/index'
 import { setError, setLoading, setMessage, setSuccess } from './appActions'
-import { COLLECTIONS_ADD_COLLECTION, COLLECTIONS_FETCH_COLLECTIONS } from './types'
+import { COLLECTIONS_ADD_COLLECTION, COLLECTIONS_FETCH_COLLECTIONS, COLLECTIONS_SET_CURRENT_COLLECTION } from './types'
 
 export const fetchCollections = () => async dispatch => {
   try {
@@ -15,6 +15,19 @@ export const fetchCollections = () => async dispatch => {
     dispatch(setLoading(false))
 
     dispatch(setMessage(error.message))
+  }
+}
+
+export const getCollection = (id) => async dispatch => {
+  try {
+    const { data } = await api.get(`/api/collections/${id}`)
+
+    dispatch({
+      type: COLLECTIONS_SET_CURRENT_COLLECTION,
+      payload: data
+    })
+  } catch (error) {
+    
   }
 }
 
@@ -51,4 +64,6 @@ export const createCollection = (title, cards) => async dispatch => {
     dispatch(setError(false))
   }
 }
+
+
 

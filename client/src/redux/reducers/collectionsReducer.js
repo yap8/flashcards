@@ -1,7 +1,8 @@
-import { COLLECTIONS_ADD_COLLECTION, COLLECTIONS_FETCH_COLLECTIONS, COLLECTIONS_RESET } from '../actions/types'
+import { COLLECTIONS_ADD_COLLECTION, COLLECTIONS_FETCH_COLLECTIONS, COLLECTIONS_RESET, COLLECTIONS_SET_CURRENT_COLLECTION } from '../actions/types'
 
 const initialState = {
-  collections: []
+  collections: [],
+  current: {}
 }
 
 const collectionsReducer = (state = initialState, action) => {
@@ -18,6 +19,11 @@ const collectionsReducer = (state = initialState, action) => {
           ...state.collections,
           action.payload
         ]
+      }
+    case COLLECTIONS_SET_CURRENT_COLLECTION:
+      return {
+        ...state,
+        current: action.payload
       }
     case COLLECTIONS_RESET:
       return initialState
