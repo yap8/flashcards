@@ -27,7 +27,7 @@ const Collection = () => {
   return (
     <section className="collection">
       <div className="collection__inner container">
-        <Title className="collection__title title">{title}</Title>
+        <Title className="collection__title title title--left">{title}</Title>
         {cards ? (
           <ul className="collection__cards">
             {cards.map((card, index) => (
