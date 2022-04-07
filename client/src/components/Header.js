@@ -8,29 +8,41 @@ const Header = () => {
   const dispatch = useDispatch()
 
   return (
-    <header className="header">
-      <div className="header__inner container">
-        <Link className="header__logo" to="/">FlashCards</Link>
-        <ul className="header__nav">
+    <header className="drop-shadow-2xl">
+      <div className="container mx-auto flex justify-between items-center py-4">
+        <Link className="text-4xl font-semibold" to="/">FlashCards</Link>
+        <ul className="flex">
           {user ? <>
-            <li className="header__nav-item">
-              <NavLink className="header__nav-link" to="/collections">Collections</NavLink>
+            <li className="mr-4">
+              <NavLink
+                className="text-xl px-4 py-2 inline-flex items-center justify-center text-gray-500 transition hover:text-gray-900"
+                to="/collections"
+              >Collections</NavLink>
             </li>
-            <li className="header__nav-item">
-              <NavLink className="header__nav-link" to="/profile">Profile</NavLink>
+            <li className="mr-4">
+              <NavLink
+                className="text-xl px-4 py-2 inline-flex items-center justify-center text-gray-500 transition hover:text-gray-900"
+                to="/profile"
+              >Profile</NavLink>
             </li>
-            <li className="header__nav-item">
+            <li>
               <button
-                className="header__nav-link"
+                className="text-xl px-4 py-2 inline-flex items-center justify-center rounded-md shadow-sm text-white bg-red-600 transition hover:bg-red-700"
                 onClick={() => dispatch(logout())}
               >Logout</button>
             </li>
           </> : <>
-            <li className="header__nav-item">
-              <NavLink className="header__nav-link" to="/login">Login</NavLink>
+            <li className="mr-4">
+              <NavLink
+                className="text-xl px-4 py-2 inline-flex items-center justify-center text-gray-500 transition hover:text-gray-900"
+                to="/register"
+              >Register</NavLink>
             </li>
-            <li className="header__nav-item">
-              <NavLink className="header__nav-link" to="/register">Register</NavLink>
+            <li>
+              <NavLink
+                className="text-xl px-4 py-2 inline-flex items-center justify-center rounded-md shadow-sm text-white bg-indigo-600 transition hover:bg-indigo-700"
+                to="/login"
+              >Login</NavLink>
             </li>
           </>}
         </ul>
@@ -38,5 +50,7 @@ const Header = () => {
     </header>
   )
 }
+
+  //  text-base font-medium 
 
 export default Header
