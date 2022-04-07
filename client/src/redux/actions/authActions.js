@@ -52,6 +52,7 @@ export const register = (name, email, password) => async dispatch => {
 
     dispatch(setMessage(error.response.data.error))
     dispatch(setError(false))
+    dispatch(setMessage(''))
   }
 }
 
@@ -77,5 +78,6 @@ export const login = (email, password) => async dispatch => {
 
     dispatch(setMessage(error.response.data.error))
     dispatch(setError(false))
+    dispatch(setMessage(''))
   }
 }
