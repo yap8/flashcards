@@ -1,9 +1,7 @@
-import React from 'react'
-
 const Title = ({ className, children }) => {
   return (
     <h1
-      className={'title' + ' ' + className}
+      className={'title ' + className}
     >
       {children}
     </h1>

@@ -27,9 +27,6 @@ const Collections = () => {
                 <Link to={collection._id} className="collections__item-inner">
                   <h2 className="collections__item-title">{collection.title}</h2>
                   <p className="collections__item-text">
-                    <b>Author: </b>{collection.author}
-                  </p>
-                  <p className="collections__item-text">
                     <b>Number of cards: </b>{collection.cards.length}
                   </p>
                 </Link>

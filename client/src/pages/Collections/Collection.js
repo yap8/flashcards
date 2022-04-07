@@ -17,7 +17,7 @@ const Collection = () => {
 
   useEffect(() => {
     dispatch(getCollection(id))
-  }, [])
+  }, [id, dispatch])
 
   const handleClick = index => {
     dispatch(flipCard(index))
