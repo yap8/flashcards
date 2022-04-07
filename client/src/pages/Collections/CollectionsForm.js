@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 import Title from '../../components/Title'
 import useAlert from '../../hooks/useAlert'
 import usePrivate from '../../hooks/usePrivate'
@@ -9,8 +10,9 @@ const CollectionsForm = () => {
   usePrivate()
   useAlert()
 
-  const { loading } = useSelector(state => state.collections)
+  const navigate = useNavigate()
   const dispatch = useDispatch()
+  const { success } = useSelector(state => state.app)
 
   const [formData, setFormData] = useState({
     title: '',
@@ -30,6 +32,10 @@ const CollectionsForm = () => {
       ]
     })
   }
+
+  useEffect(() => {
+    if (success) navigate('/collections')
+  }, [success])
 
   const handleChange = e => setFormData({ ...formData, [e.target.name]: e.target.value })
 
