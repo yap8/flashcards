@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { toast } from 'react-toastify'
-import Title from '../components/Title'
-import useAlert from '../hooks/useAlert'
-import usePrivate from '../hooks/usePrivate'
-import { createCollection } from '../redux/actions/collectionsActions'
+import Title from '../../components/Title'
+import useAlert from '../../hooks/useAlert'
+import usePrivate from '../../hooks/usePrivate'
+import { createCollection } from '../../redux/actions/collectionsActions'
 
 const CollectionsForm = () => {
   usePrivate()

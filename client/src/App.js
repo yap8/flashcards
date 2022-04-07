@@ -3,12 +3,12 @@ import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
 import Header from './components/Header';
-import Collections from './pages/Collections';
+import Collections from './pages/Collections/Collections';
 import Login from './pages/Login'
 import Profile from './pages/Profile';
 import Register from './pages/Register'
 import Home from './pages/Home';
-import CollectionsForm from './pages/CollectionsForm';
+import CollectionsForm from './pages/Collections/CollectionsForm';
 
 function App() {
   return (

@@ -24,9 +24,11 @@ export const createCollection = (title, cards) => async dispatch => {
 
     if (!title.trim()) throw new Error('Enter a valid title')
 
+    const filteredCards = cards.filter(card => card.front && card.back)
+
     const { data } = await api.post('/api/collections', {
       title,
-      cards
+      cards: filteredCards
     })
 
     dispatch({
@@ -46,6 +48,7 @@ export const createCollection = (title, cards) => async dispatch => {
     }
 
     dispatch(setMessage(error.message))
+    dispatch(setError(false))
   }
 }
 
