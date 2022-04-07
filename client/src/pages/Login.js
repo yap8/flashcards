@@ -2,7 +2,9 @@ import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
-import Title from '../components/Title'
+import Form from '../components/Form/Form'
+import FormGroup from '../components/Form/FormGroup'
+import FormInput from '../components/Form/FormInput'
 import useAuthRedirect from '../hooks/useAuthRedirect'
 import { login } from '../redux/actions/authActions'
 
@@ -38,39 +40,32 @@ const Login = () => {
   const handleChange = e => setFormData({ ...formData, [e.target.name]: e.target.value })
 
   return (
-    <section className="login">
-      <div className="login__inner container">
-        <Title>Login</Title>
-        <form className="form" onSubmit={handleSubmit}>
-          <div className="form__group">
-            <input
-              className={"form__field" + (loading ? ' form__field--disabled' : '')}
-              type="text"
-              placeholder="Email"
+    <section className="">
+      <div className="container mx-auto">
+        <Form onSubmit={handleSubmit}>
+          <FormGroup>
+            <FormInput
+              label
               name="email"
-              disabled={loading}
               value={formData.email}
               onChange={handleChange}
             />
-          </div>
-          <div className="form__group">
-            <input
-              className={"form__field" + (loading ? ' form__field--disabled' : '')}
-              type="password"
-              placeholder="Password"
+          </FormGroup>
+          <FormGroup>
+            <FormInput
+              label
               name="password"
-              disabled={loading}
-              value={formData.password}
+              value={formData.email}
               onChange={handleChange}
             />
-          </div>
-          <div className="form__group">
+          </FormGroup>
+          <FormGroup>
             <button
               className={'form__button button' + (loading ? ' button--disabled' : '')}
               disabled={loading}
             >Login</button>
-          </div>
-        </form>
+          </FormGroup>
+        </Form>
       </div>
     </section>
   )
