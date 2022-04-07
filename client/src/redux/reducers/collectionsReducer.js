@@ -8,6 +8,8 @@ const collectionsReducer = (state = initialState, action) => {
   switch (action.type) {
     case COLLECTIONS_RESET:
       return initialState
+    case COLLECTIONS_RESET:
+      return initialState
     default:
       return state
   }

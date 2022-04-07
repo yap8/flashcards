@@ -1,4 +1,4 @@
-import { PROFILE_SET_DATA } from '../actions/types'
+import { PROFILE_RESET, PROFILE_SET_DATA } from '../actions/types'
 
 const initialState = {
   name: '',
@@ -13,6 +13,8 @@ const profileReducer = (state = initialState, action) => {
         name: action.payload.name,
         email: action.payload.email
       }
+    case PROFILE_RESET:
+      return initialState
     default:
       return state
   }
