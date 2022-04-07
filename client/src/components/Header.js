@@ -8,7 +8,7 @@ const Header = () => {
   const dispatch = useDispatch()
 
   return (
-    <header className="drop-shadow-2xl">
+    <header className="shadow-md">
       <div className="container mx-auto flex justify-between items-center py-4">
         <Link className="text-4xl font-semibold" to="/">FlashCards</Link>
         <ul className="flex">

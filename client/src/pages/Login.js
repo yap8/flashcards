@@ -40,8 +40,8 @@ const Login = () => {
   const handleChange = e => setFormData({ ...formData, [e.target.name]: e.target.value })
 
   return (
-    <section className="">
-      <div className="container mx-auto">
+    <section>
+      <div className="container mx-auto pt-10">
         <Form onSubmit={handleSubmit}>
           <FormGroup>
             <FormInput
