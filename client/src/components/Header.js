@@ -42,7 +42,6 @@ const Header = () => {
             <li>
               <Button
                 tag={'NavLink'}
-                color="indigo"
                 to="/login"
               >Login</Button>
             </li>
