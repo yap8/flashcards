@@ -2,7 +2,7 @@
   width: 250px;
   height: 300px;
   perspective: 1000px;
-  &:hover &__inner {
+  &--flipped &__inner {
     transform: rotateY(180deg);
   }
   &__inner {
@@ -19,6 +19,7 @@
   }
   &__front,
   &__back {
+    top: 0;
     display: flex;
     align-items: center;
     justify-content: center;
