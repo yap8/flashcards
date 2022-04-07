@@ -33,8 +33,12 @@ if (NODE_ENV === 'production') {
 // start
 const start = () => {
   try {
-    app.listen(PORT, () => console.log(`Server started on port ${PORT}`))
-    mongoose.connect(DB_URI, () => console.log(`DB connected`))
+    mongoose.connect(DB_URI, () => {
+      console.log(`DB connected`)
+
+      app.listen(PORT, () => console.log(`Server started on port ${PORT}`))
+    })
+    
   } catch (err) {
     console.log(err)
   }
