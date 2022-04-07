@@ -1,39 +1,20 @@
-import api from "../http/index"
-import { useEffect, useState } from "react"
-import { useSelector } from "react-redux"
+import { useEffect } from "react"
+import { useDispatch, useSelector } from "react-redux"
 import Title from "../components/Title"
 import usePrivate from "../hooks/usePrivate"
 import { Link } from "react-router-dom"
+import { fetchCollections } from "../redux/actions/collectionsActions"
 
 const Collections = () => {
   usePrivate()
 
-  // const { user } = useSelector(state => state.auth)
+  const { collections } = useSelector(state => state.collections)
 
-  // // const [collections, setCollections] = useState([])
+  const dispatch = useDispatch()
 
-  // // useEffect(() => {
-  // //   const fetchCollections = async () => {
-  // //     try {
-  // //       const { data } = await api.get('/api/collections')
-
-  // //       setCollections(data)
-  // //     } catch (error) {
-  // //       alert(error.response.data.error)
-  // //     }
-  // //   }
-    
-  // //   fetchCollections()
-  // // }, [user])
-
-  const collections = [
-    { id: '1', title: 'title 1' },
-    { id: '2', title: 'title 2' },
-    { id: '3', title: 'title 3' },
-    { id: '4', title: 'title 4' },
-    { id: '5', title: 'title 5' },
-    { id: '6', title: 'title 6' }
-  ]
+  useEffect(() => {
+    dispatch(fetchCollections())
+  }, [dispatch])
 
   return (
     <section className="collections">
@@ -43,13 +24,19 @@ const Collections = () => {
           <ul className="collections__list">
             {collections.map(collection => (
               <li className="collections__item">
-                <Link to={collection.id} className="collections__item-inner">
+                <Link to={collection._id} className="collections__item-inner">
                   <h2 className="collections__item-title">{collection.title}</h2>
+                  <p className="collections__item-text">
+                    <b>Author: </b>{collection.author}
+                  </p>
+                  <p className="collections__item-text">
+                    <b>Number of cards: </b>{collection.cards.length}
+                  </p>
                 </Link>
               </li>
             ))}
           </ul>
-        ) : <Title>No collections</Title>}
+        ) : <div>No collections</div>}
         <Link className="button button--small" to="/collections/create">Create Collection</Link>
       </div>
     </section>
