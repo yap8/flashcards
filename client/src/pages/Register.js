@@ -5,6 +5,10 @@ import { useDispatch, useSelector } from 'react-redux'
 import { register } from '../redux/actions/authActions'
 import useAuthRedirect from '../hooks/useAuthRedirect'
 import { toast } from 'react-toastify'
+import Form from '../components/Form/Form'
+import FormGroup from '../components/Form/FormGroup'
+import FormInput from '../components/Form/FormInput'
+import Button from '../components/Button'
 
 const Register = () => {
   useAuthRedirect()
@@ -39,50 +43,39 @@ const Register = () => {
   const handleChange = e => setFormData({ ...formData, [e.target.name]: e.target.value })
 
   return (
-    <section className='register'>
-      <div className="register__inner container">
-        <Title>Register</Title>
-        <form className="form" onSubmit={handleSubmit}>
-          <div className="form__group">
-            <input
-              className={"form__field" + (loading ? ' form__field--disabled' : '')}
-              type="text"
-              placeholder="Name"
+    <section>
+      <div className="container mx-auto pt-10">
+        <Form onSubmit={handleSubmit}>
+          <FormGroup>
+            <FormInput
+              label
               name="name"
               value={formData.name}
-              disabled={loading}
               onChange={handleChange}
             />
-          </div>
-          <div className="form__group">
-            <input
-              className={"form__field" + (loading ? ' form__field--disabled' : '')}
-              type="text"
-              placeholder="Email"
+          </FormGroup>
+          <FormGroup>
+            <FormInput
+              label
               name="email"
               value={formData.email}
-              disabled={loading}
               onChange={handleChange}
             />
-          </div>
-          <div className="form__group">
-            <input
-              className={"form__field" + (loading ? ' form__field--disabled' : '')}
-              type="password"
-              placeholder="Password"
+          </FormGroup>
+          <FormGroup>
+            <FormInput
+              label
               name="password"
               value={formData.password}
-              disabled={loading}
               onChange={handleChange}
             />
-          </div>
-          <div className="form__group">
-            <button
-              className={'form__button button' + (loading ? ' button--disabled' : '')}
-              disabled={loading}
-            >Register</button>
-          </div>
-        </form>
+          </FormGroup>
+          <FormGroup>
+            <Button>
+              Register
+            </Button>
+          </FormGroup>
+        </Form>
       </div>
     </section>
   )
