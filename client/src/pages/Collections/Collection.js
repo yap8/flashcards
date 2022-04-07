@@ -20,7 +20,6 @@ const Collection = () => {
   }, [])
 
   const handleClick = index => {
-    console.log(index)
     dispatch(flipCard(index))
   }
 
