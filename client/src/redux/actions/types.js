@@ -3,6 +3,7 @@ export const APP_SET_LOADING = 'APP_SET_LOADING'
 export const APP_SET_ERROR = 'APP_SET_ERROR'
 export const APP_SET_SUCCESS = 'APP_SET_SUCCESS'
 export const APP_SET_MESSAGE = 'APP_SET_MESSAGE'
+export const APP_RESET = 'APP_RESET'
 
 // auth
 export const AUTH_SET_USER = 'AUTH_SET_USER'

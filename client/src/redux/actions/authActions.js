@@ -1,6 +1,6 @@
 import api from '../../http/index'
 import { setError, setLoading, setMessage, setSuccess } from './appActions'
-import { AUTH_SET_USER, AUTH_RESET } from './types'
+import { AUTH_SET_USER, AUTH_RESET, APP_RESET } from './types'
 
 export const setUser = (user) => {
   return {
@@ -14,6 +14,10 @@ export const logout = () => dispatch => {
 
   dispatch({
     type: AUTH_RESET
+  })
+
+  dispatch({
+    type: APP_RESET
   })
 }
 

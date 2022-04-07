@@ -1,4 +1,4 @@
-import { APP_SET_ERROR, APP_SET_LOADING, APP_SET_MESSAGE, APP_SET_SUCCESS } from "../actions/types";
+import { APP_RESET, APP_SET_ERROR, APP_SET_LOADING, APP_SET_MESSAGE, APP_SET_SUCCESS } from "../actions/types";
 
 const initialState = {
   loading: false,
@@ -29,6 +29,8 @@ const appReducer = (state = initialState, action) => {
         ...state,
         message: action.payload
       }
+    case APP_RESET:
+      return initialState
     default:
       return state
   }
