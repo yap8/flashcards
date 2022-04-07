@@ -4,6 +4,8 @@ import Title from "../../components/Title"
 import usePrivate from "../../hooks/usePrivate"
 import { Link } from "react-router-dom"
 import { fetchCollections } from "../../redux/actions/collectionsActions"
+import CollectionsList from "./CollectionsList"
+import Button from "../../components/Button"
 
 const Collections = () => {
   usePrivate()
@@ -17,24 +19,10 @@ const Collections = () => {
   }, [dispatch])
 
   return (
-    <section className="collections">
-      <div className="collections__inner container">
+    <section>
+      <div className="container mx-auto pt-10">
         <Title>Collections</Title>
-        {collections.length ? (
-          <ul className="collections__list">
-            {collections.map(collection => (
-              <li className="collections__item">
-                <Link to={collection._id} className="collections__item-inner">
-                  <h2 className="collections__item-title">{collection.title}</h2>
-                  <p className="collections__item-text">
-                    <b>Number of cards: </b>{collection.cards.length}
-                  </p>
-                </Link>
-              </li>
-            ))}
-          </ul>
-        ) : <div>No collections</div>}
-        <Link className="button button--small" to="/collections/create">Create Collection</Link>
+        { collections.length && <CollectionsList collections={collections} /> }
       </div>
     </section>
   )
