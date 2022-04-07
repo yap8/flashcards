@@ -1,10 +1,11 @@
 import React from 'react'
 import { Link, NavLink } from 'react-router-dom'
 
-const Button = ({ tag, children, className, ...rest }) => {
+const Button = ({ tag, children, color = 'blue', ...rest }) => {
   const buttonClasses = 'text-xl px-4 py-2 inline-flex items-center justify-center rounded-md shadow-sm text-white transition'
-  const defaultColorsClasses = 'bg-blue-600 hover:bg-blue-700'
-  const classes = `${buttonClasses} ${className ? className : defaultColorsClasses}`
+  const colorClasses = `bg-${color}-600 hover:bg-${color}-700`
+
+  const classes = `${buttonClasses} ${colorClasses}`
 
   switch (tag) {
     case 'a':

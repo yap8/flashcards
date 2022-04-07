@@ -42,7 +42,7 @@ const Header = () => {
             <li>
               <Button
                 tag={'NavLink'}
-                className="bg-indigo-600 hover:bg-indigo-700"
+                color="indigo"
                 to="/login"
               >Login</Button>
             </li>
