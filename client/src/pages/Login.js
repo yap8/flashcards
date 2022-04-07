@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
+import Button from '../components/Button'
 import Form from '../components/Form/Form'
 import FormGroup from '../components/Form/FormGroup'
 import FormInput from '../components/Form/FormInput'
@@ -60,10 +61,9 @@ const Login = () => {
             />
           </FormGroup>
           <FormGroup>
-            <button
-              className={'form__button button' + (loading ? ' button--disabled' : '')}
-              disabled={loading}
-            >Login</button>
+            <Button>
+              Login
+            </Button>
           </FormGroup>
         </Form>
       </div>

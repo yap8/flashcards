@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux"
 import { NavLink, Link } from "react-router-dom"
 import { logout } from "../redux/actions/authActions"
+import Button from "./Button"
 
 const Header = () => {
   const { user } = useSelector(state => state.auth)
@@ -39,10 +40,11 @@ const Header = () => {
               >Register</NavLink>
             </li>
             <li>
-              <NavLink
-                className="text-xl px-4 py-2 inline-flex items-center justify-center rounded-md shadow-sm text-white bg-indigo-600 transition hover:bg-indigo-700"
+              <Button
+                tag={'NavLink'}
+                className="bg-indigo-600 hover:bg-indigo-700"
                 to="/login"
-              >Login</NavLink>
+              >Login</Button>
             </li>
           </>}
         </ul>
