@@ -41,7 +41,6 @@ const Collection = () => {
                   </div>
                   <div className="card__back">
                     <h3 className="card__text">{card.back}</h3>
-                    back
                   </div>
                 </button>
               </li>
