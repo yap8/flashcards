@@ -27,10 +27,10 @@ const Header = () => {
               >Profile</NavLink>
             </li>
             <li>
-              <button
-                className="text-xl px-4 py-2 inline-flex items-center justify-center rounded-md shadow-sm text-white bg-red-600 transition hover:bg-red-700"
+              <Button
+                color="red"
                 onClick={() => dispatch(logout())}
-              >Logout</button>
+              >Logout</Button>
             </li>
           </> : <>
             <li className="mr-4">
