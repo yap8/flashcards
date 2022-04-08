@@ -10,7 +10,7 @@ const CollectionCard = ({ collection }) => {
   }
 
   return (
-    <li className="w-full rounded overflow-hidden shadow-lg md:w-1/4 lg:w-1/3">
+    <li className="w-full rounded overflow-hidden bg-white shadow-lg md:w-1/4 lg:w-1/3">
       <Link to={collection._id} className="flex flex-col py-5 px-4">
         <h2 className="font-bold text-2xl mb-2">
           {collection.title}

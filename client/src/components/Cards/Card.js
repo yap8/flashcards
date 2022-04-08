@@ -1,6 +1,6 @@
 const Card = ({ card, index, handleClick }) => {
   return (
-    <li className="w-80 h-60 " style={{perspective: '1000px'}}>
+    <li className="w-80 h-60 bg-white" style={{perspective: '1000px'}}>
       <button
         className="w-full h-full relative transition rounded shadow-lg pointer"
         style={{ transformStyle: 'preserve-3d', transform: card.flipped ? 'rotateY(180deg)' : '' }}
