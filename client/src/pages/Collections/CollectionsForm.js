@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+import Button from '../../components/Button'
+import Form from '../../components/Form/Form'
+import FormGroup from '../../components/Form/FormGroup'
+import FormInput from '../../components/Form/FormInput'
 import Title from '../../components/Title'
 import useAlert from '../../hooks/useAlert'
 import usePrivate from '../../hooks/usePrivate'
@@ -37,8 +41,6 @@ const CollectionsForm = () => {
     if (success) navigate('/collections')
   }, [navigate, success])
 
-  const handleChange = e => setFormData({ ...formData, [e.target.name]: e.target.value })
-
   const handleCardChange = e => {
     const [index, side] = e.target.name.split('-')
 
@@ -63,54 +65,49 @@ const CollectionsForm = () => {
     dispatch(createCollection(title, cards))
   }
 
+  const handleChange = e => setFormData({ ...formData, [e.target.name]: e.target.value })
+
+  const handleAddClick = e => {
+    e.preventDefault()
+
+    addCard()
+  }
+
   return (
     <section className="collections">
       <div className="collections__inner container">
         <Title>Create Collection</Title>
-        <form className="form form--large" onSubmit={handleSubmit}>
-          <div className="form__group">
-            <input
-              type="text"
-              className="form__field"
+        <Form>
+          <FormGroup>
+            <FormInput
+              label
               name="title"
-              placeholder="Title"
               value={formData.title}
               onChange={handleChange}
             />
-          </div>
-          <div className="form__group">
-            <h2 className="form__title">Cards</h2>
-          </div>
-          {formData.cards.map((card, index) => (
-            <div className="form__group form__group--fields" key={index}>
-              <input
-                type="text"
-                className="form__field"
-                name={`${index}-front`}
-                placeholder="Front"
-                value={card.front}
-                onChange={handleCardChange}
-              />
-              <input
-                type="text"
-                className="form__field"
-                name={`${index}-back`}
-                placeholder="Back"
-                value={card.back}
-                onChange={handleCardChange}
-              />
-            </div>
-          ))}
-          <div className="form__group">
-            <button
-              className="button"
-              onClick={e => {
-                e.preventDefault()
-
-                addCard()
-              }}
-            >Add card</button>
-          </div>
+          </FormGroup>
+            {formData.cards.map((card, index) => (
+              <FormGroup>
+                <FormInput
+                  name={`${index}-front`}
+                  placeholder="Front"
+                  value={card.front}
+                  onChange={handleCardChange}
+                />
+                <FormInput
+                  name={`${index}-front`}
+                  placeholder="Front"
+                  value={card.front}
+                  onChange={handleCardChange}
+                />
+              </FormGroup>
+            ))}
+            <FormGroup>
+              <Button onClick={handleAddClick}>Add Card</Button>
+              <Button type="submit">Create</Button>
+            </FormGroup>
+        </Form>
+        <form className="form form--large" onSubmit={handleSubmit}>
           <div className="form__group">
             <button className="button" type="submit">Create</button>
           </div>
