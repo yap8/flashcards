@@ -4,6 +4,7 @@ import Title from "../../components/Title"
 import usePrivate from "../../hooks/usePrivate"
 import { fetchCollections } from "../../redux/actions/collectionsActions"
 import CollectionsList from "../../components/Collections/CollectionsList"
+import Spinner from "../../components/Spinner"
 
 const Collections = () => {
   usePrivate()
@@ -20,7 +21,7 @@ const Collections = () => {
     <section>
       <div className="container mx-auto pt-10">
         <Title>Collections</Title>
-        { collections.length && <CollectionsList collections={collections} /> }
+        { collections.length ? <CollectionsList collections={collections} /> : <Spinner /> }
       </div>
     </section>
   )

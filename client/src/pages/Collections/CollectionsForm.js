@@ -22,7 +22,6 @@ const CollectionsForm = () => {
     title: '',
     cards: [
       { front: '', back: '' },
-      { front: '', back: '' },
       { front: '', back: '' }
     ]
   })
@@ -77,7 +76,7 @@ const CollectionsForm = () => {
     <section>
       <div className="container mx-auto pt-10">
         <Title center>Create Collection</Title>
-        <Form>
+        <Form onSubmit={ handleSubmit } className="max-w-xl">
           <FormGroup>
             <FormInput
               label
@@ -105,8 +104,15 @@ const CollectionsForm = () => {
               </FormGroup>
             ))}
             <FormGroup>
-              <Button onClick={ handleAddClick }>Add Card</Button>
-              <Button type="submit">Create</Button>
+              <Button
+                className="w-full font-bold border"
+                onClick={ handleAddClick }
+              >+</Button>
+            </FormGroup>
+            <FormGroup>
+              <Button
+                blue
+              >Create</Button>
             </FormGroup>
         </Form>
       </div>

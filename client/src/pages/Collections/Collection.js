@@ -5,6 +5,7 @@ import Title from '../../components/Title'
 import usePrivate from '../../hooks/usePrivate'
 import { getCollection } from '../../redux/actions/collectionsActions'
 import CardsList from '../../components/Cards/CardsList'
+import Spinner from '../../components/Spinner'
 
 const Collection = () => {
   usePrivate()
@@ -22,7 +23,7 @@ const Collection = () => {
     <section>
       <div className="container mx-auto pt-10">
         <Title>{ title }</Title>
-        { cards && cards.length && <CardsList />}
+        { (cards && cards.length) ? <CardsList /> : <Spinner /> }
       </div>
     </section>
   )

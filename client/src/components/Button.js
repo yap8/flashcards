@@ -14,7 +14,7 @@ const getColorClasses = (color) => {
   return `${bgClasses} ${textClasses}`
 }
 
-const Button = ({ tag = 'button', dropdown, active, children, ...props }) => {
+const Button = ({ tag = 'button', dropdown, active, className, children, ...props }) => {
   const propKeys = Object.keys(props)
 
   const color = propKeys.filter(property => colors.includes(property))[0] || 'white'
@@ -25,7 +25,7 @@ const Button = ({ tag = 'button', dropdown, active, children, ...props }) => {
     active: active ? 'text-gray-900 bg-gray-200 cursor-default' : ''
   }
 
-  const classes = `${ classesObj.base } ${ classesObj.color } ${ classesObj.active }`
+  const classes = `${ classesObj.base } ${ classesObj.color } ${ classesObj.active } ${ className }`
 
   if (dropdown) return (
     <button
