@@ -14,8 +14,10 @@ const getColorClasses = (color) => {
   return `${bgClasses} ${textClasses}`
 }
 
-const Button = ({ tag, children, ...rest }) => {
-  const color = Object.keys(rest).filter(property => colors.includes(property))[0] || 'white'
+const Button = ({ tag = 'button', children, ...props }) => {
+  const propKeys = Object.keys(props)
+  
+  const color = propKeys.filter(property => colors.includes(property))[0] || 'white'
 
   const buttonClasses = 'text-xl px-4 py-2 inline-flex items-center justify-center rounded-md transition'
   const colorClasses = getColorClasses(color)
@@ -24,13 +26,13 @@ const Button = ({ tag, children, ...rest }) => {
 
   switch (tag) {
     case 'a':
-      return <a className={ classes } { ...rest }>{ children }</a>
+      return <a className={ classes } { ...props }>{ children }</a>
     case 'NavLink':
-      return <NavLink className={ classes } { ...rest }>{ children }</NavLink>
+      return <NavLink className={ classes } { ...props }>{ children }</NavLink>
     case 'Link':
-      return <Link className={ classes } { ...rest }>{ children }</Link>
+      return <Link className={ classes } { ...props }>{ children }</Link>
     default:
-      return <button className={ classes } { ...rest }>{ children }</button>
+      return <button className={ classes } { ...props }>{ children }</button>
   }
 }
 
