@@ -89,7 +89,7 @@ const CollectionsForm = () => {
             {formData.cards.map((card, index) => (
               <FormGroup>
                 <FormInput
-                  label={ `Card ${index}` }
+                  label={ `Card ${index + 1}` }
                   name={ `${index}-front` }
                   placeholder="Front"
                   value={ card.front }
