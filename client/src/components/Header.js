@@ -15,20 +15,19 @@ const Header = () => {
         <ul className="flex">
           {user ? <>
             <li className="mr-4">
-              <NavLink
-                className="text-xl px-4 py-2 inline-flex items-center justify-center text-gray-500 transition hover:text-gray-900"
-                to="/collections"
-              >Collections</NavLink>
+              <Button
+                dropdown
+              >Collections</Button>
             </li>
             <li className="mr-4">
-              <NavLink
-                className="text-xl px-4 py-2 inline-flex items-center justify-center text-gray-500 transition hover:text-gray-900"
+              <Button
+                tag="NavLink"
                 to="/profile"
-              >Profile</NavLink>
+              >Profile</Button>
             </li>
             <li>
               <Button
-                color="red"
+                red
                 onClick={() => dispatch(logout())}
               >Logout</Button>
             </li>
@@ -41,7 +40,7 @@ const Header = () => {
             </li>
             <li>
               <Button
-                color="blue"
+                blue
                 tag="NavLink"
                 to="/register"
               >Register</Button>

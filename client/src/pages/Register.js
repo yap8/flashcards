@@ -71,7 +71,7 @@ const Register = () => {
           </FormGroup>
           <FormGroup>
             <Button
-              color="blue"
+              blue
             >
               Register
             </Button>
