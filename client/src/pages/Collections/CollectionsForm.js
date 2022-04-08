@@ -82,36 +82,33 @@ const CollectionsForm = () => {
             <FormInput
               label
               name="title"
-              value={formData.title}
-              onChange={handleChange}
+              value={ formData.title }
+              onChange={ handleChange }
             />
           </FormGroup>
             {formData.cards.map((card, index) => (
               <FormGroup>
                 <FormInput
-                  name={`${index}-front`}
+                  label={ `Card ${index}` }
+                  name={ `${index}-front` }
                   placeholder="Front"
-                  value={card.front}
-                  onChange={handleCardChange}
+                  value={ card.front }
+                  onChange={ handleCardChange }
+                  className="mb-2"
                 />
                 <FormInput
-                  name={`${index}-front`}
-                  placeholder="Front"
-                  value={card.front}
-                  onChange={handleCardChange}
+                  name={ `${index}-back` }
+                  placeholder="Back"
+                  value={ card.back }
+                  onChange={ handleCardChange }
                 />
               </FormGroup>
             ))}
             <FormGroup>
-              <Button onClick={handleAddClick}>Add Card</Button>
+              <Button onClick={ handleAddClick }>Add Card</Button>
               <Button type="submit">Create</Button>
             </FormGroup>
         </Form>
-        <form className="form form--large" onSubmit={handleSubmit}>
-          <div className="form__group">
-            <button className="button" type="submit">Create</button>
-          </div>
-        </form>
       </div>
     </section>
   )
