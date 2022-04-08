@@ -9,15 +9,15 @@ const FormInput = ({ className, label, name, ...rest }) => {
         className="text-xl block text-gray-700 font-semibold mb-2"
         htmlFor={name}
       >
-        { label === true ? capitalize(name) : label }
+        { label === true ? capitalize(name === 'passwordRepeat' ? 'Repeat password' : name) : label }
       </label>
     )}
     <input
       className={ classes }
-      type={ name === 'password' ? 'password' : 'text' }
+      type={ name === 'passwordRepeat' ? 'password' : name }
       name={ name }
       id={ name }
-      placeholder={ name === 'password' ? '********' : capitalize(name) }
+      placeholder={ (name === 'password' || name === 'passwordRepeat') ? '********' : capitalize(name) }
       { ...rest }
     />
   </>

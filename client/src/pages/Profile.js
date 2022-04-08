@@ -5,6 +5,11 @@ import { editProfileData, getProfileData } from "../redux/actions/profileActions
 
 import Title from "../components/Title"
 import useAlert from "../hooks/useAlert"
+import Form from "../components/Form/Form"
+import FormGroup from "../components/Form/FormGroup"
+import Button from "../components/Button"
+import FormInput from "../components/Form/FormInput"
+import Avatar from "../components/Avatar"
 
 const Profile = () => {
   usePrivate()
@@ -51,81 +56,51 @@ const Profile = () => {
   const handleChange = e => setFormData({ ...formData, [e.target.name]: e.target.value })
 
   return (
-    <section className="profile">
-      <div className="profile__inner container">
-        <Title>Profile</Title>
-
-        <form className="form" onSubmit={handleSubmit}>
-          <div className="form__group">
-            <label
-              className="form__label"
-              htmlFor="name"
-            >Name:</label>
-            <input
-              className={"form__field" + (loading ? ' form__field--disabled' : '')}
-              type="text"
+    <section >
+      <div className="container mx-auto pt-10">
+        <Form onSubmit={ handleSubmit }>
+          <FormGroup>
+            <Avatar
+              className="mx-auto"
+              size="24"
+            />
+          </FormGroup>
+          <FormGroup>
+            <FormInput
+              label
               name="name"
-              id="name"
-              disabled={loading}
-              value={formData.name}
-              onChange={handleChange}
+              value={ formData.name }
+              onChange={ handleChange }
             />
-          </div>
-          <div className="form__group">
-            <label
-              className="form__label"
-              htmlFor="email"
-            >Email:</label>
-            <input
-              className={"form__field" + (loading ? ' form__field--disabled' : '')}
-              type="email"
+          </FormGroup>
+          <FormGroup>
+            <FormInput
+              label
               name="email"
-              id="email"
-              disabled={loading}
-              value={formData.email}
-              onChange={handleChange}
+              value={ formData.email }
+              onChange={ handleChange }
             />
-          </div>
-          <div className="form__group">
-            <label
-              className="form__label"
-              htmlFor="password"
-            >Password:</label>
-            <input
-              className={"form__field" + (loading ? ' form__field--disabled' : '')}
-              type="password"
+          </FormGroup>
+          <FormGroup>
+            <FormInput
+              label
               name="password"
-              id="password"
-              disabled={loading}
-              value={formData.password}
-              onChange={handleChange}
+              value={ formData.password }
+              onChange={ handleChange }
             />
-          </div>
-          <div className="form__group">
-            <label
-              className="form__label"
-              htmlFor="password-repeat"
-            >Repeat password:</label>
-            <input
-              className={"form__field" + (loading ? ' form__field--disabled' : '')}
-              type="password"
+          </FormGroup>
+          <FormGroup>
+            <FormInput
+              label
               name="passwordRepeat"
-              id="passwordRepeat"
-              disabled={loading}
-              value={formData.passwordRepeat}
-              onChange={handleChange}
+              value={ formData.passwordRepeat }
+              onChange={ handleChange }
             />
-          </div>
-          <div className="form__group">
-            <button
-              className={'form__button button' + (loading ? ' button--disabled' : '')}
-              disabled={loading}
-              type="submit"
-            >
-              Edit
-            </button>
-          </div>
-        </form>
+          </FormGroup>
+          <FormGroup>
+            <Button blue>Update Profile</Button>
+          </FormGroup>
+        </Form>
       </div>
     </section>
   )
