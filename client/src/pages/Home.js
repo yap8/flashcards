@@ -1,8 +1,10 @@
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import Title from '../components/Title'
+import useAuthRedirect from '../hooks/useAuthRedirect'
 
 const Home = () => {
+  useAuthRedirect('/collections')
   const { user } = useSelector(state => state.auth)
 
   return (

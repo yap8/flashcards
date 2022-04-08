@@ -1,12 +1,12 @@
 import { useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 
-const useAuthRedirect = () => {
+const useAuthRedirect = (path='/') => {
   const navigate = useNavigate()
 
   useEffect(() => {
     if (localStorage.getItem('user')) {
-      navigate('/')
+      navigate(path)
     }
   }, [navigate])
 }
