@@ -1,10 +1,13 @@
-import { APP_RESET, APP_SET_ERROR, APP_SET_LOADING, APP_SET_MESSAGE, APP_SET_SUCCESS } from "../actions/types";
+import { APP_CLOSE_MENU, APP_OPEN_MENU, APP_RESET, APP_SET_ERROR, APP_SET_LOADING, APP_SET_MESSAGE, APP_SET_SUCCESS } from "../actions/types";
 
 const initialState = {
   loading: false,
   error: false,
   success: false,
-  message: ''
+  message: '',
+  menus: {
+    header: false
+  }
 }
 
 const appReducer = (state = initialState, action) => {
@@ -28,6 +31,19 @@ const appReducer = (state = initialState, action) => {
       return {
         ...state,
         message: action.payload
+      }
+    case APP_OPEN_MENU:
+      return {
+        ...state,
+        menus: {
+          ...state.menus,
+          [action.payload]: true
+        }
+      }
+    case APP_CLOSE_MENU:
+      return {
+        ...state,
+        menus: initialState.menus
       }
     case APP_RESET:
       return initialState
