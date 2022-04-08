@@ -6,7 +6,6 @@ import useAuthRedirect from '../hooks/useAuthRedirect'
 
 const Home = () => {
   useAuthRedirect('/collections')
-  const { user } = useSelector(state => state.auth)
 
   return (
     <section>
