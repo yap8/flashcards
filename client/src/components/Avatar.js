@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Avatar = ({ className, size = 12, children, ...props }) => {
+const Avatar = ({ className, size = 14, children, ...props }) => {
   const classes = `block rounded-full overflow-hidden border-2 ${className}`
 
   return (
@@ -9,7 +9,7 @@ const Avatar = ({ className, size = 12, children, ...props }) => {
       { ...props }
     >
       <img
-        className={`w-${ size }`}
+        className={`w-${size}`}
         src="https://www.sibberhuuske.nl/wp-content/uploads/2016/10/default-avatar.png"
         alt="avatar image"
       />

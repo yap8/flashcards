@@ -62,7 +62,7 @@ const Profile = () => {
           <FormGroup>
             <Avatar
               className="mx-auto"
-              size="24"
+              size="32"
             />
           </FormGroup>
           <FormGroup>
