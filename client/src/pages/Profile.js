@@ -24,7 +24,7 @@ const Profile = () => {
 
   useEffect(() => {
     dispatch(getProfileData())
-  }, [])
+  }, [dispatch])
 
   useEffect(() => {
     setFormData({

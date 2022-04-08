@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import Title from '../components/Title'
 import { useDispatch, useSelector } from 'react-redux'
 import { register } from '../redux/actions/authActions'
 import useAuthRedirect from '../hooks/useAuthRedirect'
@@ -16,7 +15,7 @@ const Register = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
-  const { loading, error, success, message } = useSelector(state => state.app)
+  const { error, success, message } = useSelector(state => state.app)
 
   const [formData, setFormData] = useState({
     name: '',
@@ -38,7 +37,7 @@ const Register = () => {
     if (success) navigate('/collections')
 
     if (error && message) toast.error(message)
-  }, [success, error, message])
+  }, [navigate, success, error, message])
 
   const handleChange = e => setFormData({ ...formData, [e.target.name]: e.target.value })
 

@@ -35,7 +35,7 @@ const CollectionsForm = () => {
 
   useEffect(() => {
     if (success) navigate('/collections')
-  }, [success])
+  }, [navigate, success])
 
   const handleChange = e => setFormData({ ...formData, [e.target.name]: e.target.value })
 

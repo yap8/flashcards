@@ -15,7 +15,7 @@ const Login = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
-  const { error, loading, success, message } = useSelector(state => state.app)
+  const { error, success, message } = useSelector(state => state.app)
 
   const [formData, setFormData] = useState({
     email: '',
@@ -36,7 +36,7 @@ const Login = () => {
     if (success) navigate('/collections')
 
     if (error && message) toast.error(message)
-  }, [success, error, message])
+  }, [navigate, success, error, message])
 
   const handleChange = e => setFormData({ ...formData, [e.target.name]: e.target.value })
 

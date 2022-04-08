@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux"
 import Title from "../../components/Title"
 import usePrivate from "../../hooks/usePrivate"
 import { fetchCollections } from "../../redux/actions/collectionsActions"
-import CollectionsList from "./CollectionsList"
+import CollectionsList from "../../components/Collections/CollectionsList"
 
 const Collections = () => {
   usePrivate()
