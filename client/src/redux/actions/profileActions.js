@@ -25,6 +25,8 @@ export const getProfileData = () => async dispatch => {
     dispatch(setLoading(false))
 
     dispatch(setMessage(error.response.data.error))
+    dispatch(setError(false))
+    dispatch(setMessage(''))
   }
 }
 
@@ -62,9 +64,13 @@ export const editProfileData = (name, email, password, passwordRepeat) => async 
     dispatch(setLoading(false))
 
     if (error.response) {
-      return dispatch(setMessage(error.response.data.error))
+      dispatch(setMessage(error.response.data.error))
+      dispatch(setError(false))
+      return dispatch(setMessage(''))
     }
-
+    
     dispatch(setMessage(error.message))
+    dispatch(setError(false))
+    dispatch(setMessage(''))
   }
 }
