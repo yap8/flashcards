@@ -1,9 +1,12 @@
-const Title = ({ className, children }) => {
+const Title = ({ center, children, ...props }) => {
+  const classes = `text-3xl font-semibold mb-6 ${ center ? 'text-center' : '' }`
+
   return (
     <h1
-      className="text-3xl font-semibold mb-6"
+      className={ classes }
+      { ...props }
     >
-      {children}
+      { children }
     </h1>
   )
 }

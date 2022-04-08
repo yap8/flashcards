@@ -74,9 +74,9 @@ const CollectionsForm = () => {
   }
 
   return (
-    <section className="collections">
-      <div className="collections__inner container">
-        <Title>Create Collection</Title>
+    <section>
+      <div className="container mx-auto pt-10">
+        <Title center>Create Collection</Title>
         <Form>
           <FormGroup>
             <FormInput
