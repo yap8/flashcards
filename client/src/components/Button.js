@@ -7,6 +7,13 @@ const colors = [
   'blue'
 ]
 
+const getColorClasses = (color) => {
+  const bgClasses = color === 'white' ? 'bg-white hover:bg-gray-200' : `bg-${color}-600 hover:bg-${color}-700`
+  const textClasses = color === 'white' ? `text-gray-500 transition hover:text-gray-900` : 'text-white'
+
+  return `${bgClasses} ${textClasses}`
+}
+
 const Button = ({ tag, children, ...rest }) => {
   let color = 'white'
 
@@ -17,10 +24,9 @@ const Button = ({ tag, children, ...rest }) => {
   })
 
   const buttonClasses = 'text-xl px-4 py-2 inline-flex items-center justify-center rounded-md transition'
-  const bgClasses = color === 'white' ? 'bg-white hover:bg-gray-200' : `bg-${color}-600 hover:bg-${color}-700`
-  const textClasses = color === 'white' ? `text-gray-500 transition hover:text-gray-900` : 'text-white'
+  const colorClasses = getColorClasses(color)
 
-  const classes = `${buttonClasses} ${bgClasses} ${textClasses}`
+  const classes = `${buttonClasses} ${colorClasses}`
 
   switch (tag) {
     case 'a':
