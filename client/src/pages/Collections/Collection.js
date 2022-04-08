@@ -3,51 +3,26 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import Title from '../../components/Title'
 import usePrivate from '../../hooks/usePrivate'
-import { flipCard } from '../../redux/actions/cardActions'
 import { getCollection } from '../../redux/actions/collectionsActions'
+import CardsList from '../../components/Cards/CardsList'
 
 const Collection = () => {
   usePrivate()
 
-  const cards = useSelector(state => state.cards)
-  const { title } = useSelector(state => state.collections.current)
   const dispatch = useDispatch()
-
   const { id } = useParams()
+
+  const { title, cards } = useSelector(state => state.collections.current)
 
   useEffect(() => {
     dispatch(getCollection(id))
   }, [id, dispatch])
 
-  const handleClick = index => {
-    dispatch(flipCard(index))
-  }
-
   return (
-    <section className="collection">
-      <div className="collection__inner container">
-        <Title className="collection__title title title--left">{title}</Title>
-        {cards ? (
-          <ul className="collection__cards">
-            {cards.map((card, index) => (
-              <li className={'card' + (card.flipped ? ' card--flipped' : '')} key={card._id}>
-                <button
-                  className="card__inner"
-                  onClick={() => handleClick(index)}
-                >
-                  <div className="card__front">
-                    <h3 className="card__text">{card.front}</h3>
-                  </div>
-                  <div className="card__back">
-                    <h3 className="card__text">{card.back}</h3>
-                  </div>
-                </button>
-              </li>
-            ))}
-          </ul>
-        ) : (
-          <div>no cards...</div>
-        )}
+    <section>
+      <div className="container mx-auto pt-10">
+        <Title>{ title }</Title>
+        { cards && cards.length && <CardsList />}
       </div>
     </section>
   )
