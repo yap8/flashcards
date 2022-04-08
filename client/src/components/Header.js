@@ -33,7 +33,7 @@ const Header = () => {
         <Link className="text-4xl font-semibold" to="/">FlashCards</Link>
         <ul className="flex">
           {user ? <>
-            <li className="mr-4">
+            <li className="mr-4 self-center">
               <Button
                 dropdown
                 active={ menu.collections }
