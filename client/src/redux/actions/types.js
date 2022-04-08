@@ -4,8 +4,6 @@ export const APP_SET_ERROR = 'APP_SET_ERROR'
 export const APP_SET_SUCCESS = 'APP_SET_SUCCESS'
 export const APP_SET_MESSAGE = 'APP_SET_MESSAGE'
 export const APP_RESET = 'APP_RESET'
-export const APP_OPEN_MENU = 'APP_OPEN_MENU'
-export const APP_CLOSE_MENU = 'APP_CLOSE_MENU'
 
 // auth
 export const AUTH_SET_USER = 'AUTH_SET_USER'
@@ -24,3 +22,7 @@ export const COLLECTIONS_RESET = 'COLLECTIONS_RESET'
 // cards
 export const CARDS_SET_CARDS = 'CARDS_SET_CARDS'
 export const CARDS_FLIP_CARD = 'CARDS_FLIP_CARD'
+
+// menu
+export const MENU_OPEN_MENU = 'MENU_OPEN_MENU'
+export const MENU_CLOSE_MENU = 'MENU_CLOSE_MENU'

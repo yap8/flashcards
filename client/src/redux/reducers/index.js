@@ -3,6 +3,7 @@ import appReducer from './appReducer'
 import authReducer from './authReducer'
 import cardsReducer from './cardsReducer'
 import collectionsReducer from './collectionsReducer'
+import menuReducer from './menuReducer'
 import profileReducer from './profileReducer'
 
 const rootReducer = combineReducers({
@@ -10,7 +11,8 @@ const rootReducer = combineReducers({
   auth: authReducer,
   profile: profileReducer,
   collections: collectionsReducer,
-  cards: cardsReducer
+  cards: cardsReducer,
+  menu: menuReducer
 })
 
 export default rootReducer

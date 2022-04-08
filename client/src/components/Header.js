@@ -1,37 +1,46 @@
 import { useDispatch, useSelector } from "react-redux"
+
 import { Link } from "react-router-dom"
-import { openMenu } from "../redux/actions/appActions"
-import { logout } from "../redux/actions/authActions"
+import Avatar from "./Avatar"
 import Button from "./Button"
 import Menu from "./Menu/Menu"
 import MenuItem from "./Menu/MenuItem"
 
+import { closeMenu, openMenu } from "../redux/actions/menuActions"
+import { logout } from "../redux/actions/authActions"
+import MenuItemButton from "./Menu/MenuItemButton"
+
 const Header = () => {
   const { user } = useSelector(state => state.auth)
-  const { menus } = useSelector(state => state.app)
+  const menu = useSelector(state => state.menu)
 
   const dispatch = useDispatch()
 
-  const handleMenuButtonClick = () => {
-    if (menus.header) return
+  const handleMenuButtonClick = (e) => {
+    if (menu[e.currentTarget.dataset.menu]) return
 
-    dispatch(openMenu('header'))
+    dispatch(openMenu(e.currentTarget.dataset.menu))
+  }
+
+  const handleLogout = () => {
+    dispatch(logout())
+    dispatch(closeMenu())
   }
 
   return (
     <header className="shadow-md">
-      <div className="container mx-auto flex justify-between items-center py-4">
+      <div className="container mx-auto flex justify-between items-center py-4 relative">
         <Link className="text-4xl font-semibold" to="/">FlashCards</Link>
         <ul className="flex">
           {user ? <>
             <li className="mr-4">
               <Button
                 dropdown
-                active={ menus.header }
-                data-menu="header"
+                active={ menu.collections }
+                data-menu="collections"
                 onClick={ handleMenuButtonClick }
               >Collections</Button>
-              <Menu open={ menus.header } >
+              <Menu open={ menu.collections } id="collections">
                 <MenuItem to="/collections">
                   Library
                 </MenuItem>
@@ -40,17 +49,21 @@ const Header = () => {
                 </MenuItem>
               </Menu>
             </li>
-            <li className="mr-4">
-              <Button
-                tag="NavLink"
-                to="/profile"
-              >Profile</Button>
-            </li>
             <li>
-              <Button
-                red
-                onClick={() => dispatch(logout())}
-              >Logout</Button>
+              <Avatar
+                data-menu="avatar"
+                onClick={ handleMenuButtonClick }
+              />
+              <Menu open={ menu.avatar } id="avatar" className="right-0">
+                <MenuItem to="/profile">
+                  Profile
+                </MenuItem>
+                <MenuItemButton
+                  onClick={handleLogout}
+                >
+                  Logout
+                </MenuItemButton>
+              </Menu>
             </li>
           </> : <>
             <li className="mr-4">
