@@ -1,6 +1,6 @@
 import api from '../../http/index'
 import { setError, setLoading, setMessage, setSuccess } from './appActions'
-import { PROFILE_SET_DATA, PROFILE_RESET } from './types'
+import { PROFILE_SET_DATA, PROFILE_RESET, APP_RESET } from './types'
 
 export const getProfileData = () => async dispatch => {
   try {
@@ -18,23 +18,17 @@ export const getProfileData = () => async dispatch => {
     })
 
     dispatch(setSuccess(true))
-    dispatch(setLoading(false))
-    dispatch(setSuccess(false))
   } catch (error) {
     dispatch(setError(true))
-    dispatch(setLoading(false))
-
     dispatch(setMessage(error.response.data.error))
-    dispatch(setError(false))
-    dispatch(setMessage(''))
+  } finally {
+    dispatch({ type: APP_RESET })
   }
 }
 
 export const editProfileData = (name, email, password, passwordRepeat) => async dispatch => {
   try {
     dispatch(setLoading(true))
-    dispatch(setError(false))
-    dispatch(setSuccess(false))
 
     if (password !== passwordRepeat) throw new Error('Passwords do not match')
 
@@ -54,23 +48,15 @@ export const editProfileData = (name, email, password, passwordRepeat) => async 
 
     dispatch(setMessage('Success'))
     dispatch(setSuccess(true))
-    dispatch(setLoading(false))
-
-    dispatch(setMessage(''))
-    dispatch(setSuccess(false))
-    dispatch(setSuccess(false))
   } catch (error) {
     dispatch(setError(true))
-    dispatch(setLoading(false))
 
     if (error.response) {
-      dispatch(setMessage(error.response.data.error))
-      dispatch(setError(false))
-      return dispatch(setMessage(''))
+      return dispatch(setMessage(error.response.data.error))
     }
     
     dispatch(setMessage(error.message))
-    dispatch(setError(false))
-    dispatch(setMessage(''))
+  } finally {
+    dispatch({ type: APP_RESET })
   }
 }

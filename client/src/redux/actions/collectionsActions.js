@@ -1,6 +1,6 @@
 import api from '../../http/index'
 import { setError, setLoading, setMessage, setSuccess } from './appActions'
-import { CARDS_SET_CARDS, COLLECTIONS_ADD_COLLECTION, COLLECTIONS_FETCH_COLLECTIONS, COLLECTIONS_SET_CURRENT_COLLECTION } from './types'
+import { APP_RESET, CARDS_SET_CARDS, COLLECTIONS_ADD_COLLECTION, COLLECTIONS_FETCH_COLLECTIONS, COLLECTIONS_SET_CURRENT_COLLECTION } from './types'
 
 export const fetchCollections = () => async dispatch => {
   try {
@@ -12,9 +12,9 @@ export const fetchCollections = () => async dispatch => {
     })
   } catch (error) {
     dispatch(setError(true))
-    dispatch(setLoading(false))
-
     dispatch(setMessage(error.message))
+  } finally {
+    dispatch({ type: APP_RESET })
   }
 }
 
@@ -32,7 +32,10 @@ export const getCollection = (id) => async dispatch => {
       payload: data.cards
     })
   } catch (error) {
-    
+    dispatch(setError(true))
+    dispatch(setMessage(error.message))
+  } finally {
+    dispatch({ type: APP_RESET })
   }
 }
 
@@ -55,18 +58,16 @@ export const createCollection = (title, cards) => async dispatch => {
     })
 
     dispatch(setSuccess(true))
-    dispatch(setLoading(false))
-    dispatch(setSuccess(false))
   } catch (error) {
     dispatch(setError(true))
-    dispatch(setLoading(false))
 
     if (error.response) {
       return dispatch(setMessage(error.response.data.error))
     }
 
     dispatch(setMessage(error.message))
-    dispatch(setError(false))
+  } finally {
+    dispatch({ type: APP_RESET })
   }
 }
 

@@ -44,15 +44,11 @@ export const register = (name, email, password) => async dispatch => {
 
     dispatch(setUser(data))
     dispatch(setSuccess(true))
-    dispatch(setLoading(false))
-    dispatch(setSuccess(false))
   } catch (error) {
     dispatch(setError(true))
-    dispatch(setLoading(false))
-
     dispatch(setMessage(error.response.data.error))
-    dispatch(setError(false))
-    dispatch(setMessage(''))
+  } finally {
+    dispatch({ type: APP_RESET })
   }
 }
 
@@ -70,14 +66,10 @@ export const login = (email, password) => async dispatch => {
 
     dispatch(setUser(data))
     dispatch(setSuccess(true))
-    dispatch(setLoading(false))
-    dispatch(setSuccess(false))
   } catch (error) {
     dispatch(setError(true))
-    dispatch(setLoading(false))
-
     dispatch(setMessage(error.response.data.error))
-    dispatch(setError(false))
-    dispatch(setMessage(''))
+  } finally {
+    dispatch({ type: APP_RESET })
   }
 }
