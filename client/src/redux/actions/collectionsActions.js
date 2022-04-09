@@ -96,11 +96,13 @@ export const deleteCollection = (id) => async dispatch => {
   }
 }
 
-export const editCollection = (id) => async dispatch => {
+export const editCollection = (id, item) => async dispatch => {
   try {
+    console.log(item)
+
     dispatch(setLoading(true))
 
-    const { data } = await api.put(`/api/collections/${id}`)
+    const { data } = await api.put(`/api/collections/${id}`, item)
 
     dispatch({
       type: COLLECTIONS_EDIT_COLLECTION,

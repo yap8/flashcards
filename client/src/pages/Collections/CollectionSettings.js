@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import Button from '../../components/Button'
 import Form from '../../components/Form/Form'
@@ -14,6 +14,8 @@ import { editCollection } from '../../redux/actions/collectionsActions'
 const CollectionSettings = () => {
   usePrivate()
   useAlert()
+
+  const { id } = useParams()
 
   const navigate = useNavigate()
   const dispatch = useDispatch()
@@ -41,7 +43,7 @@ const CollectionSettings = () => {
     if (success) navigate('/collections')
 
     if (error && message) toast.error(message)
-  }, [navigate, success, error, message])
+  }, [navigate, success])
 
   const handleCardChange = e => {
     const [index, side] = e.target.name.split('-')
@@ -62,9 +64,7 @@ const CollectionSettings = () => {
   const handleSubmit = e => {
     e.preventDefault()
 
-    const { title, cards } = formData
-
-    dispatch(editCollection(title, cards))
+    dispatch(editCollection(id, formData))
   }
 
   const handleChange = e => setFormData({ ...formData, [e.target.name]: e.target.value })

@@ -10,7 +10,7 @@ const collectionController = {
 
       res.json(collections)
     } catch (error) {
-      res.json({ error: error.message })
+      res.status(500).json({ error: error.message })
     }
   },
   // @route  GET /api/collections/:id
@@ -22,7 +22,7 @@ const collectionController = {
 
       res.json(collection)
     } catch (error) {
-      res.json({ error: error.message })
+      res.status(500).json({ error: error.message })
     }
   },
   // @route  POST /api/collections
@@ -42,7 +42,7 @@ const collectionController = {
 
       res.json(collection)
     } catch (error) {
-      res.json({ error: error.message })
+      res.status(500).json({ error: error.message })
     }
   },
   // @route  DELETE /api/collections/:id
@@ -62,7 +62,31 @@ const collectionController = {
 
       res.json({ message: 'collection deleted' })
     } catch (error) {
-      res.json({ error: error.message })
+      res.status(500).json({ error: error.message })
+    }
+  },
+  // @route  PUT /api/collections/:id
+  // @desc   Edit a collection
+  // @access Private
+  async editCollection(req, res) {
+    try {
+      const { id } = req.params
+      const item = req.body
+
+      const collection = await Collection.findById(id)
+
+      if (collection.author != req.user.id) {
+        throw new Error(`You can't perform this action`)
+      }
+
+      await Collection.findOneAndReplace({ _id: id }, {
+        ...item,
+        author: req.user.id
+      })
+
+      res.json({ message: 'collection edited' })
+    } catch (error) {
+      res.status(500).json({ error: error.message })
     }
   }
 }
