@@ -1,14 +1,18 @@
+import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { deleteCollection } from '../../redux/actions/collectionsActions'
 import DeleteIcon from '../Icons/DeleteIcon'
 import SettingsIcon from '../Icons/SettingsIcon'
 
 const CollectionCard = ({ create, collection }) => {
+  const dispatch = useDispatch()
+
   const classes = 'rounded overflow-hidden bg-white shadow-lg w-full md:w-1/4'
 
-  const handleDelete = e => {
+  const handleDelete = (e, id) => {
     e.preventDefault()
-    
-    console.log('delete')
+
+    dispatch(deleteCollection(id))
   }
 
   if (create) return (
@@ -39,7 +43,7 @@ const CollectionCard = ({ create, collection }) => {
           </Link>
           <button
             className="text-gray-500 hover:text-gray-900 transition ml-2"
-            onClick={handleDelete}
+            onClick={(e) => handleDelete(e, collection._id)}
           >
             <DeleteIcon />
           </button>

@@ -1,6 +1,6 @@
 import api from '../../http/index'
 import { setError, setLoading, setMessage, setSuccess } from './appActions'
-import { APP_RESET, CARDS_SET_CARDS, COLLECTIONS_ADD_COLLECTION, COLLECTIONS_FETCH_COLLECTIONS, COLLECTIONS_SET_CURRENT_COLLECTION } from './types'
+import { APP_RESET, CARDS_SET_CARDS, COLLECTIONS_ADD_COLLECTION, COLLECTIONS_DELETE_COLLECTION, COLLECTIONS_FETCH_COLLECTIONS, COLLECTIONS_SET_CURRENT_COLLECTION } from './types'
 
 export const fetchCollections = () => async dispatch => {
   try {
@@ -71,5 +71,27 @@ export const createCollection = (title, cards) => async dispatch => {
   }
 }
 
+export const deleteCollection = (id) => async dispatch => {
+  try {
+    dispatch(setLoading(true))
 
+    await api.delete(`/api/collections/${id}`)
 
+    dispatch({
+      type: COLLECTIONS_DELETE_COLLECTION,
+      payload: id
+    })
+
+    dispatch(setSuccess(true))
+  } catch (error) {
+    dispatch(setError(true))
+
+    if (error.response) {
+      return dispatch(setMessage(error.response.data.error))
+    }
+
+    dispatch(setMessage(error.message))
+  } finally {
+    dispatch({ type: APP_RESET })
+  }
+}
