@@ -1,7 +1,9 @@
 import { Link } from 'react-router-dom'
 import Button from '../Button'
 
-const CollectionCard = ({ collection }) => {
+const CollectionCard = ({ create, collection }) => {
+  const classes = 'rounded overflow-hidden bg-white shadow-lg w-full md:w-1/4'
+
   const handleClick = e => {
     e.stopPropagation()
     e.preventDefault()
@@ -9,8 +11,18 @@ const CollectionCard = ({ collection }) => {
     console.log('open_modal')
   }
 
+  if (create) return (
+    <li className={classes}>
+      <Link to="/collections/create" className="block h-full py-5 px-4">
+        <h2 className="font-bold text-2xl">
+          Create new collection
+        </h2>
+      </Link>
+    </li>
+  )
+
   return (
-    <li className="rounded overflow-hidden bg-white shadow-lg w-full md:w-1/4">
+    <li className={classes}>
       <Link to={collection._id} className="flex flex-col py-5 px-4">
         <h2 className="font-bold text-2xl mb-2">
           {collection.title}
