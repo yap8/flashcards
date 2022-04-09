@@ -18,7 +18,6 @@ const Profile = () => {
   const dispatch = useDispatch()
 
   const { name, email } = useSelector(state => state.profile)
-  const { loading } = useSelector(state => state.app)
 
   const [formData, setFormData] = useState({
     name,
@@ -61,8 +60,7 @@ const Profile = () => {
         <Form onSubmit={ handleSubmit }>
           <FormGroup>
             <Avatar
-              className="mx-auto"
-              size="32"
+              className="mx-auto w-40"
             />
           </FormGroup>
           <FormGroup>
