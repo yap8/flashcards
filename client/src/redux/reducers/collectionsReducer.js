@@ -1,4 +1,4 @@
-import { COLLECTIONS_ADD_COLLECTION, COLLECTIONS_DELETE_COLLECTION, COLLECTIONS_FETCH_COLLECTIONS, COLLECTIONS_RESET, COLLECTIONS_SET_CURRENT_COLLECTION } from '../actions/types'
+import { COLLECTIONS_ADD_COLLECTION, COLLECTIONS_DELETE_COLLECTION, COLLECTIONS_EDIT_COLLECTION, COLLECTIONS_FETCH_COLLECTIONS, COLLECTIONS_RESET, COLLECTIONS_SET_CURRENT_COLLECTION } from '../actions/types'
 
 const initialState = {
   collections: [],
@@ -29,6 +29,11 @@ const collectionsReducer = (state = initialState, action) => {
       return {
         ...state,
         collections: state.collections.filter(collection => collection._id !== action.payload)
+      }
+    case COLLECTIONS_EDIT_COLLECTION:
+      return {
+        ...state,
+        collections: state.collections.map(collection => collection._id === action.payload._id ? action.payload : collection)
       }
     case COLLECTIONS_RESET:
       return initialState

@@ -10,6 +10,7 @@ import Register from './pages/Register'
 import Home from './pages/Home';
 import CollectionsForm from './pages/Collections/CollectionsForm';
 import Collection from './pages/Collections/Collection';
+import CollectionSettings from './pages/Collections/CollectionSettings';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/collections" element={<Collections />} />
         <Route path="/collections/create" element={<CollectionsForm />} />
+        <Route path="/collections/:id/settings" element={<CollectionSettings />} />
         <Route path="/collections/:id" element={<Collection />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/login" element={<Login />} />
