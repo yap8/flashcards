@@ -30,7 +30,7 @@ const Header = () => {
   return (
     <header className="shadow-md bg-white">
       <div className="container mx-auto flex justify-between items-center py-4 relative">
-        <Link className="text-4xl font-semibold" to="/">FlashCards</Link>
+        <Link className="text-4xl font-semibold" to={user ? '/collections' : '/'}>FlashCards</Link>
         <ul className="flex">
           {user ? <>
             <li className="mr-4 self-center">
