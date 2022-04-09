@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate, useParams } from 'react-router-dom'
 import { toast } from 'react-toastify'
+import { getCollection } from '../../redux/actions/collectionsActions'
 import Button from '../../components/Button'
 import Form from '../../components/Form/Form'
 import FormGroup from '../../components/Form/FormGroup'
@@ -16,10 +17,11 @@ const CollectionSettings = () => {
   useAlert()
 
   const { id } = useParams()
-
+  
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const { success, error, message } = useSelector(state => state.app)
+  const { title, cards } = useSelector(state => state.collections.current)
 
   const [formData, setFormData] = useState({
     title: '',
@@ -44,6 +46,18 @@ const CollectionSettings = () => {
 
     if (error && message) toast.error(message)
   }, [navigate, success])
+
+  useEffect(() => {
+    dispatch(getCollection(id))
+  }, [id, dispatch])
+
+  useEffect(() => {
+    setFormData({
+      ...formData,
+      title: title || '',
+      cards: cards || []
+    })
+  }, [title, cards])
 
   const handleCardChange = e => {
     const [index, side] = e.target.name.split('-')
