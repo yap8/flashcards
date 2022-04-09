@@ -18,7 +18,7 @@ const getColorClasses = (color) => {
   }
 }
 
-const Button = ({ tag, dropdown, className, children, ...props }) => {
+const Button = ({ tag, dropdown, className = '', children, ...props }) => {
   const propKeys = Object.keys(props)
 
   const color = propKeys.filter(property => colors.includes(property))[0] || 'white'

@@ -9,7 +9,7 @@ const Menu = ({ className, children, open }) => {
 
   useEffect(() => {
     const handleClickOutside = (e) => {
-      if (open && wrapperRef.current && !wrapperRef.current.contains(e.target) && e.which === 1) {
+      if (open && wrapperRef.current && !wrapperRef.current.contains(e.target) && e.which === 1 && !e.target.getAttribute('data-menu')) {
         dispatch(closeMenu())
       }
     }

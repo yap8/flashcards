@@ -1,9 +1,8 @@
 import { MENU_CLOSE_MENU, MENU_OPEN_MENU } from "./types"
 
-export const openMenu = (name) => {
+export const openMenu = () => {
   return {
-    type: MENU_OPEN_MENU,
-    payload: name
+    type: MENU_OPEN_MENU
   }
 }
 

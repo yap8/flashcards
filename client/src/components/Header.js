@@ -9,23 +9,47 @@ import MenuItem from "./Menu/MenuItem"
 import { closeMenu, openMenu } from "../redux/actions/menuActions"
 import { logout } from "../redux/actions/authActions"
 import MenuItemButton from "./Menu/MenuItemButton"
+import { useEffect, useState } from "react"
 
 const Header = () => {
   const { user } = useSelector(state => state.auth)
   const menu = useSelector(state => state.menu)
 
+  const [collectionsMenu, setCollectionsMenu] = useState(false)
+  const [profileMenu, setProfileMenu] = useState(false)
+
   const dispatch = useDispatch()
-
-  const handleMenuButtonClick = (e) => {
-    if (menu[e.currentTarget.dataset.menu]) return
-
-    dispatch(openMenu(e.currentTarget.dataset.menu))
-  }
 
   const handleLogout = () => {
     dispatch(logout())
-    dispatch(closeMenu())
   }
+
+  const handleCollectionsMenuClick = () => {
+    if (collectionsMenu) {
+      dispatch(closeMenu())
+    } else {
+      setProfileMenu(false)
+      setCollectionsMenu(true)
+      dispatch(openMenu())
+    }
+  }
+  
+  const handleProfileMenuClick = () => {
+    if (profileMenu) {
+      dispatch(closeMenu())
+    } else {
+      setCollectionsMenu(false)
+      setProfileMenu(true)
+      dispatch(openMenu())
+    }
+  }
+
+  useEffect(() => {
+    if (!menu) {
+      setCollectionsMenu(false)
+      setProfileMenu(false)
+    }
+  }, [menu])
 
   return (
     <header className="shadow-md bg-white">
@@ -36,11 +60,10 @@ const Header = () => {
             <li className="mr-4 self-center">
               <Button
                 dropdown
-                active={ menu.collections }
-                data-menu="collections"
-                onClick={ handleMenuButtonClick }
+                data-menu="true"
+                onClick={handleCollectionsMenuClick}
               >Collections</Button>
-              <Menu open={ menu.collections } id="collections">
+              <Menu open={collectionsMenu}>
                 <MenuItem to="/collections">
                   Library
                 </MenuItem>
@@ -51,10 +74,10 @@ const Header = () => {
             </li>
             <li>
               <Avatar
-                data-menu="avatar"
-                onClick={ handleMenuButtonClick }
+                data-menu="true"
+                onClick={handleProfileMenuClick}
               />
-              <Menu open={ menu.avatar } id="avatar" className="right-0">
+              <Menu open={profileMenu} className="right-0">
                 <MenuItem to="/profile">
                   Profile
                 </MenuItem>
