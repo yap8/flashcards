@@ -1,14 +1,15 @@
 import { Link } from 'react-router-dom'
 import Button from '../Button'
+import DeleteIcon from '../Icons/DeleteIcon'
+import SettingsIcon from '../Icons/SettingsIcon'
 
 const CollectionCard = ({ create, collection }) => {
   const classes = 'rounded overflow-hidden bg-white shadow-lg w-full md:w-1/4'
 
-  const handleClick = e => {
-    e.stopPropagation()
+  const handleDelete = e => {
     e.preventDefault()
-
-    console.log('open_modal')
+    
+    console.log('delete')
   }
 
   if (create) return (
@@ -30,10 +31,18 @@ const CollectionCard = ({ create, collection }) => {
         <p className="text-gray-700 font-semibold mb-4">
           {collection.cards.length} items
         </p>
-        <div className="flex justify-between">
+        <div>
           <Button
-            onClick={handleClick}
-          >...</Button>
+            tag="Link"
+            to={`${collection._id}/settings`}
+          >
+            <SettingsIcon />
+          </Button>
+          <Button
+            onClick={handleDelete}
+          >
+            <DeleteIcon />
+          </Button>
         </div>
       </Link>
     </li>

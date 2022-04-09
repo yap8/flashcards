@@ -29,7 +29,7 @@ const Button = ({ tag, dropdown, className = '', children, ...props }) => {
   if (dropdown) return (
     <button className={classes} {...props}>
       {children}
-      {SpinnerIcon}
+      <SpinnerIcon />
     </button>
   )
 
