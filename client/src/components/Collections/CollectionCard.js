@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom'
-import Button from '../Button'
 import DeleteIcon from '../Icons/DeleteIcon'
 import SettingsIcon from '../Icons/SettingsIcon'
 
@@ -31,18 +30,19 @@ const CollectionCard = ({ create, collection }) => {
         <p className="text-gray-700 font-semibold mb-4">
           {collection.cards.length} items
         </p>
-        <div>
-          <Button
-            tag="Link"
+        <div className="flex">
+          <Link
+            className="text-gray-500 hover:text-gray-900 transition"
             to={`${collection._id}/settings`}
           >
             <SettingsIcon />
-          </Button>
-          <Button
+          </Link>
+          <button
+            className="text-gray-500 hover:text-gray-900 transition ml-2"
             onClick={handleDelete}
           >
             <DeleteIcon />
-          </Button>
+          </button>
         </div>
       </Link>
     </li>
