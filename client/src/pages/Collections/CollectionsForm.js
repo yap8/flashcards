@@ -6,13 +6,11 @@ import Form from '../../components/Form/Form'
 import FormGroup from '../../components/Form/FormGroup'
 import FormInput from '../../components/Form/FormInput'
 import Title from '../../components/Title'
-import useAlert from '../../hooks/useAlert'
 import usePrivate from '../../hooks/usePrivate'
 import { createCollection } from '../../redux/actions/collectionsActions'
 
 const CollectionsForm = () => {
   usePrivate()
-  useAlert()
 
   const navigate = useNavigate()
   const dispatch = useDispatch()

@@ -8,13 +8,11 @@ import Form from '../../components/Form/Form'
 import FormGroup from '../../components/Form/FormGroup'
 import FormInput from '../../components/Form/FormInput'
 import Title from '../../components/Title'
-import useAlert from '../../hooks/useAlert'
 import usePrivate from '../../hooks/usePrivate'
 import { editCollection } from '../../redux/actions/collectionsActions'
 
 const CollectionSettings = () => {
   usePrivate()
-  useAlert()
 
   const { id } = useParams()
   

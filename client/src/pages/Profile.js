@@ -3,21 +3,20 @@ import { useDispatch, useSelector } from "react-redux"
 import usePrivate from "../hooks/usePrivate"
 import { editProfileData, getProfileData } from "../redux/actions/profileActions"
 
-import Title from "../components/Title"
-import useAlert from "../hooks/useAlert"
 import Form from "../components/Form/Form"
 import FormGroup from "../components/Form/FormGroup"
 import Button from "../components/Button"
 import FormInput from "../components/Form/FormInput"
 import Avatar from "../components/Avatar"
+import { toast } from "react-toastify"
 
 const Profile = () => {
   usePrivate()
-  useAlert()
 
   const dispatch = useDispatch()
 
   const { name, email } = useSelector(state => state.profile)
+  const { success, message } = useSelector(state => state.app)
 
   const [formData, setFormData] = useState({
     name,
@@ -37,6 +36,10 @@ const Profile = () => {
       email
     })
   }, [name, email])
+
+  useEffect(() => {
+    if (success && message) toast.success(message)
+  }, [success, message])
 
   const handleSubmit = e => {
     e.preventDefault()

@@ -15,7 +15,7 @@ const Register = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
-  const { error, success, message } = useSelector(state => state.app)
+  const { success } = useSelector(state => state.app)
 
   const [formData, setFormData] = useState({
     name: '',
@@ -35,9 +35,7 @@ const Register = () => {
   
   useEffect(() => {
     if (success) navigate('/collections')
-
-    if (error && message) toast.error(message)
-  }, [navigate, success, error, message])
+  }, [navigate, success])
 
   const handleChange = e => setFormData({ ...formData, [e.target.name]: e.target.value })
 
