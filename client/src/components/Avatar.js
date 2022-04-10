@@ -10,7 +10,7 @@ const Avatar = ({ className, children, ...props }) => {
     >
       <img
         src="https://www.sibberhuuske.nl/wp-content/uploads/2016/10/default-avatar.png"
-        alt="avatar image"
+        alt="avatar"
         {...props}
       />
     </button>

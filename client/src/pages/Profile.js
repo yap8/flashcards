@@ -31,7 +31,6 @@ const Profile = () => {
 
   useEffect(() => {
     setFormData({
-      ...formData,
       name,
       email
     })
