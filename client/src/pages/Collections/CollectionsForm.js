@@ -75,7 +75,7 @@ const CollectionsForm = () => {
   return (
     <section>
       <div className="container mx-auto pt-6 md:pt-10">
-        <Title className="text-center">Create Collection</Title>
+        <Title className="md:text-center">Create Collection</Title>
         <Form onSubmit={ handleSubmit } className="max-w-xl">
           <FormGroup>
             <FormInput

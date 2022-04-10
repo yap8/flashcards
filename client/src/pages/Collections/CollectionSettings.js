@@ -93,7 +93,7 @@ const CollectionSettings = () => {
   return (
     <section>
       <div className="container mx-auto pt-6 md:pt-10">
-        <Title className="text-center">Edit Collection</Title>
+        <Title className="md:text-center">Edit Collection</Title>
         <Form onSubmit={ handleSubmit } className="max-w-xl">
           <FormGroup>
             <FormInput

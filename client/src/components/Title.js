@@ -1,5 +1,5 @@
 const Title = ({ className = '', children, ...props }) => {
-  const classes = `text-3xl md:text-4xl font-semibold mb-4 md:mb-6 ${ className }`
+  const classes = `text-3xl md:text-4xl font-semibold mb-4 md:mb-6 text-center md:text-left ${ className }`
 
   return (
     <h1
