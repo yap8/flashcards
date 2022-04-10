@@ -17,7 +17,7 @@ const CollectionCard = ({ create, collection }) => {
 
   if (create) return (
     <li className={classes}>
-      <Link to="/collections/create" className="block h-full py-5 px-4">
+      <Link to="/collections/create" className="block h-full py-5 px-4 transition hover:bg-gray-50">
         <h2 className="font-bold text-2xl">
           Create new collection
         </h2>
@@ -27,7 +27,7 @@ const CollectionCard = ({ create, collection }) => {
 
   return (
     <li className={classes}>
-      <Link to={collection._id} className="flex flex-col py-5 px-4">
+      <Link to={collection._id} className="flex flex-col py-5 px-4 transition hover:bg-gray-50">
         <h2 className="font-bold text-2xl mb-2">
           {collection.title}
         </h2>
