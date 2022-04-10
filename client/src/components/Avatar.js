@@ -1,7 +1,7 @@
 import React from 'react'
 
 const Avatar = ({ className, children, ...props }) => {
-  const classes = `block rounded-full overflow-hidden border-2 w-12 ${className}`
+  const classes = `block rounded-full overflow-hidden border-2 w-10 md:w-12 ${className}`
 
   return (
     <button

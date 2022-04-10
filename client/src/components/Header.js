@@ -54,10 +54,10 @@ const Header = () => {
   return (
     <header className="shadow-md bg-white">
       <div className="container mx-auto flex justify-between items-center py-4 relative">
-        <Link className="text-4xl font-semibold" to={user ? '/collections' : '/'}>FlashCards</Link>
-        <ul className="flex">
+        <Link className="text-2xl md:text-4xl font-semibold" to={user ? '/collections' : '/'}>FlashCards</Link>
+        <ul className="flex items-center">
           {user ? <>
-            <li className="mr-4 self-center">
+            <li className="mr-2 md:mr-4 self-center">
               <Button
                 dropdown
                 data-menu="true"
@@ -77,7 +77,7 @@ const Header = () => {
                 data-menu="true"
                 onClick={handleProfileMenuClick}
               />
-              <Menu open={profileMenu} className="right-0">
+              <Menu open={profileMenu} className="right-4">
                 <MenuItem to="/profile">
                   Profile
                 </MenuItem>
@@ -89,7 +89,7 @@ const Header = () => {
               </Menu>
             </li>
           </> : <>
-            <li className="mr-4">
+            <li className="mr-2 md:mr-4">
               <Button
                 tag="NavLink"
                 to="/login"

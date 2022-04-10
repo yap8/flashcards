@@ -67,7 +67,7 @@ const Profile = () => {
         <Form onSubmit={ handleSubmit }>
           <FormGroup>
             <Avatar
-              className="mx-auto w-40 border-4 cursor-default"
+              className="mx-auto w-20 md:w-40 border-4 cursor-default"
               onClick={handleAvatarClick}
             />
           </FormGroup>
