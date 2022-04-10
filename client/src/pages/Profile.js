@@ -52,6 +52,10 @@ const Profile = () => {
     })
   }
 
+  const handleAvatarClick = e => {
+    e.preventDefault()
+  }
+
   const handleChange = e => setFormData({ ...formData, [e.target.name]: e.target.value })
 
   return (
@@ -60,7 +64,8 @@ const Profile = () => {
         <Form onSubmit={ handleSubmit }>
           <FormGroup>
             <Avatar
-              className="mx-auto w-40"
+              className="mx-auto w-40 border-4 cursor-default"
+              onClick={handleAvatarClick}
             />
           </FormGroup>
           <FormGroup>
