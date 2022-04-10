@@ -78,7 +78,14 @@ const CollectionSettings = () => {
   const handleSubmit = e => {
     e.preventDefault()
 
-    dispatch(editCollection(id, formData))
+    const filteredCards = formData.cards.filter(card => card.front.trim() || card.back.trim())
+
+    const item = {
+      ...formData,
+      cards: filteredCards
+    }
+
+    dispatch(editCollection(id, item))
   }
 
   const handleChange = e => setFormData({ ...formData, [e.target.name]: e.target.value })

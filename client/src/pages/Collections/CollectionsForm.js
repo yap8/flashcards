@@ -61,7 +61,9 @@ const CollectionsForm = () => {
 
     const { title, cards } = formData
 
-    dispatch(createCollection(title, cards))
+    const filteredCards = cards.filter(card => card.front.trim() || card.back.trim())
+
+    dispatch(createCollection(title, filteredCards))
   }
 
   const handleChange = e => setFormData({ ...formData, [e.target.name]: e.target.value })
