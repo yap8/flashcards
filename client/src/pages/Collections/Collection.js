@@ -21,7 +21,7 @@ const Collection = () => {
 
   return (
     <section>
-      <div className="container mx-auto pt-10">
+      <div className="container mx-auto pt-6 md:pt-10">
         <Title>{ title }</Title>
         { (cards && cards.length) ? <CardsList /> : <Spinner /> }
       </div>

@@ -53,7 +53,7 @@ const Header = () => {
 
   return (
     <header className="shadow-md bg-white">
-      <div className="container mx-auto flex justify-between items-center py-4 relative">
+      <div className="container mx-auto flex justify-between items-center py-2 md:py-4 relative">
         <Link className="text-2xl md:text-4xl font-semibold" to={user ? '/collections' : '/'}>FlashCards</Link>
         <ul className="flex items-center">
           {user ? <>

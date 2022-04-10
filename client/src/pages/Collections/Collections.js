@@ -18,7 +18,7 @@ const Collections = () => {
 
   return (
     <section>
-      <div className="container mx-auto pt-10">
+      <div className="container mx-auto pt-6 md:pt-10">
         <Title>Collections</Title>
         <CollectionsList collections={collections} />
       </div>

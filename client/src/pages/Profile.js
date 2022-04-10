@@ -63,7 +63,7 @@ const Profile = () => {
 
   return (
     <section >
-      <div className="container mx-auto pt-10">
+      <div className="container mx-auto pt-6 md:pt-10">
         <Form onSubmit={ handleSubmit }>
           <FormGroup>
             <Avatar
