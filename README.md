@@ -66,3 +66,4 @@ https://yap-flashcards.herokuapp.com/
 - Rework menu component
 - Add flip all
 - Add collection settings
+- Add dark theme
