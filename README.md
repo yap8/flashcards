@@ -1,3 +1,4 @@
+
 # FlashCards
 
 FlashCards is a fullstack app to help you with memorization.
@@ -55,3 +56,13 @@ To run this project, you will need to add the following environment variables to
 
 https://yap-flashcards.herokuapp.com/
 
+
+## Todo
+
+- Add page animations
+- Fix the alert bug
+- Replace gap css property
+- Fix mobile safari(?) card flip animations
+- Rework menu component
+- Add flip all
+- Add collection settings
