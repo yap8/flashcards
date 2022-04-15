@@ -6,6 +6,7 @@ module.exports = {
     extend: {},
     container: {
       padding: '1rem',
+      position: 'relative'
     }
   },
   plugins: [],
