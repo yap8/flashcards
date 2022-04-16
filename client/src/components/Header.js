@@ -13,7 +13,6 @@ import SunIcon from "./Icons/SunIcon"
 import MenuItemButton from "./Menu/MenuItemButton"
 import MoonIcon from "./Icons/MoonIcon"
 
-
 const Header = () => {
   const { user } = useSelector(state => state.auth)
   const menu = useSelector(state => state.menu)
@@ -56,11 +55,11 @@ const Header = () => {
   }, [menu])
 
   return (
-    <header className="shadow-md bg-white">
+    <header className="shadow-md bg-white dark:bg-slate-800">
       <div className="container mx-auto flex justify-between items-center py-2 md:py-4 relative">
-        <Link className="text-2xl md:text-4xl font-semibold" to={user ? '/collections' : '/'}>FlashCards</Link>
+        <Link className="text-2xl md:text-4xl font-semibold dark:text-white" to={user ? '/collections' : '/'}>FlashCards</Link>
         <ul className="flex items-center">
-          <li className="mr-2 md:mr-4">
+          <li className="mr-2 md:mr-4 flex">
             <button
               onClick={handleThemeChange}
             >
