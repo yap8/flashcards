@@ -1,28 +1,28 @@
+import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-
 import { Link } from "react-router-dom"
+
+import { closeMenu, openMenu } from "../redux/actions/menuActions"
+import { logout } from "../redux/actions/authActions"
+import { toggleDarkTheme } from "../redux/actions/themeActions"
 import Avatar from "./Avatar"
 import Button from "./Button"
 import Menu from "./Menu/Menu"
 import MenuItem from "./Menu/MenuItem"
-
-import { closeMenu, openMenu } from "../redux/actions/menuActions"
-import { logout } from "../redux/actions/authActions"
+import SunIcon from "./Icons/SunIcon"
 import MenuItemButton from "./Menu/MenuItemButton"
-import { useEffect, useState } from "react"
+import MoonIcon from "./Icons/MoonIcon"
+
 
 const Header = () => {
   const { user } = useSelector(state => state.auth)
   const menu = useSelector(state => state.menu)
+  const theme = useSelector(state => state.theme)
 
   const [collectionsMenu, setCollectionsMenu] = useState(false)
   const [profileMenu, setProfileMenu] = useState(false)
 
   const dispatch = useDispatch()
-
-  const handleLogout = () => {
-    dispatch(logout())
-  }
 
   const handleCollectionsMenuClick = () => {
     if (collectionsMenu) {
@@ -44,6 +44,10 @@ const Header = () => {
     }
   }
 
+  const handleLogout = () => dispatch(logout())
+
+  const handleThemeChange = () => dispatch(toggleDarkTheme())
+
   useEffect(() => {
     if (!menu) {
       setCollectionsMenu(false)
@@ -56,6 +60,13 @@ const Header = () => {
       <div className="container mx-auto flex justify-between items-center py-2 md:py-4 relative">
         <Link className="text-2xl md:text-4xl font-semibold" to={user ? '/collections' : '/'}>FlashCards</Link>
         <ul className="flex items-center">
+          <li className="mr-2 md:mr-4">
+            <button
+              onClick={handleThemeChange}
+            >
+              {theme === 'dark' ? <MoonIcon /> : <SunIcon />}
+            </button>
+          </li>
           {user ? <>
             <li className="mr-2 md:mr-4 self-center">
               <Button
@@ -108,7 +119,5 @@ const Header = () => {
     </header>
   )
 }
-
-  //  text-base font-medium 
 
 export default Header

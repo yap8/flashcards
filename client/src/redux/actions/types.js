@@ -9,6 +9,9 @@ export const APP_RESET = 'APP_RESET'
 export const AUTH_SET_USER = 'AUTH_SET_USER'
 export const AUTH_RESET = 'AUTH_RESET'
 
+// theme
+export const THEME_TOGGLE_DARK_THEME = 'THEME_TOGGLE_DARK_THEME'
+
 // profile
 export const PROFILE_SET_DATA = 'PROFILE_SET_DATA'
 export const PROFILE_RESET = 'PROFILE_RESET'
