@@ -1,8 +1,15 @@
+import mergeClasses from "../../helpers/mergeClasses"
+
 const Card = ({ card, index, handleClick }) => {
+  const classes = {
+    base: 'w-full h-full bg-white relative shadow-lg rounded transition duration-200 pointer hover:bg-gray-50',
+    dark: 'dark:bg-slate-800 dark:text-white dark:hover:bg-slate-900'
+  }
+
   return (
     <li className="w-full md:w-80 h-60" style={{perspective: '1000px'}}>
       <button
-        className="w-full h-full bg-white relative shadow-lg rounded transition duration-200 pointer hover:bg-gray-50"
+        className={mergeClasses(classes)}
         style={{ transformStyle: 'preserve-3d', transform: card.flipped ? 'rotateY(180deg)' : '' }}
         onClick={() => handleClick(index)}
       >
