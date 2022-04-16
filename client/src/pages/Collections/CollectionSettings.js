@@ -135,7 +135,7 @@ const CollectionSettings = () => {
             ))}
             <FormGroup>
               <Button
-                className="w-full font-bold border"
+                className="w-full font-bold border dark:border-slate-700"
                 onClick={ handleAddClick }
               >+</Button>
             </FormGroup>

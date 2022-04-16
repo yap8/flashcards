@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import usePrivate from '../../hooks/usePrivate'
 import { createCollection } from '../../redux/actions/collectionsActions'
 import { useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
 
+import usePrivate from '../../hooks/usePrivate'
 import Button from '../../components/Button'
 import Form from '../../components/Form/Form'
 import FormGroup from '../../components/Form/FormGroup'
@@ -117,7 +117,7 @@ const CollectionsForm = () => {
             ))}
             <FormGroup>
               <Button
-                className="w-full font-bold border"
+                className="w-full font-bold border dark:border-slate-700"
                 onClick={ handleAddClick }
               >+</Button>
             </FormGroup>
