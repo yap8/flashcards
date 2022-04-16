@@ -1,9 +1,17 @@
 import { useEffect, useRef } from "react"
 import { useDispatch } from "react-redux"
+
 import { closeMenu } from "../../redux/actions/menuActions"
+import mergeClasses from "../../helpers/mergeClasses"
 
 const Menu = ({ className, children, open }) => {
-  const classes = `w-44 bg-white rounded rounded-tl-none divide-y divide-gray-100 shadow absolute z-10 ${open ? '' : 'hidden' } ${className}`
+  const classes = {
+    base: 'w-44 bg-white rounded rounded-tl-none divide-y divide-gray-100 shadow absolute z-10',
+    dark: 'dark:bg-slate-700',
+    open: open ? '' : 'hidden',
+    inherited: className || ''
+  }
+
   const dispatch = useDispatch()
   const wrapperRef = useRef(null)
 
@@ -20,9 +28,9 @@ const Menu = ({ className, children, open }) => {
   }, [dispatch, open, wrapperRef])
 
   return (
-    <div className={ classes } ref={ wrapperRef }>
+    <div className={mergeClasses(classes)} ref={wrapperRef}>
       <ul className="p-2">
-        { children }
+        {children}
       </ul>
     </div>
   )
