@@ -1,7 +1,10 @@
-import { THEME_TOGGLE_DARK_THEME } from "./types"
+import { THEME_CHANGE_THEME } from "./types"
 
-export const toggleDarkTheme = () => {
+export const changeTheme = (theme) => {
+  localStorage.setItem('theme', theme)
+
   return {
-    type: THEME_TOGGLE_DARK_THEME
+    type: THEME_CHANGE_THEME,
+    payload: theme
   }
 }

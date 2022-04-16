@@ -10,7 +10,7 @@ export const AUTH_SET_USER = 'AUTH_SET_USER'
 export const AUTH_RESET = 'AUTH_RESET'
 
 // theme
-export const THEME_TOGGLE_DARK_THEME = 'THEME_TOGGLE_DARK_THEME'
+export const THEME_CHANGE_THEME = 'THEME_CHANGE_THEME'
 
 // profile
 export const PROFILE_SET_DATA = 'PROFILE_SET_DATA'

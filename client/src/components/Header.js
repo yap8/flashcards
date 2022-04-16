@@ -4,7 +4,7 @@ import { Link } from "react-router-dom"
 
 import { closeMenu, openMenu } from "../redux/actions/menuActions"
 import { logout } from "../redux/actions/authActions"
-import { toggleDarkTheme } from "../redux/actions/themeActions"
+import { changeTheme } from "../redux/actions/themeActions"
 import Avatar from "./Avatar"
 import Button from "./Button"
 import Menu from "./Menu/Menu"
@@ -45,7 +45,7 @@ const Header = () => {
 
   const handleLogout = () => dispatch(logout())
 
-  const handleThemeChange = () => dispatch(toggleDarkTheme())
+  const handleThemeChange = () => dispatch(changeTheme(theme === 'dark' ? null : 'dark'))
 
   useEffect(() => {
     if (!menu) {
