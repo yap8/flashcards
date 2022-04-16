@@ -1,11 +1,15 @@
-import React from 'react'
+import mergeClasses from '../helpers/mergeClasses'
 
 const Avatar = ({ className, children, ...props }) => {
-  const classes = `block rounded-full overflow-hidden border-2 w-10 md:w-12 ${className}`
+  const classes = {
+    base: 'block rounded-full overflow-hidden border-2 w-10 md:w-12',
+    dark: 'dark:border-blue-300',
+    inherited: className
+  }
 
   return (
     <button
-      className={classes}
+      className={mergeClasses(classes)}
       {...props}
     >
       <img
