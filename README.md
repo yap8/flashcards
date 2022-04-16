@@ -59,9 +59,8 @@ https://yap-flashcards.herokuapp.com/
 
 ## Todo
 
-- Fix the alert bug
-- Replace gap css property
 - Fix mobile safari(?) card flip animations
+- Replace gap css property
 - Rework menu component
+- Fix the alert bug
 - Add flip all
-- Add collection settings
