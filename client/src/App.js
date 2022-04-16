@@ -12,9 +12,13 @@ function App() {
 
   useEffect(() => {
     if (theme === 'dark') {
+      document.body.classList.remove('bg-gray-100')
+      document.body.classList.add('bg-slate-700')
       document.body.classList.add('dark')
     } else {
       document.body.classList.remove('dark')
+      document.body.classList.remove('bg-slate-700')
+      document.body.classList.add('bg-gray-100')
     }
   }, [theme])
 
