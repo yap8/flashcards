@@ -41,32 +41,55 @@ const Header = () => {
               <li className="mr-2 md:mr-4 self-center">
                 <Menu
                   transition
+                  menuClassName="dark:bg-slate-800"
                   menuButton={
                     <MenuButton>
                       <Button dropdown={true}>Collections</Button>
                     </MenuButton>
                   }
                 >
-                  <MenuItem>
-                    <Link to="/collections">Library</Link>
+                  <MenuItem className="p-0 dark:text-white dark:hover:bg-slate-700">
+                    <Link
+                      className="py-2 px-6 block w-full h-full"
+                      to="/collections"
+                    >
+                      Library
+                    </Link>
                   </MenuItem>
-                  <MenuItem>
-                    <Link to="/collections/create">Create</Link>
+                  <MenuItem className="p-0 dark:text-white dark:hover:bg-slate-700">
+                    <Link
+                      className="py-2 px-6 block w-full h-full"
+                      to="/collections/create"
+                    >
+                      Create
+                    </Link>
                   </MenuItem>
                 </Menu>
               </li>
               <li>
                 <Menu
+                  transition
+                  menuClassName="dark:bg-slate-800"
                   menuButton={
                     <MenuButton>
                       <Avatar />
                     </MenuButton>
                   }
                 >
-                  <MenuItem>
-                    <Link to="/profile">Profile</Link>
+                  <MenuItem className="p-0 dark:text-white dark:hover:bg-slate-700">
+                    <Link
+                      className="py-2 px-6 block w-full h-full"
+                      to="/profile"
+                    >
+                      Profile
+                    </Link>
                   </MenuItem>
-                  <MenuItem onClick={handleLogout}>Logout</MenuItem>
+                  <MenuItem
+                    className="dark:text-white dark:hover:bg-slate-700"
+                    onClick={handleLogout}
+                  >
+                    Logout
+                  </MenuItem>
                 </Menu>
               </li>
             </>
