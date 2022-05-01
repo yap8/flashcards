@@ -1,20 +1,27 @@
-import { useDispatch, useSelector } from 'react-redux'
-import { flipCard } from '../../redux/actions/cardActions'
-import Card from './Card'
+import { useDispatch, useSelector } from 'react-redux';
+import { flipCard } from '../../redux/actions/cardActions';
+import Card from './Card';
 
 const CardsList = () => {
-  const cards = useSelector(state => state.cards)
-  const dispatch = useDispatch()
+  const cards = useSelector((state) => state.cards);
+  const dispatch = useDispatch();
 
-  const handleClick = index => {
-    dispatch(flipCard(index))
-  }
+  const handleClick = (index) => {
+    dispatch(flipCard(index));
+  };
 
   return (
-    <ul className="flex flex-wrap gap-8">
-      { cards.map((card, index) => <Card key={card._id} card={card} index={index} handleClick={handleClick} />) }
+    <ul className="flex flex-wrap flex-col md:flex-row">
+      {cards.map((card, index) => (
+        <Card
+          key={card._id}
+          card={card}
+          index={index}
+          handleClick={handleClick}
+        />
+      ))}
     </ul>
-  )
-}
+  );
+};
 
-export default CardsList
+export default CardsList;
