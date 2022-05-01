@@ -78,7 +78,7 @@ const Header = () => {
                 </Button>
               </li>
               <li>
-                <Button blue tag="NavLink" to="/register">
+                <Button color="blue" tag="NavLink" to="/register">
                   Register
                 </Button>
               </li>

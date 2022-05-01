@@ -1,11 +1,11 @@
-import useAuthRedirect from '../hooks/useAuthRedirect'
-import { motion } from 'framer-motion'
+import useAuthRedirect from '../hooks/useAuthRedirect';
+import { motion } from 'framer-motion';
 
-import Title from '../components/Title'
-import Button from '../components/Button'
+import Title from '../components/Title';
+import Button from '../components/Button';
 
 const Home = () => {
-  useAuthRedirect('/collections')
+  useAuthRedirect('/collections');
 
   return (
     <motion.section
@@ -15,26 +15,26 @@ const Home = () => {
       exit={{ opacity: 0 }}
       transition={{
         default: {
-          duration: .2
-        }
+          duration: 0.2,
+        },
       }}
     >
       <div className="container mx-auto py-20">
-        <Title className="text-5xl md:text-center">Welcome to FlashCards!</Title>
-        <p className="text-2xl text-center mb-4 mx-auto max-w-screen-md dark:text-white">Flashcards are small note cards used for testing and improving memory through practiced information retrieval.</p>
+        <Title className="text-5xl md:text-center">
+          Welcome to FlashCards!
+        </Title>
+        <p className="text-2xl text-center mb-4 mx-auto max-w-screen-md dark:text-white">
+          Flashcards are small note cards used for testing and improving memory
+          through practiced information retrieval.
+        </p>
         <div className="flex justify-center">
-          <Button
-            tag="Link"
-            to="/register"
-            blue
-            className=""
-          >
+          <Button tag="Link" to="/register" color="blue">
             Create an account
           </Button>
         </div>
       </div>
     </motion.section>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

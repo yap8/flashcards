@@ -1,43 +1,44 @@
-import { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
-import { motion } from 'framer-motion'
-import { login } from '../redux/actions/authActions'
-import useAuthRedirect from '../hooks/useAuthRedirect'
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import { login } from '../redux/actions/authActions';
+import useAuthRedirect from '../hooks/useAuthRedirect';
 
-import Button from '../components/Button'
-import Form from '../components/Form/Form'
-import FormGroup from '../components/Form/FormGroup'
-import FormInput from '../components/Form/FormInput'
+import Button from '../components/Button';
+import Form from '../components/Form/Form';
+import FormGroup from '../components/Form/FormGroup';
+import FormInput from '../components/Form/FormInput';
 
 const Login = () => {
-  useAuthRedirect()
+  useAuthRedirect();
 
-  const navigate = useNavigate()
-  const dispatch = useDispatch()
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-  const { success } = useSelector(state => state.app)
+  const { success } = useSelector((state) => state.app);
 
   const [formData, setFormData] = useState({
     email: '',
-    password: ''
-  })
+    password: '',
+  });
 
-  const handleSubmit = async e => {
-    e.preventDefault()
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-    const { email, password } = formData
+    const { email, password } = formData;
 
-    dispatch(login(email, password))
+    dispatch(login(email, password));
 
-    setFormData({ ...formData, password: '' })
-  }
+    setFormData({ ...formData, password: '' });
+  };
 
   useEffect(() => {
-    if (success) navigate('/collections')
-  }, [navigate, success])
+    if (success) navigate('/collections');
+  }, [navigate, success]);
 
-  const handleChange = e => setFormData({ ...formData, [e.target.name]: e.target.value })
+  const handleChange = (e) =>
+    setFormData({ ...formData, [e.target.name]: e.target.value });
 
   return (
     <motion.section
@@ -47,8 +48,8 @@ const Login = () => {
       exit={{ opacity: 0 }}
       transition={{
         default: {
-          duration: .2
-        }
+          duration: 0.2,
+        },
       }}
     >
       <div className="container mx-auto pt-6 md:pt-10">
@@ -70,16 +71,12 @@ const Login = () => {
             />
           </FormGroup>
           <FormGroup>
-            <Button
-              blue
-            >
-              Login
-            </Button>
+            <Button color="blue">Login</Button>
           </FormGroup>
         </Form>
       </div>
     </motion.section>
-  )
-}
+  );
+};
 
-export default Login
+export default Login;
