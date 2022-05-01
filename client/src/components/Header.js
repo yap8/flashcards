@@ -28,7 +28,8 @@ const Header = () => {
           className="text-2xl md:text-4xl font-semibold dark:text-white"
           to={user ? '/collections' : '/'}
         >
-          FlashCards
+          <span className="hidden md:inline">FlashCards</span>
+          <span className="md:hidden">FC</span>
         </Link>
         <ul className="flex items-center">
           <li className="mr-2 md:mr-4 flex">
