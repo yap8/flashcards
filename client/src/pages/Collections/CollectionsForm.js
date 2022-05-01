@@ -1,14 +1,13 @@
-import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { createCollection } from '../../redux/actions/collectionsActions';
 import { useNavigate } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { useEffect, useState } from 'react';
 
-import usePrivate from '../../hooks/usePrivate';
-import Button from '../../components/Button';
-import Form from '../../components/Form/Form';
+import { createCollection } from '../../redux/actions/collectionsActions';
 import FormGroup from '../../components/Form/FormGroup';
 import FormInput from '../../components/Form/FormInput';
+import usePrivate from '../../hooks/usePrivate';
+import Form from '../../components/Form/Form';
+import Button from '../../components/Button';
 import Title from '../../components/Title';
 
 const CollectionsForm = () => {
@@ -75,17 +74,7 @@ const CollectionsForm = () => {
   };
 
   return (
-    <motion.section
-      className="page"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{
-        default: {
-          duration: 0.2,
-        },
-      }}
-    >
+    <section>
       <div className="container mx-auto pt-6 md:pt-10">
         <Title className="md:text-center">Create Collection</Title>
         <Form onSubmit={handleSubmit} className="max-w-xl">
@@ -128,7 +117,7 @@ const CollectionsForm = () => {
           </FormGroup>
         </Form>
       </div>
-    </motion.section>
+    </section>
   );
 };
 

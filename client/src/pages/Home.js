@@ -1,5 +1,4 @@
 import useAuthRedirect from '../hooks/useAuthRedirect';
-import { motion } from 'framer-motion';
 
 import Title from '../components/Title';
 import Button from '../components/Button';
@@ -8,17 +7,7 @@ const Home = () => {
   useAuthRedirect('/collections');
 
   return (
-    <motion.section
-      className="page"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{
-        default: {
-          duration: 0.2,
-        },
-      }}
-    >
+    <section>
       <div className="container mx-auto py-20">
         <Title className="text-5xl md:text-center">
           Welcome to FlashCards!
@@ -33,7 +22,7 @@ const Home = () => {
           </Button>
         </div>
       </div>
-    </motion.section>
+    </section>
   );
 };
 

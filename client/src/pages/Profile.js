@@ -5,7 +5,6 @@ import {
   editProfileData,
   getProfileData,
 } from '../redux/actions/profileActions';
-import { motion } from 'framer-motion';
 import { toast } from 'react-toastify';
 
 import Form from '../components/Form/Form';
@@ -66,17 +65,7 @@ const Profile = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
   return (
-    <motion.section
-      className="page"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{
-        default: {
-          duration: 0.2,
-        },
-      }}
-    >
+    <section>
       <div className="container mx-auto pt-6 md:pt-10">
         <Form onSubmit={handleSubmit}>
           <FormGroup>
@@ -122,7 +111,7 @@ const Profile = () => {
           </FormGroup>
         </Form>
       </div>
-    </motion.section>
+    </section>
   );
 };
 

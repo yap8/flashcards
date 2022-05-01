@@ -1,11 +1,10 @@
-import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect, useState } from 'react';
+
 import { getCollection } from '../../redux/actions/collectionsActions';
 import { editCollection } from '../../redux/actions/collectionsActions';
-import { motion } from 'framer-motion';
 import usePrivate from '../../hooks/usePrivate';
-
 import Button from '../../components/Button';
 import Form from '../../components/Form/Form';
 import FormGroup from '../../components/Form/FormGroup';
@@ -93,17 +92,7 @@ const CollectionSettings = () => {
   };
 
   return (
-    <motion.section
-      className="page"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{
-        default: {
-          duration: 0.2,
-        },
-      }}
-    >
+    <section>
       <div className="container mx-auto pt-6 md:pt-10">
         <Title className="md:text-center">Edit Collection</Title>
         <Form onSubmit={handleSubmit} className="max-w-xl">
@@ -146,7 +135,7 @@ const CollectionSettings = () => {
           </FormGroup>
         </Form>
       </div>
-    </motion.section>
+    </section>
   );
 };
 

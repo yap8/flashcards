@@ -1,14 +1,13 @@
-import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-import { motion } from 'framer-motion';
-import { login } from '../redux/actions/authActions';
 import useAuthRedirect from '../hooks/useAuthRedirect';
+import { useDispatch, useSelector } from 'react-redux';
+import { login } from '../redux/actions/authActions';
+import { useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 
-import Button from '../components/Button';
-import Form from '../components/Form/Form';
 import FormGroup from '../components/Form/FormGroup';
 import FormInput from '../components/Form/FormInput';
+import Form from '../components/Form/Form';
+import Button from '../components/Button';
 
 const Login = () => {
   useAuthRedirect();
@@ -41,17 +40,7 @@ const Login = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
   return (
-    <motion.section
-      className="page"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{
-        default: {
-          duration: 0.2,
-        },
-      }}
-    >
+    <section>
       <div className="container mx-auto pt-6 md:pt-10">
         <Form onSubmit={handleSubmit}>
           <FormGroup>
@@ -75,7 +64,7 @@ const Login = () => {
           </FormGroup>
         </Form>
       </div>
-    </motion.section>
+    </section>
   );
 };
 

@@ -1,41 +1,30 @@
-import { useEffect } from "react"
-import { useDispatch, useSelector } from "react-redux"
-import usePrivate from "../../hooks/usePrivate"
-import { fetchCollections } from "../../redux/actions/collectionsActions"
-import { motion } from 'framer-motion'
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
 
-import Title from "../../components/Title"
-import CollectionsList from "../../components/Collections/CollectionsList"
+import CollectionsList from '../../components/Collections/CollectionsList';
+import { fetchCollections } from '../../redux/actions/collectionsActions';
+import usePrivate from '../../hooks/usePrivate';
+import Title from '../../components/Title';
 
 const Collections = () => {
-  usePrivate()
+  usePrivate();
 
-  const { collections } = useSelector(state => state.collections)
+  const { collections } = useSelector((state) => state.collections);
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchCollections())
-  }, [dispatch])
+    dispatch(fetchCollections());
+  }, [dispatch]);
 
   return (
-    <motion.section
-      className="page"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{
-        default: {
-          duration: .2
-        }
-      }}
-    >
+    <section>
       <div className="container mx-auto pt-6 md:pt-10">
         <Title>Collections</Title>
         <CollectionsList collections={collections} />
       </div>
-    </motion.section>
-  )
-}
+    </section>
+  );
+};
 
-export default Collections
+export default Collections;

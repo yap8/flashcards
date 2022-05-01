@@ -10,7 +10,4 @@ body {
 .page {
   position: absolute;
   width: 100%;
-  @apply transition;
-  @apply bg-gray-100;
-  @apply dark:bg-slate-700;
 }
