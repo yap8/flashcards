@@ -1,12 +1,11 @@
-import { combineReducers } from 'redux'
+import { combineReducers } from 'redux';
 
-import appReducer from './appReducer'
-import authReducer from './authReducer'
-import themeReducer from './themeReducer'
-import profileReducer from './profileReducer'
-import collectionsReducer from './collectionsReducer'
-import cardsReducer from './cardsReducer'
-import menuReducer from './menuReducer'
+import collectionsReducer from './collectionsReducer';
+import profileReducer from './profileReducer';
+import themeReducer from './themeReducer';
+import cardsReducer from './cardsReducer';
+import authReducer from './authReducer';
+import appReducer from './appReducer';
 
 const rootReducer = combineReducers({
   app: appReducer,
@@ -15,7 +14,6 @@ const rootReducer = combineReducers({
   profile: profileReducer,
   collections: collectionsReducer,
   cards: cardsReducer,
-  menu: menuReducer
-})
+});
 
-export default rootReducer
+export default rootReducer;
