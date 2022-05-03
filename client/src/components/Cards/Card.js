@@ -2,7 +2,7 @@ import mergeClasses from '../../helpers/mergeClasses';
 
 const Card = ({ card, index, handleClick }) => {
   const classes = {
-    base: 'w-full h-full bg-white relative shadow-lg rounded transition duration-200 pointer hover:bg-gray-50',
+    base: 'w-full h-full bg-white relative shadow rounded transition duration-200 pointer hover:bg-gray-50',
     dark: 'dark:bg-slate-800 dark:text-white dark:hover:bg-slate-900',
   };
 

@@ -7,7 +7,7 @@ import SettingsIcon from '../Icons/SettingsIcon';
 
 const CollectionCard = ({ create, collection }) => {
   const classes = {
-    base: 'w-full h-full block py-5 px-4 bg-white relative shadow-lg rounded transition duration-200 pointer hover:bg-gray-50',
+    base: 'w-full h-full block py-5 px-4 bg-white relative shadow rounded transition duration-200 pointer hover:bg-gray-50',
     dark: 'dark:bg-slate-800 dark:text-white dark:hover:bg-slate-900',
   };
 
@@ -29,9 +29,7 @@ const CollectionCard = ({ create, collection }) => {
     );
 
   return (
-    <li
-      className={'w-full rounded overflow-hidden shadow-lg mb-4 mr-4 md:w-72'}
-    >
+    <li className={'w-full rounded overflow-hidden shadow mb-4 mr-4 md:w-72'}>
       <Link to={collection._id} className={mergeClasses(classes)}>
         <h2 className="font-bold text-2xl mb-2">{collection.title}</h2>
         <p className="text-gray-700 font-semibold mb-4 dark:text-gray-300">
