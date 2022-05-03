@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import { ToastContainer } from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useSelector } from 'react-redux';
 import { useEffect } from 'react';
@@ -15,11 +15,12 @@ import Login from './pages/Login';
 import Home from './pages/Home';
 
 function App() {
-  const message = useSelector((state) => state.message);
-  const error = useSelector((state) => state.error);
+  const { error, message } = useSelector((state) => state.request);
   const theme = useSelector((state) => state.theme);
 
-  useEffect(() => {}, [error, message]);
+  useEffect(() => {
+    if (error && message) toast.error(message);
+  }, [error, message]);
 
   return (
     <div className={theme}>

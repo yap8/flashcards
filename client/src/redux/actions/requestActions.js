@@ -1,4 +1,5 @@
 import {
+  REQUEST_RESET,
   REQUEST_SET_ERROR,
   REQUEST_SET_MESSAGE,
   REQUEST_SET_SUCCESS,
@@ -23,4 +24,8 @@ export const setMessage = (value) => {
     type: REQUEST_SET_MESSAGE,
     payload: value,
   };
+};
+
+export const resetRequest = () => (dispatch) => {
+  setTimeout(() => dispatch({ type: REQUEST_RESET }), 0);
 };

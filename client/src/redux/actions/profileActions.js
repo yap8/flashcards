@@ -1,6 +1,11 @@
 import api from '../../http/index';
-import { setError, setMessage, setSuccess } from './requestActions';
-import { PROFILE_SET_DATA, PROFILE_RESET, REQUEST_RESET } from './types';
+import {
+  resetRequest,
+  setError,
+  setMessage,
+  setSuccess,
+} from './requestActions';
+import { PROFILE_SET_DATA, PROFILE_RESET } from './types';
 
 export const getProfileData = () => async (dispatch) => {
   try {
@@ -21,7 +26,7 @@ export const getProfileData = () => async (dispatch) => {
     dispatch(setError(true));
     dispatch(setMessage(error.response.data.error));
   } finally {
-    dispatch({ type: REQUEST_RESET });
+    dispatch(resetRequest());
   }
 };
 
@@ -56,6 +61,6 @@ export const editProfileData =
 
       dispatch(setMessage(error.message));
     } finally {
-      dispatch({ type: REQUEST_RESET });
+      dispatch(resetRequest());
     }
   };

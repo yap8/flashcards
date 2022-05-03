@@ -1,5 +1,10 @@
 import api from '../../http/index';
-import { setError, setMessage, setSuccess } from './requestActions';
+import {
+  resetRequest,
+  setError,
+  setMessage,
+  setSuccess,
+} from './requestActions';
 import {
   AUTH_SET_USER,
   AUTH_RESET,
@@ -53,7 +58,7 @@ export const register = (name, email, password) => async (dispatch) => {
     dispatch(setError(true));
     dispatch(setMessage(error.response.data.error));
   } finally {
-    dispatch({ type: REQUEST_RESET });
+    dispatch(resetRequest());
   }
 };
 
@@ -74,6 +79,6 @@ export const login = (email, password) => async (dispatch) => {
     dispatch(setError(true));
     dispatch(setMessage(error.response.data.error));
   } finally {
-    dispatch({ type: REQUEST_RESET });
+    dispatch(resetRequest());
   }
 };

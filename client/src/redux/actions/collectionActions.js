@@ -1,11 +1,10 @@
+import { resetRequest, setError, setMessage } from './requestActions';
+import api from '../../http';
 import {
-  REQUEST_RESET,
   COLLECTION_FLIP_CARD,
   COLLECTION_RESET_COLLECTION,
   COLLECTION_SET_COLLECTION,
 } from './types';
-import { setError, setMessage } from './requestActions';
-import api from '../../http';
 
 export const getCollection = (id) => async (dispatch) => {
   try {
@@ -19,7 +18,7 @@ export const getCollection = (id) => async (dispatch) => {
     dispatch(setError(true));
     dispatch(setMessage(error.message));
   } finally {
-    dispatch({ type: REQUEST_RESET });
+    dispatch(resetRequest());
   }
 };
 

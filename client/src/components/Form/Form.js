@@ -1,7 +1,3 @@
-import { useSelector } from 'react-redux';
-import { toast } from 'react-toastify';
-import { useEffect } from 'react';
-
 import mergeClasses from '../../helpers/mergeClasses';
 
 const Form = ({ children, className, ...props }) => {
@@ -10,12 +6,6 @@ const Form = ({ children, className, ...props }) => {
     dark: 'dark:bg-slate-800',
     inherited: className || '',
   };
-
-  const { error, message } = useSelector((state) => state.request);
-
-  useEffect(() => {
-    if (error && message) toast.error(message);
-  }, [error, message]);
 
   return (
     <form className={mergeClasses(classes)} {...props}>

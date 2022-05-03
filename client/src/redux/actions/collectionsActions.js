@@ -1,11 +1,15 @@
 import api from '../../http/index';
-import { setError, setMessage, setSuccess } from './requestActions';
+import {
+  resetRequest,
+  setError,
+  setMessage,
+  setSuccess,
+} from './requestActions';
 import {
   COLLECTIONS_DELETE_COLLECTION,
   COLLECTIONS_EDIT_COLLECTION,
   COLLECTIONS_SET_COLLECTIONS,
   COLLECTIONS_ADD_COLLECTION,
-  REQUEST_RESET,
 } from './types';
 
 export const fetchCollections = () => async (dispatch) => {
@@ -20,7 +24,7 @@ export const fetchCollections = () => async (dispatch) => {
     dispatch(setError(true));
     dispatch(setMessage(error.message));
   } finally {
-    dispatch({ type: REQUEST_RESET });
+    dispatch(resetRequest());
   }
 };
 
@@ -50,7 +54,7 @@ export const createCollection = (title, cards) => async (dispatch) => {
 
     dispatch(setMessage(error.message));
   } finally {
-    dispatch({ type: REQUEST_RESET });
+    dispatch(resetRequest());
   }
 };
 
@@ -73,7 +77,7 @@ export const deleteCollection = (id) => async (dispatch) => {
 
     dispatch(setMessage(error.message));
   } finally {
-    dispatch({ type: REQUEST_RESET });
+    dispatch(resetRequest());
   }
 };
 
@@ -96,6 +100,6 @@ export const editCollection = (id, item) => async (dispatch) => {
 
     dispatch(setMessage(error.message));
   } finally {
-    dispatch({ type: REQUEST_RESET });
+    dispatch(resetRequest());
   }
 };
