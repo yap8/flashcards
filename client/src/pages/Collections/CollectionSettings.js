@@ -19,7 +19,7 @@ const CollectionSettings = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { success } = useSelector((state) => state.app);
-  const { title, cards } = useSelector((state) => state.collections.current);
+  const collection = useSelector((state) => state.collection);
 
   const [formData, setFormData] = useState({
     title: '',
@@ -46,10 +46,10 @@ const CollectionSettings = () => {
 
   useEffect(() => {
     setFormData({
-      title: title || '',
-      cards: cards || [],
+      title: collection.title || '',
+      cards: collection.cards || [],
     });
-  }, [title, cards]);
+  }, [collection.title, collection.cards]);
 
   const handleCardChange = (e) => {
     const [index, side] = e.target.name.split('-');
