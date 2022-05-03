@@ -9,6 +9,10 @@ FlashCards is a fullstack app to help you with memorization.
 
 **Server:** Node, Express, MongoDB
 
+## Features
+- Authorization & authentication
+- Fully responsive
+- Light and dark theme
 
 ## Run Locally
 
