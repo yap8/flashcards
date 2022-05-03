@@ -1,14 +1,14 @@
-import { useEffect } from "react"
-import { useNavigate } from "react-router-dom"
+import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 
-const useAuthRedirect = (path='/') => {
-  const navigate = useNavigate()
+const useAuthRedirect = (path = '/') => {
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (localStorage.getItem('user')) {
-      navigate(path)
+      navigate(path);
     }
-  }, [navigate])
-}
+  }, [path, navigate]);
+};
 
-export default useAuthRedirect
+export default useAuthRedirect;
