@@ -56,12 +56,12 @@ export const createCollection = (title, cards) => async (dispatch) => {
 
 export const deleteCollection = (id) => async (dispatch) => {
   try {
-    await api.delete(`/api/collections/${id}`);
-
     dispatch({
       type: COLLECTIONS_DELETE_COLLECTION,
       payload: id,
     });
+
+    await api.delete(`/api/collections/${id}`);
 
     dispatch(setSuccess(true));
   } catch (error) {
