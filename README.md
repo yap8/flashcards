@@ -55,12 +55,3 @@ To run this project, you will need to add the following environment variables to
 ## Demo
 
 https://yap-flashcards.herokuapp.com/
-
-
-## Todo
-
-- Fix mobile safari(?) card flip animations
-- Replace gap css property
-- Rework menu component
-- Fix the alert bug
-- Add flip all
