@@ -9,7 +9,7 @@ import Title from '../../components/Title';
 const Collections = () => {
   usePrivate();
 
-  const { collections } = useSelector((state) => state.collections);
+  const collections = useSelector((state) => state.collections);
 
   const dispatch = useDispatch();
 

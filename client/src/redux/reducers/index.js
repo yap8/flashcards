@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux';
 
 import collectionsReducer from './collectionsReducer';
+import collectionReducer from './collectionReducer';
 import profileReducer from './profileReducer';
 import themeReducer from './themeReducer';
 import cardsReducer from './cardsReducer';
@@ -13,6 +14,7 @@ const rootReducer = combineReducers({
   theme: themeReducer,
   profile: profileReducer,
   collections: collectionsReducer,
+  collection: collectionReducer,
   cards: cardsReducer,
 });
 

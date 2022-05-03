@@ -2,13 +2,13 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 
-import { getCollection } from '../../redux/actions/collectionsActions';
 import { editCollection } from '../../redux/actions/collectionsActions';
-import usePrivate from '../../hooks/usePrivate';
-import Button from '../../components/Button';
-import Form from '../../components/Form/Form';
+import { getCollection } from '../../redux/actions/collectionActions';
 import FormGroup from '../../components/Form/FormGroup';
 import FormInput from '../../components/Form/FormInput';
+import usePrivate from '../../hooks/usePrivate';
+import Form from '../../components/Form/Form';
+import Button from '../../components/Button';
 import Title from '../../components/Title';
 
 const CollectionSettings = () => {

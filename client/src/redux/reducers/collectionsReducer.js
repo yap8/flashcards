@@ -1,45 +1,28 @@
-import { COLLECTIONS_ADD_COLLECTION, COLLECTIONS_DELETE_COLLECTION, COLLECTIONS_EDIT_COLLECTION, COLLECTIONS_FETCH_COLLECTIONS, COLLECTIONS_RESET, COLLECTIONS_SET_CURRENT_COLLECTION } from '../actions/types'
+import {
+  COLLECTIONS_ADD_COLLECTION,
+  COLLECTIONS_DELETE_COLLECTION,
+  COLLECTIONS_EDIT_COLLECTION,
+  COLLECTIONS_SET_COLLECTIONS,
+  COLLECTIONS_RESET,
+} from '../actions/types';
 
-const initialState = {
-  collections: [],
-  current: {}
-}
-
-const collectionsReducer = (state = initialState, action) => {
+const collectionsReducer = (state = null, action) => {
   switch (action.type) {
-    case COLLECTIONS_FETCH_COLLECTIONS:
-      return {
-        ...state,
-        collections: action.payload
-      }
+    case COLLECTIONS_SET_COLLECTIONS:
+      return action.payload;
     case COLLECTIONS_ADD_COLLECTION:
-      return {
-        ...state,
-        collections: [
-          ...state.collections,
-          action.payload
-        ]
-      }
-    case COLLECTIONS_SET_CURRENT_COLLECTION:
-      return {
-        ...state,
-        current: action.payload
-      }
+      return [...state, action.payload];
     case COLLECTIONS_DELETE_COLLECTION:
-      return {
-        ...state,
-        collections: state.collections.filter(collection => collection._id !== action.payload)
-      }
+      return state.filter((collection) => collection._id !== action.payload);
     case COLLECTIONS_EDIT_COLLECTION:
-      return {
-        ...state,
-        collections: state.collections.map(collection => collection._id === action.payload._id ? action.payload : collection)
-      }
+      return state.map((collection) =>
+        collection._id === action.payload._id ? action.payload : collection
+      );
     case COLLECTIONS_RESET:
-      return initialState
+      return null;
     default:
-      return state
+      return state;
   }
-}
+};
 
-export default collectionsReducer
+export default collectionsReducer;
