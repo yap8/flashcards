@@ -1,6 +1,7 @@
 import {
   COLLECTION_SET_COLLECTION,
   COLLECTION_FLIP_CARD,
+  COLLECTION_RESET_COLLECTION,
 } from '../actions/types';
 
 const collectionReducer = (state = null, action) => {
@@ -14,6 +15,8 @@ const collectionReducer = (state = null, action) => {
           index === action.payload ? { ...card, flipped: !card.flipped } : card
         ),
       };
+    case COLLECTION_RESET_COLLECTION:
+      return null;
     default:
       return state;
   }

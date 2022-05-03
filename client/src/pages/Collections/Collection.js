@@ -2,7 +2,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 
-import { getCollection } from '../../redux/actions/collectionActions';
+import {
+  resetCollection,
+  getCollection,
+} from '../../redux/actions/collectionActions';
 import CardsList from '../../components/Cards/CardsList';
 import usePrivate from '../../hooks/usePrivate';
 import Spinner from '../../components/Spinner';
@@ -18,6 +21,10 @@ const Collection = () => {
 
   useEffect(() => {
     dispatch(getCollection(id));
+
+    return () => {
+      dispatch(resetCollection());
+    };
   }, [id, dispatch]);
 
   return (

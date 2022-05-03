@@ -1,6 +1,7 @@
 import {
   APP_RESET,
   COLLECTION_FLIP_CARD,
+  COLLECTION_RESET_COLLECTION,
   COLLECTION_SET_COLLECTION,
 } from './types';
 import { setError, setMessage } from './appActions';
@@ -20,6 +21,12 @@ export const getCollection = (id) => async (dispatch) => {
   } finally {
     dispatch({ type: APP_RESET });
   }
+};
+
+export const resetCollection = () => {
+  return {
+    type: COLLECTION_RESET_COLLECTION,
+  };
 };
 
 export const flipCard = (index) => {
