@@ -33,6 +33,9 @@ export const getProfileData = () => async (dispatch) => {
 export const editProfileData =
   (name, email, password, passwordRepeat) => async (dispatch) => {
     try {
+      if (!password || !password.trim())
+        throw new Error('Enter a valid password');
+
       if (password !== passwordRepeat)
         throw new Error('Passwords do not match');
 
