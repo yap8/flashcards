@@ -26,7 +26,7 @@ const CollectionSettings = () => {
 
   const [formData, setFormData] = useState({
     title: '',
-    cards: [],
+    cards: [{ front: '', back: '' }],
   });
 
   const addCard = () => {

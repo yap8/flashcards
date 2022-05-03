@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 
 import {
@@ -30,11 +30,25 @@ const Collection = () => {
   return (
     <section>
       <div className="container mx-auto pt-6 md:pt-10">
-        <Title>{collection && collection.title}</Title>
-        {collection && collection.cards ? (
-          <CardsList cards={collection.cards} />
+        {collection ? (
+          <>
+            <Title>{collection.title}</Title>
+            {collection.cards.length ? (
+              <CardsList cards={collection.cards} />
+            ) : (
+              <div className="text-xl dark:text-white">
+                No cards yet{' '}
+                <Link
+                  className="text-blue-500 underline hover:no-underline"
+                  to={`/collections/${collection._id}/settings`}
+                >
+                  click here to add cards
+                </Link>
+              </div>
+            )}
+          </>
         ) : (
-          <Spinner />
+          <Spinner className="m-auto" />
         )}
       </div>
     </section>
