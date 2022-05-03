@@ -1,9 +1,8 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { flipCard } from '../../redux/actions/cardActions';
+import { useDispatch } from 'react-redux';
+import { flipCard } from '../../redux/actions/collectionActions';
 import Card from './Card';
 
-const CardsList = () => {
-  const cards = useSelector((state) => state.cards);
+const CardsList = ({ cards }) => {
   const dispatch = useDispatch();
 
   const handleClick = (index) => {

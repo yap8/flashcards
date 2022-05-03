@@ -24,7 +24,11 @@ const Collection = () => {
     <section>
       <div className="container mx-auto pt-6 md:pt-10">
         <Title>{collection && collection.title}</Title>
-        {collection && collection.cards ? <CardsList /> : <Spinner />}
+        {collection && collection.cards ? (
+          <CardsList cards={collection.cards} />
+        ) : (
+          <Spinner />
+        )}
       </div>
     </section>
   );
