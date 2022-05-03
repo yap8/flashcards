@@ -19,7 +19,7 @@ const CollectionSettings = () => {
   usePrivate();
 
   const collection = useSelector((state) => state.collection);
-  const { success } = useSelector((state) => state.app);
+  const { success } = useSelector((state) => state.request);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { id } = useParams();

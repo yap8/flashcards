@@ -1,62 +1,61 @@
-import api from '../../http/index'
-import { setError, setLoading, setMessage, setSuccess } from './appActions'
-import { PROFILE_SET_DATA, PROFILE_RESET, APP_RESET } from './types'
+import api from '../../http/index';
+import { setError, setMessage, setSuccess } from './requestActions';
+import { PROFILE_SET_DATA, PROFILE_RESET, REQUEST_RESET } from './types';
 
-export const getProfileData = () => async dispatch => {
+export const getProfileData = () => async (dispatch) => {
   try {
-    dispatch({ type: PROFILE_RESET })
-    dispatch(setLoading(true))
+    dispatch({ type: PROFILE_RESET });
 
-    const { data } = await api.get('/api/users/info')
+    const { data } = await api.get('/api/users/info');
 
     dispatch({
       type: PROFILE_SET_DATA,
       payload: {
         name: data.name,
-        email: data.email
-      }
-    })
+        email: data.email,
+      },
+    });
 
-    dispatch(setSuccess(true))
+    dispatch(setSuccess(true));
   } catch (error) {
-    dispatch(setError(true))
-    dispatch(setMessage(error.response.data.error))
+    dispatch(setError(true));
+    dispatch(setMessage(error.response.data.error));
   } finally {
-    dispatch({ type: APP_RESET })
+    dispatch({ type: REQUEST_RESET });
   }
-}
+};
 
-export const editProfileData = (name, email, password, passwordRepeat) => async dispatch => {
-  try {
-    dispatch(setLoading(true))
+export const editProfileData =
+  (name, email, password, passwordRepeat) => async (dispatch) => {
+    try {
+      if (password !== passwordRepeat)
+        throw new Error('Passwords do not match');
 
-    if (password !== passwordRepeat) throw new Error('Passwords do not match')
+      const { data } = await api.patch('/api/users/edit', {
+        name,
+        email,
+        password,
+      });
 
-    const { data } = await api.patch('/api/users/edit', {
-      name,
-      email,
-      password
-    })
+      dispatch({
+        type: PROFILE_SET_DATA,
+        payload: {
+          name: data.name,
+          email: data.email,
+        },
+      });
 
-    dispatch({
-      type: PROFILE_SET_DATA,
-      payload: {
-        name: data.name,
-        email: data.email
+      dispatch(setMessage('Success'));
+      dispatch(setSuccess(true));
+    } catch (error) {
+      dispatch(setError(true));
+
+      if (error.response) {
+        return dispatch(setMessage(error.response.data.error));
       }
-    })
 
-    dispatch(setMessage('Success'))
-    dispatch(setSuccess(true))
-  } catch (error) {
-    dispatch(setError(true))
-
-    if (error.response) {
-      return dispatch(setMessage(error.response.data.error))
+      dispatch(setMessage(error.message));
+    } finally {
+      dispatch({ type: REQUEST_RESET });
     }
-    
-    dispatch(setMessage(error.message))
-  } finally {
-    dispatch({ type: APP_RESET })
-  }
-}
+  };

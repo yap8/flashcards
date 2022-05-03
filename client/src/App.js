@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
 
 import CollectionSettings from './pages/Collections/CollectionSettings';
 import CollectionsForm from './pages/Collections/CollectionsForm';
@@ -14,7 +15,11 @@ import Login from './pages/Login';
 import Home from './pages/Home';
 
 function App() {
+  const message = useSelector((state) => state.message);
+  const error = useSelector((state) => state.error);
   const theme = useSelector((state) => state.theme);
+
+  useEffect(() => {}, [error, message]);
 
   return (
     <div className={theme}>

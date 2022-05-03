@@ -1,11 +1,11 @@
 import api from '../../http/index';
-import { setError, setLoading, setMessage, setSuccess } from './appActions';
+import { setError, setMessage, setSuccess } from './requestActions';
 import {
   AUTH_SET_USER,
   AUTH_RESET,
-  APP_RESET,
   COLLECTIONS_RESET,
   PROFILE_RESET,
+  REQUEST_RESET,
 } from './types';
 
 export const setUser = (user) => {
@@ -23,7 +23,7 @@ export const logout = () => (dispatch) => {
   });
 
   dispatch({
-    type: APP_RESET,
+    type: REQUEST_RESET,
   });
 
   dispatch({
@@ -38,7 +38,6 @@ export const logout = () => (dispatch) => {
 export const register = (name, email, password) => async (dispatch) => {
   try {
     dispatch({ type: AUTH_RESET });
-    dispatch(setLoading(true));
 
     const { data } = await api.post('/api/users/register', {
       name,
@@ -54,14 +53,13 @@ export const register = (name, email, password) => async (dispatch) => {
     dispatch(setError(true));
     dispatch(setMessage(error.response.data.error));
   } finally {
-    dispatch({ type: APP_RESET });
+    dispatch({ type: REQUEST_RESET });
   }
 };
 
 export const login = (email, password) => async (dispatch) => {
   try {
     dispatch({ type: AUTH_RESET });
-    dispatch(setLoading(true));
 
     const { data } = await api.post('/api/users/login', {
       email,
@@ -76,6 +74,6 @@ export const login = (email, password) => async (dispatch) => {
     dispatch(setError(true));
     dispatch(setMessage(error.response.data.error));
   } finally {
-    dispatch({ type: APP_RESET });
+    dispatch({ type: REQUEST_RESET });
   }
 };

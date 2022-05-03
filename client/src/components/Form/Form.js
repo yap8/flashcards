@@ -11,7 +11,7 @@ const Form = ({ children, className, ...props }) => {
     inherited: className || '',
   };
 
-  const { error, message } = useSelector((state) => state.app);
+  const { error, message } = useSelector((state) => state.request);
 
   useEffect(() => {
     if (error && message) toast.error(message);

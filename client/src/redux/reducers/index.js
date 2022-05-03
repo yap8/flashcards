@@ -2,13 +2,13 @@ import { combineReducers } from 'redux';
 
 import collectionsReducer from './collectionsReducer';
 import collectionReducer from './collectionReducer';
+import requestReducer from './requestReducer';
 import profileReducer from './profileReducer';
 import themeReducer from './themeReducer';
 import authReducer from './authReducer';
-import appReducer from './appReducer';
 
 const rootReducer = combineReducers({
-  app: appReducer,
+  request: requestReducer,
   auth: authReducer,
   theme: themeReducer,
   profile: profileReducer,

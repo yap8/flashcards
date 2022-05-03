@@ -19,7 +19,7 @@ const Profile = () => {
   const dispatch = useDispatch();
 
   const { name, email } = useSelector((state) => state.profile);
-  const { success, message } = useSelector((state) => state.app);
+  const { success, message } = useSelector((state) => state.request);
 
   const [formData, setFormData] = useState({
     name,
