@@ -35,7 +35,8 @@ const CollectionCard = ({ create, collection }) => {
       <Link to={collection._id} className={mergeClasses(classes)}>
         <h2 className="font-bold text-2xl mb-2">{collection.title}</h2>
         <p className="text-gray-700 font-semibold mb-4 dark:text-gray-300">
-          {collection.cards.length} items
+          {collection.cards.length}{' '}
+          {collection.cards.length === 1 ? 'item' : 'items'}
         </p>
         <div className="flex">
           <Link
