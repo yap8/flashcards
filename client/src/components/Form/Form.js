@@ -1,6 +1,7 @@
-import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
+import { useEffect } from 'react';
+
 import mergeClasses from '../../helpers/mergeClasses';
 
 const Form = ({ children, className, ...props }) => {

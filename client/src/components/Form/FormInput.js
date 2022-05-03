@@ -1,5 +1,5 @@
-import capitalize from '../../helpers/capitalize';
 import mergeClasses from '../../helpers/mergeClasses';
+import capitalize from '../../helpers/capitalize';
 
 const FormInput = ({ className, label, name, ...props }) => {
   const classes = {
