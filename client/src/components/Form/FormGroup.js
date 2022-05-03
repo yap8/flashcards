@@ -1,13 +1,7 @@
-import React from 'react'
+import React from 'react';
 
 const FormGroup = ({ children }) => {
-  return (
-    <div
-      className="mb-3 md:mb-4"
-    >
-      { children }
-    </div>
-  )
-}
+  return <div className="mb-3 md:mb-4">{children}</div>;
+};
 
-export default FormGroup
+export default FormGroup;
