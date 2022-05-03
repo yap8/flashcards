@@ -22,7 +22,7 @@ const Header = () => {
     dispatch(changeTheme(theme === 'dark' ? null : 'dark'));
 
   return (
-    <header className="shadow-md bg-white transition dark:bg-slate-800">
+    <header className="shadow bg-white transition dark:bg-slate-800">
       <div className="container mx-auto flex justify-between items-center py-2 md:py-4 relative">
         <Link
           className="text-2xl md:text-4xl font-semibold dark:text-white"
